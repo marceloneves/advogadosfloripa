@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const team = [
+  { name: 'Dra. Marina Souza', role: 'Sócia — Direito Civil e Família', initials: 'MS' },
+  { name: 'Dr. Rafael Lima', role: 'Sócio — Direito Trabalhista', initials: 'RL' },
+  { name: 'Dra. Camila Rocha', role: 'Advogada — Direito Empresarial', initials: 'CR' },
+];
+
+const values = [
+  ['Ética', 'Transparência e responsabilidade em cada atendimento.'],
+  ['Dedicação', 'Acompanhamento próximo e personalizado de cada caso.'],
+  ['Excelência', 'Atualização constante e rigor técnico nas soluções.'],
+];
+---
+
+<Layout title="Quem Somos — Advogados Floripa">
+	<!-- Header -->
+	<section class="bg-slate-900 text-white">
+		<div class="mx-auto max-w-6xl px-6 py-20">
+			<p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Quem Somos</p>
+			<h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+				Compromisso com a justiça, há mais de 20 anos
+			</h1>
+		</div>
+	</section>
+
+	<!-- História -->
+	<section class="mx-auto max-w-3xl px-6 py-20">
+		<div class="prose prose-slate max-w-none">
+			<p class="text-lg leading-relaxed text-slate-700">
+				Fundado em Florianópolis, o escritório <strong>Advogados Floripa</strong>
+				nasceu do propósito de oferecer uma advocacia próxima, técnica e humana.
+				Ao longo de mais de duas décadas, construímos uma trajetória sólida
+				pautada na confiança e nos resultados entregues aos nossos clientes.
+			</p>
+			<p class="mt-6 text-lg leading-relaxed text-slate-700">
+				Atuamos com dedicação em múltiplas áreas do direito, sempre buscando a
+				melhor estratégia para cada situação. Nossa equipe combina experiência,
+				conhecimento atualizado e um atendimento verdadeiramente personalizado.
+			</p>
+		</div>
+	</section>
+
+	<!-- Valores -->
+	<section class="bg-slate-50">
+		<div class="mx-auto max-w-6xl px-6 py-20">
+			<h2 class="text-center text-3xl font-bold tracking-tight">Nossos Valores</h2>
+			<div class="mt-12 grid gap-8 md:grid-cols-3">
+				{values.map(([title, desc]) => (
+					<div class="rounded-2xl bg-white p-8 shadow-sm">
+						<h3 class="text-xl font-semibold text-slate-900">{title}</h3>
+						<p class="mt-3 text-slate-600">{desc}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Equipe -->
+	<section class="mx-auto max-w-6xl px-6 py-20">
+		<h2 class="text-center text-3xl font-bold tracking-tight">Nossa Equipe</h2>
+		<div class="mt-12 grid gap-8 md:grid-cols-3">
+			{team.map((p) => (
+				<div class="text-center">
+					<div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-slate-900 text-2xl font-bold text-amber-400">
+						{p.initials}
+					</div>
+					<h3 class="mt-4 text-lg font-semibold text-slate-900">{p.name}</h3>
+					<p class="mt-1 text-sm text-slate-500">{p.role}</p>
+				</div>
+			))}
+		</div>
+	</section>
+</Layout>

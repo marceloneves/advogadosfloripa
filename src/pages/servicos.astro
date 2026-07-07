@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { services } from '../data/site';
+---
+
+<Layout title="Serviços — Advogados Floripa">
+	<section class="bg-slate-900 text-white">
+		<div class="mx-auto max-w-6xl px-6 py-20">
+			<p class="text-sm font-semibold uppercase tracking-widest text-amber-400">Serviços</p>
+			<h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Áreas de Atuação</h1>
+			<p class="mt-4 max-w-2xl text-lg text-slate-300">
+				Atendimento jurídico completo para pessoas físicas e empresas em
+				Florianópolis e região.
+			</p>
+		</div>
+	</section>
+
+	<section class="mx-auto max-w-6xl px-6 py-20">
+		<div class="grid gap-8 md:grid-cols-2">
+			{services.map((s) => (
+				<div id={s.slug} class="rounded-2xl border border-slate-200 p-8 transition hover:border-amber-400 hover:shadow-lg">
+					<div class="text-4xl">{s.icon}</div>
+					<h2 class="mt-4 text-2xl font-semibold text-slate-900">{s.title}</h2>
+					<p class="mt-3 text-slate-600">{s.summary}</p>
+					<a href="/contato" class="mt-6 inline-block font-semibold text-amber-600 hover:text-amber-700">
+						Consultar sobre {s.title} →
+					</a>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<section class="bg-slate-50">
+		<div class="mx-auto max-w-6xl px-6 py-16 text-center">
+			<h2 class="text-3xl font-bold tracking-tight">Não encontrou sua demanda?</h2>
+			<p class="mx-auto mt-3 max-w-xl text-slate-600">
+				Entre em contato e avaliaremos como podemos ajudar no seu caso específico.
+			</p>
+			<a href="/contato" class="mt-8 inline-block rounded-lg bg-slate-900 px-8 py-3 font-semibold text-white transition hover:bg-slate-700">
+				Fale com um advogado
+			</a>
+		</div>
+	</section>
+</Layout>

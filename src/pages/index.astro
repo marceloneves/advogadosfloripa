@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, services } from '../data/site';
+---
+
+<Layout>
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-slate-900 text-white">
+		<div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+		<div class="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
+			<p class="mb-4 text-sm font-semibold uppercase tracking-widest text-amber-400">
+				{site.tagline}
+			</p>
+			<h1 class="max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+				Defesa jurídica séria e comprometida com seus direitos
+			</h1>
+			<p class="mt-6 max-w-2xl text-lg text-slate-300">
+				Escritório de advocacia em Florianópolis com atuação em diversas áreas do
+				direito. Atendimento próximo, ético e orientado a resultados.
+			</p>
+			<div class="mt-10 flex flex-wrap gap-4">
+				<a href="/contato" class="rounded-lg bg-amber-500 px-6 py-3 font-semibold text-slate-900 transition hover:bg-amber-400">
+					Agendar consulta
+				</a>
+				<a href="/servicos" class="rounded-lg border border-slate-600 px-6 py-3 font-semibold text-white transition hover:border-slate-400">
+					Nossos serviços
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Stats -->
+	<section class="border-b border-slate-100 bg-slate-50">
+		<div class="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 py-12 text-center md:grid-cols-4">
+			{[
+				['+20', 'anos de experiência'],
+				['+1.500', 'casos atendidos'],
+				['6', 'áreas de atuação'],
+				['98%', 'clientes satisfeitos'],
+			].map(([n, label]) => (
+				<div>
+					<div class="text-3xl font-bold text-slate-900">{n}</div>
+					<div class="mt-1 text-sm text-slate-500">{label}</div>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- Serviços -->
+	<section class="mx-auto max-w-6xl px-6 py-20">
+		<div class="mb-12 text-center">
+			<h2 class="text-3xl font-bold tracking-tight">Áreas de Atuação</h2>
+			<p class="mt-3 text-slate-600">Soluções jurídicas para pessoas e empresas.</p>
+		</div>
+		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{services.map((s) => (
+				<div class="group rounded-2xl border border-slate-200 p-6 transition hover:border-amber-400 hover:shadow-lg">
+					<div class="text-3xl">{s.icon}</div>
+					<h3 class="mt-4 text-lg font-semibold text-slate-900">{s.title}</h3>
+					<p class="mt-2 text-sm text-slate-600">{s.summary}</p>
+				</div>
+			))}
+		</div>
+		<div class="mt-12 text-center">
+			<a href="/servicos" class="font-semibold text-amber-600 hover:text-amber-700">
+				Ver todos os serviços →
+			</a>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="bg-slate-900">
+		<div class="mx-auto max-w-6xl px-6 py-16 text-center text-white">
+			<h2 class="text-3xl font-bold">Precisa de orientação jurídica?</h2>
+			<p class="mx-auto mt-3 max-w-xl text-slate-300">
+				Fale com nossa equipe e receba uma avaliação inicial do seu caso.
+			</p>
+			<a href="/contato" class="mt-8 inline-block rounded-lg bg-amber-500 px-8 py-3 font-semibold text-slate-900 transition hover:bg-amber-400">
+				Fale conosco agora
+			</a>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Advogados Floripa — Advocacia em Florianópolis',
+  description = 'Escritório de advocacia em Florianópolis. Atendimento em direito civil, trabalhista, família, empresarial e mais.',
+} = Astro.props;
+---
+
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body class="flex min-h-screen flex-col bg-white text-slate-900 antialiased">
+		<Header />
+		<main class="flex-1">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
