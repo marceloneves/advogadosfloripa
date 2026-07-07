@@ -2,9 +2,24 @@
 import Layout from '../layouts/Layout.astro';
 
 const team = [
-  { name: 'Dra. Marina Souza', role: 'Sócia — Direito Civil e Família', initials: 'MS' },
-  { name: 'Dr. Rafael Lima', role: 'Sócio — Direito Trabalhista', initials: 'RL' },
-  { name: 'Dra. Camila Rocha', role: 'Advogada — Direito Empresarial', initials: 'CR' },
+  {
+    name: 'Fernando Luis Fabre',
+    role: 'Advogado — Direito Criminal e Militar',
+    initials: 'FF',
+    href: '/equipe/fernando-fabre',
+  },
+  {
+    name: 'Asterley Kincezski da Silva',
+    role: 'Advogado — Direito da Saúde e Público',
+    initials: 'AK',
+    href: '/equipe/asterley-kincezski',
+  },
+  {
+    name: 'Matheus Stein',
+    role: 'Advogado — OAB/SC 78.639',
+    initials: 'MS',
+    href: '/equipe/matheus-stein',
+  },
 ];
 
 const values = [
@@ -60,16 +75,28 @@ const values = [
 	<!-- Equipe -->
 	<section class="mx-auto max-w-6xl px-6 py-20">
 		<h2 class="text-center text-3xl font-bold tracking-tight">Nossa Equipe</h2>
-		<div class="mt-12 grid gap-8 md:grid-cols-3">
-			{team.map((p) => (
-				<div class="text-center">
-					<div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-slate-900 text-2xl font-bold text-amber-400">
-						{p.initials}
-					</div>
-					<h3 class="mt-4 text-lg font-semibold text-slate-900">{p.name}</h3>
-					<p class="mt-1 text-sm text-slate-500">{p.role}</p>
-				</div>
-			))}
+		<div class="mt-12 grid justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+			{team.map((p) => {
+				const Tag = p.href ? 'a' : 'div';
+				return (
+					<Tag
+						href={p.href}
+						class:list={[
+							'block text-center',
+							p.href && 'group rounded-2xl p-4 transition hover:bg-slate-50',
+						]}
+					>
+						<div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-slate-900 text-2xl font-bold text-amber-400 transition group-hover:ring-4 group-hover:ring-amber-200">
+							{p.initials}
+						</div>
+						<h3 class="mt-4 text-lg font-semibold text-slate-900">{p.name}</h3>
+						<p class="mt-1 text-sm text-slate-500">{p.role}</p>
+						{p.href && (
+							<span class="mt-2 inline-block text-sm font-semibold text-amber-600">Ver perfil →</span>
+						)}
+					</Tag>
+				);
+			})}
 		</div>
 	</section>
 </Layout>
