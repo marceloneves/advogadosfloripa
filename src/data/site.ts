@@ -4,7 +4,7 @@ export const site = {
   phone: '(48) 3333-0000',
   whatsapp: '5548999990000',
   email: 'contato@advogadosfloripa.com.br',
-  address: 'Rua das Palmeiras, 100 — Centro, Florianópolis/SC',
+  address: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC, 88010-000',
   oab: 'OAB/SC 00.000',
 };
 
