@@ -1,9 +1,9 @@
 export const site = {
   name: 'Advogados Floripa',
   tagline: 'Advocacia em Florianópolis',
-  phone: '(48) 3333-0000',
-  whatsapp: '5548999990000',
-  email: 'contato@advogadosfloripa.com.br',
+  phone: '(48) 93381-8578',
+  whatsapp: '5548933818578',
+  email: 'advogadoskfs@gmail.com',
   address: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC, 88010-000',
   oab: 'OAB/SC 00.000',
 };
