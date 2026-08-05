@@ -1,38 +1,126 @@
 ---
-import { site, nav } from '../data/site';
+import { site, socials, services, waLink } from '../data/site';
+
+const year = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Quem Somos', href: '/quem-somos' },
+  { label: 'Advogados', href: '/equipe' },
+  { label: 'Nossa Atuação', href: '/atuacao' },
+  { label: 'Depoimentos', href: '/depoimentos' },
+  { label: 'Perguntas Frequentes', href: '/faq' },
+  { label: 'Blog', href: '/blog' },
+];
 ---
 
-<footer class="border-t border-slate-800 bg-slate-900 text-slate-300">
-	<div class="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-3">
-		<div>
-			<div class="flex items-center gap-2">
-				<span class="text-2xl">⚖️</span>
-				<span class="text-lg font-bold text-white">{site.name}</span>
+<footer>
+	<section class="footer-section fix kfs-pattern-bg">
+		<div class="kfs-pattern"></div>
+		<div class="container">
+			<div class="contact-info-area">
+				<div class="content">
+					<div class="section-title">
+						<h2 class="text-white wow fadeInUp" data-wow-delay=".3s">
+							Precisa de orientação jurídica?
+						</h2>
+					</div>
+					<p class="wow fadeInUp" data-wow-delay=".5s">
+						Fale com nossa equipe e receba uma avaliação inicial do seu caso, sem compromisso.
+					</p>
+				</div>
+
+				<div class="search-widget wow fadeInUp" data-wow-delay=".7s">
+					<a href={waLink('Olá! Gostaria de agendar uma consulta.')} target="_blank" rel="noopener" class="theme-btn">
+						Falar no WhatsApp
+						<i class="fa-solid fa-arrow-right-long"></i>
+					</a>
+				</div>
 			</div>
-			<p class="mt-3 text-sm text-slate-400">{site.tagline}</p>
-			<p class="mt-1 text-xs text-slate-500">{site.oab}</p>
-		</div>
 
-		<div>
-			<h3 class="text-sm font-semibold text-white">Navegação</h3>
-			<ul class="mt-3 space-y-2 text-sm">
-				{nav.map((item) => (
-					<li><a href={item.href} class="transition hover:text-amber-400">{item.label}</a></li>
-				))}
-			</ul>
-		</div>
+			<div class="footer-widget-wrapper">
+				<div class="row">
+					<div class="col-xl-4 col-sm-6 col-md-6 col-lg-4 wow fadeInUp" data-wow-delay=".2s">
+						<div class="single-footer-widget">
+							<div class="widget-head">
+								<a href="/" class="kfs-logo" aria-label={`${site.name} — página inicial`}>
+									<img src="/theme/img/brand/kfs-logo-branco.svg" alt={site.name} width="910" height="267" />
+								</a>
+							</div>
+							<div class="footer-content">
+								<p>
+									Escritório de advocacia no Centro de Florianópolis, com atuação em Direito
+									Criminal, Militar, da Saúde, Previdenciário, Administrativo e Civil.
+								</p>
+								<div class="social-icon">
+									{socials.map((s) => (
+										<a href={s.url} target="_blank" rel="noopener" aria-label={s.label}>
+											<i class={s.icon}></i>
+										</a>
+									))}
+								</div>
+							</div>
+						</div>
+					</div>
 
-		<div>
-			<h3 class="text-sm font-semibold text-white">Contato</h3>
-			<ul class="mt-3 space-y-2 text-sm text-slate-400">
-				<li>{site.address}</li>
-				<li><a href={`tel:${site.phone}`} class="hover:text-amber-400">{site.phone}</a></li>
-				<li><a href={`mailto:${site.email}`} class="hover:text-amber-400">{site.email}</a></li>
-			</ul>
-		</div>
-	</div>
+					<div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-lg-5 wow fadeInUp" data-wow-delay=".4s">
+						<div class="single-footer-widget">
+							<div class="widget-head">
+								<h4>Escritório</h4>
+							</div>
+							<ul class="list-items">
+								{quickLinks.map((l) => (
+									<li>
+										<a href={l.href}>{l.label}</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
 
-	<div class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
-		© {new Date().getFullYear()} {site.name}. Todos os direitos reservados.
-	</div>
+					<div class="col-xl-2 col-sm-6 col-md-6 col-lg-4 wow fadeInUp" data-wow-delay=".6s">
+						<div class="single-footer-widget">
+							<div class="widget-head">
+								<h4>Áreas</h4>
+							</div>
+							<ul class="list-items">
+								{services.map((s) => (
+									<li>
+										<a href={`/servicos#${s.slug}`}>{s.title}</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-xl-3 col-sm-6 col-md-6 col-lg-4 ps-xl-5 wow fadeInUp" data-wow-delay=".8s">
+						<div class="single-footer-widget">
+							<div class="widget-head">
+								<h4>Contato</h4>
+							</div>
+							<div class="contact-info">
+								<h6>{site.address}</h6>
+								<h6>
+									<a href={`tel:+${site.whatsapp}`}>{site.phone}</a>
+								</h6>
+								<h6>
+									<a href={`mailto:${site.email}`}>{site.email}</a>
+								</h6>
+								<h6>{site.hours}</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="footer-wrapper">
+						<p class="wow fadeInUp" data-wow-delay=".3s">
+							© {year} {site.legalName}. Todos os direitos reservados.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </footer>

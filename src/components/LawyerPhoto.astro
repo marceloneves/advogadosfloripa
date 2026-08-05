@@ -1,0 +1,44 @@
+---
+import type { Lawyer } from '../data/team';
+
+interface Props {
+  lawyer: Lawyer;
+  /** 'card' usa o recorte 3:4; 'profile' usa o 2:3. */
+  variant?: 'card' | 'profile';
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+}
+
+const {
+  lawyer,
+  variant = 'card',
+  sizes = variant === 'card' ? '(max-width: 991px) 100vw, 400px' : '(max-width: 991px) 100vw, 560px',
+  loading = 'lazy',
+  class: className = '',
+} = Astro.props;
+
+const src = variant === 'card' ? (lawyer.photoCard ?? lawyer.photo) : lawyer.photo;
+const widths = variant === 'card' ? lawyer.photoCardWidths : lawyer.photoWidths;
+
+/** Deriva as demais larguras do nome do arquivo: `...-600.webp` → `...-900.webp`. */
+const srcset =
+  widths && widths.length > 1
+    ? widths.map((w) => `${src.replace(/-\d+\.webp$/, `-${w}.webp`)} ${w}w`).join(', ')
+    : undefined;
+
+const ratio = variant === 'card' ? [3, 4] : [2, 3];
+const baseWidth = widths?.[widths.length - 1] ?? 600;
+---
+
+<img
+	src={src}
+	srcset={srcset}
+	sizes={srcset ? sizes : undefined}
+	alt={`${lawyer.name}, ${lawyer.role.toLowerCase()}`}
+	width={baseWidth}
+	height={Math.round((baseWidth / ratio[0]) * ratio[1])}
+	loading={loading}
+	decoding="async"
+	class={className}
+/>

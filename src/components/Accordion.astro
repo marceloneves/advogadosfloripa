@@ -1,0 +1,42 @@
+---
+import { faqs } from '../data/content';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const items = limit ? faqs.slice(0, limit) : faqs;
+---
+
+<div class="faq-wrapper">
+	<div class="faq-content m-0">
+		<div class="faq-accordion mt-0">
+			<div class="accordion" id="accordion">
+				{items.map((f, i) => (
+					<div class="accordion-item mb-3">
+						<h5 class="accordion-header">
+							<button
+								class:list={['accordion-button', i !== 0 && 'collapsed']}
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target={`#faq${i}`}
+								aria-expanded={i === 0 ? 'true' : 'false'}
+								aria-controls={`faq${i}`}
+							>
+								{f.q}
+							</button>
+						</h5>
+						<div
+							id={`faq${i}`}
+							class:list={['accordion-collapse', 'collapse', i === 0 && 'show']}
+							data-bs-parent="#accordion"
+						>
+							<div class="accordion-body pt-2">{f.a}</div>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</div>

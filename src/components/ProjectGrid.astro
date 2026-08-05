@@ -1,0 +1,29 @@
+---
+import { cases } from '../data/content';
+
+interface Props {
+  columns?: string;
+  limit?: number;
+}
+
+const { columns = 'col-xl-4 col-lg-6 col-md-6', limit } = Astro.props;
+const items = limit ? cases.slice(0, limit) : cases;
+---
+
+<div class="row">
+	{items.map((c) => (
+		<div class={columns}>
+			<div class="project-card-items img-custom-anim-left wow" data-wow-delay=".3s">
+				<div class="project-image">
+					<img src={c.image} alt={c.title} />
+					<div class="project-content">
+						<span>{c.category}</span>
+						<h3>
+							<a href={c.href}>{c.title}</a>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	))}
+</div>

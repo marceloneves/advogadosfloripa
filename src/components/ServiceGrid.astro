@@ -1,0 +1,89 @@
+---
+import { services } from '../data/site';
+import { serviceImages } from '../data/content';
+
+interface Props {
+  /** style1 = card + image, style2 = boxed list, style3 = hover reveal */
+  variant?: 'style1' | 'style2' | 'style3';
+  columns?: string;
+  limit?: number;
+}
+
+const { variant = 'style2', columns = 'col-xl-4 col-lg-6', limit } = Astro.props;
+const items = limit ? services.slice(0, limit) : services;
+---
+
+{variant === 'style1' && (
+	<div class="row">
+		{items.map((s, i) => (
+			<div class={columns}>
+				<div class="service-main-items">
+					<div class="service-card img-custom-anim-left wow" data-wow-delay=".3s">
+						<div class="icon">
+							<i class={s.icon}></i>
+						</div>
+						<div class="content">
+							<h4>
+								<a href={`/servicos#${s.slug}`}>{s.title}</a>
+							</h4>
+							<p>{s.summary}</p>
+						</div>
+					</div>
+					<div class="service-image img-custom-anim-right wow" data-wow-delay=".5s">
+						<img src={serviceImages[i % serviceImages.length]} alt={s.title} />
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+)}
+
+{variant === 'style2' && (
+	<div class="row">
+		{items.map((s, i) => (
+			<div class={`${columns} col-md-6 wow fadeInUp`} data-wow-delay=".3s">
+				<div class="service-box-items">
+					<div class="service-content">
+						<h4>
+							<a href={`/servicos#${s.slug}`}>{s.title}</a>
+						</h4>
+						<p>{s.summary}</p>
+						<div class="service-button">
+							<div class="icon">
+								<i class={s.icon}></i>
+							</div>
+							<a href={`/servicos#${s.slug}`} class="theme-btn">
+								Saiba mais
+								<i class="fa-solid fa-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+)}
+
+{variant === 'style3' && (
+	<div class="service-wrapper m-0 p-0">
+		<div class="service-main-box">
+			{items.map((s, i) => (
+				<div class="service-items">
+					<div class="icon">
+						<i class={s.icon}></i>
+					</div>
+					<div class="content">
+						<h3>
+							<a href={`/servicos#${s.slug}`}>{s.title}</a>
+						</h3>
+					</div>
+					<div
+						class="service-hover d-none d-md-block bg-cover"
+						style={`background-image: url('${serviceImages[i % serviceImages.length]}');`}
+					>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+)}

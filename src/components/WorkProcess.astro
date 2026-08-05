@@ -1,0 +1,69 @@
+---
+import { process } from '../data/content';
+
+interface Props {
+  /** style1 = vertical timeline, style2 = card grid */
+  variant?: 'style1' | 'style2';
+  limit?: number;
+}
+
+const { variant = 'style1', limit } = Astro.props;
+const items = limit ? process.slice(0, limit) : process;
+---
+
+{variant === 'style1' && (
+	<div class="process-wrapper">
+		<div class="process-content ms-0">
+			<div class="process-ber">
+				<div class="line-shape">
+					<img src="/theme/img/demo/line-shape.png" alt="" />
+				</div>
+				{items.map((p) => (
+					<div class="process-items wow fadeInUp" data-wow-delay=".2s">
+						<h6 class="number">{p.number}</h6>
+						<div class="content">
+							<h3>{p.title}</h3>
+							<p>{p.text}</p>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+)}
+
+{variant === 'style2' && (
+	<div class="row">
+		{items.map((p) => (
+			<div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
+				<div class="feature-main-area">
+					<div class="shape1">
+						<img src="/theme/img/demo/arrow1.png" alt="" />
+					</div>
+					<div class="shape2">
+						<img src="/theme/img/demo/arrow2.png" alt="" />
+					</div>
+					<div class="feature-card-item2">
+						<div class="feature-image">
+							<img
+								src={p.image}
+								srcset={p.image2x ? `${p.image} 220w, ${p.image2x} 440w` : undefined}
+								sizes={p.image2x ? '220px' : undefined}
+								width="220"
+								height="220"
+								alt={p.alt ?? ''}
+								loading="lazy"
+								decoding="async"
+							/>
+							<h6 class="number">{p.number}</h6>
+						</div>
+						<div class="feature-content">
+							<h4>{p.title}</h4>
+							<p>{p.text}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+)}

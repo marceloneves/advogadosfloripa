@@ -1,0 +1,100 @@
+---
+import { site } from '../data/site';
+import { services } from '../data/site';
+
+interface Props {
+  id?: string;
+  /** Wrap the fields in the theme's boxed appointment card. */
+  boxed?: boolean;
+  sub?: string;
+  title?: string;
+}
+
+const {
+  id = 'contact-form',
+  boxed = false,
+  sub = 'Agende um atendimento',
+  title = 'Conte o seu caso',
+} = Astro.props;
+---
+
+<div class:list={[boxed && 'appointment-wrapper']}>
+	<div class:list={[boxed && 'contact-content']}>
+		{boxed && (
+			<>
+				<span class="wow fadeInUp" data-wow-delay=".3s">{sub}</span>
+				<h3 class="wow fadeInUp" data-wow-delay=".5s">{title}</h3>
+			</>
+		)}
+
+		<form id={id} class="contact-form-items" novalidate>
+			<div class="row g-4">
+				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+					<div class="form-clt">
+						<input type="text" name="nome" placeholder="Seu nome" required aria-label="Seu nome" />
+					</div>
+				</div>
+				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+					<div class="form-clt">
+						<input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" />
+					</div>
+				</div>
+				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+					<div class="form-clt">
+						<input type="tel" name="telefone" placeholder="Telefone / WhatsApp" aria-label="Telefone" />
+					</div>
+				</div>
+				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+					<div class="form-clt">
+						<select name="area" aria-label="Área do direito">
+							<option value="">Área do direito</option>
+							{services.map((s) => (
+								<option value={s.title}>{s.title}</option>
+							))}
+							<option value="Outra">Outra</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
+					<div class="form-clt">
+						<textarea name="mensagem" rows="5" placeholder="Descreva brevemente o seu caso" required aria-label="Mensagem"></textarea>
+					</div>
+				</div>
+				<div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
+					<button type="submit" class="theme-btn">
+						Enviar pelo WhatsApp
+						<i class="fa-solid fa-arrow-right"></i>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script is:inline define:vars={{ id, whatsapp: site.whatsapp }}>
+	document.getElementById(id)?.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const f = e.target;
+		const get = (n) => (f.elements[n]?.value || '').trim();
+
+		if (!get('nome') || !get('email') || !get('mensagem')) {
+			alert('Preencha nome, e-mail e mensagem.');
+			return;
+		}
+
+		const linhas = [
+			`Olá! Meu nome é ${get('nome')}.`,
+			get('area') && `Área: ${get('area')}`,
+			`E-mail: ${get('email')}`,
+			get('telefone') && `Telefone: ${get('telefone')}`,
+			'',
+			get('mensagem'),
+		].filter(Boolean);
+
+		window.open(
+			`https://wa.me/${whatsapp}?text=${encodeURIComponent(linhas.join('\n'))}`,
+			'_blank',
+			'noopener'
+		);
+	});
+</script>

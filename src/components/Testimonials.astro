@@ -1,0 +1,61 @@
+---
+import { testimonials } from '../data/content';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const items = limit ? testimonials.slice(0, limit) : testimonials;
+
+const stars = (n: number) =>
+  Array.from({ length: 5 }, (_, i) => (i < n ? 'fas fa-star' : 'far fa-star'));
+---
+
+<div class="swiper testimonial-slider2">
+	<div class="swiper-wrapper">
+		{items.map((t) => (
+			<div class="swiper-slide">
+				<div class="testimonial-main-item">
+					<div class="top-shape">
+						<img src="/theme/img/demo/shap1.png" alt="" />
+					</div>
+					<div class="testimonial-card-item2">
+						<div class="polygon-shape">
+							<img src="/theme/img/demo/shape2.png" alt="" />
+						</div>
+						<div class="testimonial-content">
+							<div class="star">
+								{stars(t.rating).map((c) => (
+									<i class={c}></i>
+								))}
+							</div>
+							<p>{t.text}</p>
+							<div class="info-item">
+								<div class="content">
+									<h4>{t.role}</h4>
+								</div>
+								<div class="icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+										<circle cx="25" cy="25" r="25" fill="#B68C5A"></circle>
+										<path d="M38.7322 16C39.0224 16 39.2833 16.1909 39.3617 16.474C39.4488 16.7888 39.2823 17.1184 38.9743 17.2396C36.9286 18.0456 35.4263 19.4274 34.4993 21.3531C37.3364 22.0764 39.3847 24.6171 39.3847 27.5714C39.3847 31.1163 36.4563 34 32.8569 34C29.2575 34 26.3294 31.1163 26.3294 27.5714C26.324 27.5228 25.7478 17.9383 38.6333 16.0072C38.6665 16.0022 38.6994 16 38.7322 16ZM32.8569 32.7143C35.7362 32.7143 38.0784 30.4071 38.0784 27.5714C38.0784 24.9818 36.1111 22.7895 33.5026 22.4725C33.3037 22.448 33.127 22.3354 33.0237 22.1665C32.92 21.9976 32.9009 21.7914 32.972 21.6068C33.4959 20.2442 34.2415 19.0875 35.202 18.1436C27.2363 20.8858 27.6283 27.4487 27.6337 27.5237C27.6356 30.4071 29.9779 32.7143 32.8569 32.7143Z" fill="white"></path>
+										<path d="M23.408 16C23.6982 16 23.959 16.1909 24.0375 16.474C24.1246 16.7888 23.9581 17.1184 23.6501 17.2396C21.6044 18.0456 20.1021 19.4274 19.1751 21.3531C22.0122 22.0764 24.0604 24.6171 24.0604 27.5714C24.0604 31.1163 21.132 34 17.5327 34C13.9333 34 11.0052 31.1163 11.0052 27.5714C10.9998 27.5228 10.4235 17.9383 23.3091 16.0072C23.3423 16.0022 23.3752 16 23.408 16ZM17.5327 32.7143C20.412 32.7143 22.7542 30.4071 22.7542 27.5714C22.7542 24.9818 20.7869 22.7895 18.1784 22.4725C17.9795 22.448 17.8027 22.3354 17.6994 22.1665C17.5958 21.9976 17.5767 21.7914 17.6478 21.6068C18.1717 20.2442 18.9173 19.0875 19.8778 18.1436C11.9121 20.8858 12.304 27.4487 12.3095 27.5237C12.3114 30.4071 14.6537 32.7143 17.5327 32.7143Z" fill="white"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="client-info-item">
+						<div class="client-image">
+							<img src={t.image} alt={t.name} />
+						</div>
+						<div class="info-text">
+							<h4>{t.name}</h4>
+							<span>{t.role}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+</div>

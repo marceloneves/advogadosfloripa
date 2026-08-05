@@ -1,0 +1,85 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogGrid from '../../components/BlogGrid.astro';
+import ConsultationCta from '../../components/ConsultationCta.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, posts },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { post, posts } = Astro.props;
+const { Content } = await render(post);
+
+const related = posts.filter((p) => p.id !== post.id).slice(0, 3);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: "KFS Sociedade de Advogados" },
+};
+---
+
+<Layout
+	title={`${post.data.title} — KFS Sociedade de Advogados`}
+	description={post.data.description}
+	heading={post.data.title}
+	crumbs={[{ label: 'Blog', href: '/blog' }, { label: post.data.category }]}
+>
+	<section class="news-details-section section-padding fix">
+		<div class="container">
+			<div class="row g-4 justify-content-center">
+				<div class="col-lg-9">
+					<div class="news-details-wrapper">
+						<div class="news-image mb-4">
+							<img src={post.data.image} alt={post.data.title} class="img-fluid w-100" />
+						</div>
+
+						<ul class="post-meta mb-4">
+							<li>{fmt(post.data.date)}</li>
+							<li>{post.data.category}</li>
+							<li>{post.data.author}</li>
+						</ul>
+
+						<div class="post-body">
+							<Content />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{related.length > 0 && (
+		<section class="news-section section-padding fix section-bg">
+			<div class="container">
+				<div class="section-title text-center mb-5">
+					<span class="sub-title wow fadeInUp">Continue lendo</span>
+					<h2 class="wow fadeInUp" data-wow-delay=".3s">Outros artigos</h2>
+				</div>
+				<BlogGrid posts={related} />
+			</div>
+		</section>
+	)}
+
+	<ConsultationCta />
+
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />
+</Layout>

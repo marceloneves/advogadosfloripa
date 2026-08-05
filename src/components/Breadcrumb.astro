@@ -1,0 +1,30 @@
+---
+interface Props {
+  heading: string;
+  crumbs?: { label: string; href?: string }[];
+}
+
+const { heading, crumbs = [] } = Astro.props;
+---
+
+<section class="breadcrumb-wrapper fix kfs-pattern-bg">
+	<div class="kfs-pattern"></div>
+	<div class="container">
+		<div class="row">
+			<div class="page-heading">
+				<div class="breadcrumb-sub-title">
+					<h2 class="wow fadeInUp" data-wow-delay=".3s">{heading}</h2>
+				</div>
+				<ul class="breadcrumb-list wow fadeInUp" data-wow-delay=".5s">
+					<li><a href="/">Início</a></li>
+					{crumbs.map((c) => (
+						<li>
+							<i class="fa-sharp fa-solid fa-slash-forward"></i>
+							{c.href ? <a href={c.href}>{c.label}</a> : c.label}
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

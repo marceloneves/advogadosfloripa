@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import ConsultationCta from '../components/ConsultationCta.astro';
+import { faqs } from '../data/content';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+	title="Perguntas Frequentes — KFS Sociedade de Advogados"
+	description="Respostas às dúvidas mais comuns sobre honorários, prazos, documentos e atendimento no escritório KFS."
+	heading="Perguntas Frequentes"
+	crumbs={[{ label: 'FAQ' }]}
+>
+	<section class="faq-section section-padding fix">
+		<div class="container">
+			<div class="row g-4 align-items-start">
+				<div class="col-lg-5">
+					<div class="section-title">
+						<span class="sub-title wow fadeInUp">Tire suas dúvidas</span>
+						<h2 class="wow fadeInUp" data-wow-delay=".3s">O que você precisa saber antes de nos procurar</h2>
+					</div>
+					<p class="wow fadeInUp" data-wow-delay=".5s">
+						Reunimos aqui as perguntas que mais recebemos. Se a sua não estiver na lista, fale
+						conosco — respondemos sem compromisso.
+					</p>
+					<div class="mt-4 wow fadeInUp" data-wow-delay=".7s">
+						<img src="/theme/img/demo/01-7.jpg" alt="Atendimento jurídico" class="img-fluid" />
+					</div>
+				</div>
+				<div class="col-lg-7">
+					<Accordion />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ConsultationCta
+		sub="Ainda com dúvida?"
+		title="Converse com um advogado"
+		text="Cada caso tem particularidades. Descreva a sua situação e retornamos com uma orientação inicial."
+	/>
+
+	<script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />
+</Layout>

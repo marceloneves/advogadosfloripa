@@ -1,62 +1,123 @@
 ---
-import { site, nav } from '../data/site';
+import { site, nav, socials, waLink } from '../data/site';
 
-const path = Astro.url.pathname;
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href);
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 ---
 
-<header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
-	<div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-		<a href="/" class="flex items-center gap-2">
-			<span class="text-2xl">⚖️</span>
-			<span class="text-lg font-bold tracking-tight text-slate-900">{site.name}</span>
-		</a>
-
-		<nav class="hidden items-center gap-8 md:flex">
-			{
-				nav.map((item) => (
-					<a
-						href={item.href}
-						class:list={[
-							'text-sm font-medium transition hover:text-amber-600',
-							isActive(item.href) ? 'text-amber-600' : 'text-slate-600',
-						]}
-					>
-						{item.label}
-					</a>
-				))
-			}
-			<a
-				href="/contato"
-				class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
-			>
-				Fale conosco
-			</a>
-		</nav>
-
-		<button
-			id="menu-btn"
-			class="text-slate-700 md:hidden"
-			aria-label="Abrir menu"
-		>
-			<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-		</button>
+<div class="header-section-1">
+	<!-- Top bar -->
+	<div class="header-top-section">
+		<div class="container">
+			<div class="header-top-wrapper">
+				<ul class="top-left">
+					<li>
+						<i class="fa-light fa-location-dot"></i>
+						<a
+							href={`https://www.google.com/maps/search/${encodeURIComponent(site.address)}`}
+							target="_blank"
+							rel="noopener"
+							class="link">{site.addressShort}</a
+						>
+					</li>
+					<li>
+						<i class="fa-light fa-envelope"></i>
+						<a href={`mailto:${site.email}`} class="link">{site.email}</a>
+					</li>
+				</ul>
+				<div class="top-right">
+					<div class="social-icon">
+						{socials.map((s) => (
+							<a href={s.url} target="_blank" rel="noopener" aria-label={s.label}>
+								<i class={s.icon}></i>
+							</a>
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<nav id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-6 py-4 md:hidden">
-		{
-			nav.map((item) => (
-				<a href={item.href} class="block py-2 text-sm font-medium text-slate-700">
-					{item.label}
-				</a>
-			))
-		}
-	</nav>
-</header>
+	<!-- Main header -->
+	<div id="header-sticky" class="header-1" data-sticky="true">
+		<div class="main-logo">
+			<a href="/" class="kfs-logo" aria-label={`${site.name} — página inicial`}>
+				<img src="/theme/img/brand/kfs-logo-branco.svg" alt={site.name} width="910" height="267" />
+			</a>
+		</div>
 
-<script>
-	const btn = document.getElementById('menu-btn');
-	const menu = document.getElementById('mobile-menu');
-	btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
-</script>
+		<div class="countact-call">
+			<div class="icon">
+				<i class="fa-solid fa-phone"></i>
+			</div>
+			<div class="content">
+				<span>Fale conosco</span>
+				<h6>
+					<a href={`tel:+${site.whatsapp}`}>{site.phone}</a>
+				</h6>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="mega-menu-wrapper">
+				<div class="header-main">
+					<div class="logo d-none">
+						<a href="/" class="kfs-logo" aria-label={`${site.name} — página inicial`}>
+							<img src="/theme/img/brand/kfs-logo.svg" alt={site.name} width="910" height="267" />
+						</a>
+					</div>
+
+					<div class="mean__menu-wrapper">
+						<div class="main-menu">
+							<div id="mobile-menu">
+								<ul>
+									{nav.map((item) => (
+										<li
+											class:list={[
+												item.children && 'has-dropdown',
+												isActive(item.href) && 'current-menu-item active',
+											]}
+										>
+											<a href={item.href}>{item.label}</a>
+											{item.children && (
+												<ul class="sub-menu">
+													{item.children.map((c) => (
+														<li>
+															<a href={c.href}>{c.label}</a>
+														</li>
+													))}
+												</ul>
+											)}
+										</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="header-right d-flex justify-content-end align-items-center">
+						<a href="#0" class="search-trigger search-icon" aria-label="Buscar">
+							<i class="fa-regular fa-magnifying-glass"></i>
+						</a>
+
+						<a
+							href={waLink('Olá! Gostaria de agendar uma consulta.')}
+							target="_blank"
+							rel="noopener"
+							class="theme-btn style-2"
+						>
+							Agendar consulta
+							<i class="fa-sharp fa-regular fa-arrow-right"></i>
+						</a>
+
+						<div class="header__hamburger d-xl-none my-auto">
+							<div class="sidebar__toggle">
+								<i class="fas fa-bars"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

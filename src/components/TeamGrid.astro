@@ -1,0 +1,66 @@
+---
+import { team } from '../data/team';
+import LawyerPhoto from './LawyerPhoto.astro';
+
+interface Props {
+  /** style1 = static grid card, style2 = swiper slider */
+  variant?: 'style1' | 'style2';
+  columns?: string;
+}
+
+const { variant = 'style1', columns = 'col-xl-4 col-lg-6 col-md-6' } = Astro.props;
+---
+
+{variant === 'style1' && (
+	<div class="row">
+		{team.map((p) => (
+			<div class={`${columns} wow fadeInUp`} data-wow-delay=".3s">
+				{/* O card inteiro leva ao perfil: quem carrega o link é o nome, com
+				    .stretched-link cobrindo o card. Mantém um único link no card,
+				    com texto acessível, em vez de uma seta sem rótulo. */}
+				<div class="team-card-items kfs-card-link">
+					<div class="team-image">
+						<LawyerPhoto lawyer={p} variant="card" />
+						<div class="team-social" aria-hidden="true">
+							<span><i class="fa-solid fa-arrow-right"></i></span>
+						</div>
+					</div>
+					<div class="team-content">
+						<h4>
+							<a href={`/equipe/${p.slug}`} class="stretched-link">{p.name}</a>
+						</h4>
+						<p>{p.role}</p>
+					</div>
+				</div>
+			</div>
+		))}
+	</div>
+)}
+
+{variant === 'style2' && (
+	<div class="swiper team-slider">
+		<div class="swiper-wrapper">
+			{team.map((p) => (
+				<div class="swiper-slide">
+					<div class="team-main-item kfs-card-link">
+						<div class="team-card-item2">
+							<div class="team-image">
+								<LawyerPhoto lawyer={p} variant="card" />
+							</div>
+						</div>
+						<div class="team-content-hover">
+							<h4>
+								<a href={`/equipe/${p.slug}`} class="stretched-link">{p.name}</a>
+							</h4>
+							<span>{p.role}</span>
+							<p>{p.oab ?? 'Advogado'}</p>
+							<div class="team-social" aria-hidden="true">
+								<span><i class="fa-solid fa-arrow-right"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+)}

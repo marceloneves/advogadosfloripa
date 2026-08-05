@@ -1,0 +1,22 @@
+---
+import { history } from '../data/content';
+---
+
+<div class="work-process-wrapper">
+	<div class="swiper process-slider">
+		<div class="swiper-wrapper">
+			{history.map((h) => (
+				<div class="swiper-slide">
+					<div class="work-process-items">
+						<div class="year">{h.year}</div>
+						<span></span>
+						<div class="content">
+							<h4>{h.title}</h4>
+							<p>{h.text}</p>
+						</div>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+</div>

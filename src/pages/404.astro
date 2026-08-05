@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Página não encontrada — KFS Sociedade de Advogados"
+	description="A página que você procura não existe ou foi movida."
+	heading="Erro 404"
+	crumbs={[{ label: '404' }]}
+>
+	<section class="error-section section-padding fix">
+		<div class="container">
+			<div class="error-items text-center">
+				<h2>Página não encontrada</h2>
+				<p class="mt-3">
+					O endereço acessado não existe ou foi movido. Use o menu acima ou volte para a página
+					inicial.
+				</p>
+				<div class="mt-5">
+					<a href="/" class="theme-btn">
+						Voltar ao início
+						<i class="fa-solid fa-arrow-right"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

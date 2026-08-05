@@ -1,0 +1,599 @@
+/* --------------------------------------------------------------------------
+   KFS Sociedade de Advogados — overrides on top of the Kanun theme stylesheet.
+   Keep this file last in the <head> so it wins over main.css / wp-fix.css.
+   Source of truth: Manual da Marca KFS (Junior Ghidorsi, jul/2026).
+   -------------------------------------------------------------------------- */
+
+/* --- Paleta da marca -------------------------------------------------------
+   Azul Oceano        #2e3754   Pantone 2380 C
+   Entardecer Dourado #c7b299   Pantone 4249 C
+   Areia              #f7f6f6   Pantone P 1-1 C
+   O tema Kanun expõe essas três funções como custom properties, então
+   redefini-las reskina o site inteiro sem tocar em main.css.              */
+:root {
+  --theme: #c7b299;
+  --header: #2e3754;
+  --bg: #f7f6f6;
+  --text: #5a6172;
+  --border: #2e375440;
+  --border-2: #c9ccd4;
+
+  /* tokens próprios, usados só neste arquivo */
+  --kfs-navy: #2e3754;
+  --kfs-navy-soft: #3c4664;
+  --kfs-gold: #c7b299;
+  --kfs-sand: #f7f6f6;
+}
+
+/* --- Tipografia ------------------------------------------------------------
+   O manual define Manrope para todos os pontos de contato; a serifa fica
+   restrita à assinatura. O tema traz Prata/DM Sans, ambas substituídas.  */
+body,
+h1, h2, h3, h4, h5, h6,
+.theme-btn,
+input, textarea, select, button,
+.sub-title,
+.main-menu ul li a,
+.mean-container .mean-nav ul li a {
+  font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+h1 { font-weight: 800; }
+
+/* --- Contraste dos botões -------------------------------------------------
+   O tema põe texto branco sobre o dourado. Com o dourado da marca (#c7b299)
+   isso dá 2,05:1 — reprova em WCAG AA, que exige 4,5:1. Texto em Azul
+   Oceano sobre o mesmo dourado dá 5,73:1 e é como o próprio manual aplica
+   a cor. No hover o fundo vira azul e o texto, branco (11,7:1).          */
+.theme-btn,
+.theme-btn:visited,
+.pricing-button .theme-btn,
+.search-widget .theme-btn {
+  color: var(--kfs-navy);
+  font-weight: 600;
+}
+
+.theme-btn:hover,
+.theme-btn:focus-visible {
+  color: #fff;
+}
+
+/* Variante do cabeçalho: já nasce azul com texto branco. */
+.theme-btn.style-2 {
+  background-color: var(--kfs-navy);
+  color: #fff;
+}
+
+.theme-btn.style-2:hover {
+  color: var(--kfs-navy);
+}
+
+.theme-btn.style-2::before,
+.theme-btn.style-2::after {
+  background-color: var(--kfs-gold);
+}
+
+/* Foco visível em toda a navegação por teclado. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--kfs-gold);
+  outline-offset: 2px;
+}
+
+/* .sub-title usa uma lavagem do dourado antigo queimada no CSS do tema. */
+.section-title .sub-title,
+.sub-title {
+  background: rgba(199, 178, 153, 0.18);
+  color: var(--kfs-navy);
+}
+
+.section-title .sub-title.text-white {
+  background: rgba(199, 178, 153, 0.22);
+  color: var(--kfs-gold);
+}
+
+/* --- Overlays escuros ------------------------------------------------------
+   O tema queima o preto #181818 direto nos overlays (não usa a custom
+   property), então cada um é redeclarado em Azul Oceano.                 */
+.hero-1::before,
+.portfolio-details-wrapper .main-side-ber .contact-bg::before,
+.service-details-wrapper .main-sideber .contact-bg::before {
+  background-color: rgba(46, 55, 84, 0.9);
+}
+
+/* O breadcrumb já é Azul Oceano sólido + pattern; o overlay do tema (que
+   ainda aponta para uma textura inexistente) só escureceria o grafismo. */
+.breadcrumb-wrapper::before {
+  display: none;
+}
+
+.footer-section::before {
+  background: rgba(46, 55, 84, 0.96);
+}
+
+.testimonial-section3::before {
+  background: rgba(46, 55, 84, 0.96);
+}
+
+.hero-2::before {
+  background: linear-gradient(89deg, #2e3754 0.06%, rgba(46, 55, 84, 0) 100.71%);
+}
+
+/* Fundo do hero em WebP, servido por largura de viewport. Como é
+   background-image, a escolha vai por media query em vez de srcset. */
+.kfs-hero {
+  background-image: url('/theme/img/hero-escritorio-1920.webp');
+  background-position: center;
+}
+
+@media (max-width: 767px) {
+  .kfs-hero {
+    background-image: url('/theme/img/hero-escritorio-1280.webp');
+  }
+}
+
+@media (min-width: 1921px) {
+  .kfs-hero {
+    background-image: url('/theme/img/hero-escritorio-2560.webp');
+  }
+}
+
+/* A foto do escritório é clara; o gradiente do tema sozinho não segura o
+   contraste do texto branco, então recebe um reforço à esquerda. */
+.kfs-hero::before {
+  background: linear-gradient(
+    89deg,
+    rgba(46, 55, 84, 0.94) 0%,
+    rgba(46, 55, 84, 0.82) 38%,
+    rgba(46, 55, 84, 0.35) 72%,
+    rgba(46, 55, 84, 0.15) 100%
+  );
+}
+
+.cta-request-section::before {
+  background: linear-gradient(89deg, #2e3754 23.34%, rgba(46, 55, 84, 0) 100.28%);
+}
+
+.video-bg-section::before {
+  background: linear-gradient(89deg, #2e3754 0.49%, rgba(46, 55, 84, 0) 100.32%);
+}
+
+.counter-main-box .counter-bg::before,
+.footer-section-2 .right-shape::before,
+.hero-3 .left-image::before {
+  background: linear-gradient(0deg, rgba(46, 55, 84, 0.85) 0%, rgba(46, 55, 84, 0.85) 100%);
+}
+
+.hero-3 .hero-wrapper::before {
+  background: linear-gradient(89deg, #2e3754 0.72%, rgba(46, 55, 84, 0) 99.21%);
+}
+
+.project-card-items .project-image::before,
+.team-card-items .team-image::before {
+  background: linear-gradient(0deg, rgba(46, 55, 84, 0.9) 17.39%, rgba(46, 55, 84, 0) 100%);
+}
+
+.service-wrapper .service-main-box .service-items {
+  border-color: rgba(46, 55, 84, 0.3);
+}
+
+.page-nav-wrap ul li .page-numbers {
+  border-color: rgba(46, 55, 84, 0.2);
+}
+
+/* --- Grafismo da ponte -----------------------------------------------------
+   Pattern derivado da Ponte Hercílio Luz, aplicado como textura sobre as
+   seções em Azul Oceano. .kfs-pattern vai num filho absoluto para que a
+   opacidade não atinja o conteúdo.                                       */
+.kfs-pattern-bg {
+  position: relative;
+  background-color: var(--kfs-navy);
+}
+
+.kfs-pattern-bg > .kfs-pattern,
+.kfs-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/theme/img/brand/kfs-pattern-tile-gold.svg') repeat;
+  background-size: 218px 109px;
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.kfs-pattern-bg > .container,
+.kfs-pattern-bg > * :not(.kfs-pattern) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Divisor: fragmento centrado entre blocos de conteúdo. */
+.kfs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.kfs-divider::before,
+.kfs-divider::after {
+  content: '';
+  flex: 1 1 auto;
+  max-width: 220px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--kfs-gold));
+}
+
+.kfs-divider::after {
+  background: linear-gradient(90deg, var(--kfs-gold), transparent);
+}
+
+.kfs-divider img {
+  width: 74px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+/* --- Logotipo --------------------------------------------------------------
+   O manual fixa 75px como altura mínima da marca em tela; o cabeçalho usa
+   58px porque aplica a versão reduzida (monograma + descritor em 2 linhas). */
+.kfs-logo {
+  display: inline-block;
+  line-height: 0;
+}
+
+.kfs-logo img {
+  height: 58px;
+  width: auto;
+  display: block;
+}
+
+.footer-widget-wrapper .kfs-logo img {
+  height: 62px;
+}
+
+.offcanvas__logo .kfs-logo img {
+  height: 46px;
+}
+
+@media (max-width: 575px) {
+  .kfs-logo img {
+    height: 44px;
+  }
+}
+
+/* O tema esconde .main-logo quando o header vira sticky e mostra .logo. */
+.header-1.sticky .main-logo .kfs-logo img {
+  height: 50px;
+}
+
+/* The theme title-cases every heading, button and menu label. That reads as an
+   error in Portuguese ("Defesa Séria E Comprometida Com Seus Direitos"), so the
+   text is rendered exactly as authored. .sub-title keeps its uppercase style,
+   which is deliberate in the design. */
+h1, h2, h3, h4, h5, h6,
+.theme-btn,
+.main-menu ul li a,
+.mean-container .mean-nav ul li a,
+.contact-info h6,
+.contact-info h6 a,
+.list-items li a,
+.link-btns,
+.post-meta li,
+.accordion-button,
+.breadcrumb-list li,
+.breadcrumb-list li a,
+.offcanvas__contact-text,
+.offcanvas__contact-text a,
+.header-top-wrapper .top-left li a,
+.countact-call .content h6 a,
+.about-list li,
+.profile-tags span,
+.pricing-list li,
+.service-content h4 a,
+.team-content h4 a,
+.news-content h4 a {
+  text-transform: none;
+}
+
+/* O tema declara o capitalize com 5 níveis de especificidade no acordeão. */
+.faq-wrapper .faq-content .accordion-item .accordion-header .accordion-button,
+.faq-item .faq-content .accordion-item .accordion-header .accordion-button {
+  text-transform: none;
+}
+
+/* Ícones das áreas de atuação: o tema usa PNGs no dourado antigo (#B68C5A).
+   Substituídos por ícones vetoriais na cor da marca. */
+.service-box-items .service-button .icon {
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(199, 178, 153, 0.16);
+  color: var(--kfs-navy);
+  font-size: 26px;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-box-items:hover .service-button .icon {
+  background: var(--kfs-gold);
+  color: #fff;
+}
+
+/* Mesmo tratamento para os cards de valores e para o bloco de contato,
+   que reaproveitam .service-box-items sem passar por .service-button. */
+.service-box-items > .service-content > .icon {
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(199, 178, 153, 0.18);
+  color: var(--kfs-navy);
+  font-size: 26px;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-box-items:hover > .service-content > .icon {
+  background: var(--kfs-gold);
+  color: #fff;
+}
+
+/* The theme expects an <img> logo; we render a wordmark instead. */
+.site-title {
+  font-family: 'Prata', serif;
+  font-size: 26px;
+  line-height: 1.1;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.header-1 .main-logo .site-title,
+.offcanvas__logo .site-title {
+  color: var(--white);
+}
+
+.header-1.sticky .main-logo .site-title {
+  color: var(--header);
+}
+
+.footer-widget-wrapper .widget-head .site-title {
+  font-size: 24px;
+}
+
+@media (max-width: 575px) {
+  .site-title {
+    font-size: 20px;
+  }
+}
+
+/* Native <select> inside the contact form, styled like the theme's inputs. */
+.contact-form-items .form-clt select {
+  width: 100%;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  padding: 16px 20px;
+  color: var(--text);
+  outline: none;
+  border-radius: 0;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23565656'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 14px;
+}
+
+.contact-form-items .form-clt select:focus {
+  border-color: var(--theme);
+  color: var(--text);
+}
+
+/* As imagens demo da seção de processo já vinham recortadas em círculo com
+   alfa; os retratos dos advogados são quadrados, então o corte vai por CSS. */
+.feature-card-item2 .feature-image img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* --- Card do advogado clicável --------------------------------------------
+   O card inteiro leva ao perfil via .stretched-link no nome. O ::after do
+   link precisa de um ancestral posicionado para se esticar, e o tema não
+   posiciona .team-card-items / .team-main-item.                          */
+.kfs-card-link {
+  position: relative;
+  cursor: pointer;
+}
+
+.kfs-card-link .team-image {
+  overflow: hidden;
+}
+
+.kfs-card-link .team-image img {
+  transition: transform 0.45s ease;
+}
+
+.kfs-card-link:hover .team-image img {
+  transform: scale(1.04);
+}
+
+.kfs-card-link:hover .team-content h4 a,
+.kfs-card-link:focus-within .team-content h4 a {
+  color: var(--kfs-gold);
+}
+
+/* O foco do teclado precisa aparecer no card, não no texto do nome. */
+.kfs-card-link .stretched-link:focus-visible {
+  outline: none;
+}
+
+.kfs-card-link:focus-within {
+  outline: 3px solid var(--kfs-gold);
+  outline-offset: 3px;
+}
+
+/* A seta virou decorativa: o link é o card. */
+.team-card-items .team-social span,
+.team-content-hover .team-social span {
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  border: 1px solid var(--white);
+  border-radius: 100px;
+  transition: all 0.3s ease-in-out;
+}
+
+.kfs-card-link:hover .team-social span {
+  background-color: var(--kfs-gold);
+  border-color: var(--kfs-gold);
+  color: var(--kfs-navy);
+}
+
+/* Blog article body spacing (content collection output). */
+.post-body > * + * {
+  margin-top: 1.25rem;
+}
+
+.post-body h2 {
+  margin-top: 2.5rem;
+  font-size: 30px;
+}
+
+.post-body h3 {
+  margin-top: 2rem;
+  font-size: 24px;
+}
+
+.post-body ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.post-body ul li {
+  margin-bottom: 0.5rem;
+}
+
+.post-body blockquote {
+  border-left: 4px solid var(--theme);
+  padding-left: 20px;
+  font-style: italic;
+  color: var(--header);
+}
+
+/* The theme only styles .counter-items inside .about-wrapper; this layout uses
+   .about-wrapper-2, so the same rules are extended to it. */
+.about-wrapper-2 + .col-lg-6 .about-content .counter-items,
+.about-content .counter-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  border-top: 1px solid var(--theme);
+  padding-top: 30px;
+  margin-top: 40px;
+}
+
+.about-content .counter-items .content h5 {
+  margin-bottom: 8px;
+  font-size: 34px;
+}
+
+.about-content .counter-items .content p {
+  margin: 0;
+}
+
+/* Contact details list. The theme's .contact-info-wrapper is a horizontal row
+   built for dark sections, so this section uses its own vertical layout. */
+.contact-details {
+  margin-top: 40px;
+}
+
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.contact-detail-item:not(:last-child) {
+  margin-bottom: 28px;
+}
+
+.contact-detail-item .icon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--theme);
+  color: var(--white);
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-detail-item .icon:hover {
+  background-color: var(--header);
+}
+
+.contact-detail-item .content h5 {
+  margin-bottom: 4px;
+}
+
+.contact-detail-item .content a,
+.contact-detail-item .content span {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.contact-detail-item .content a:hover {
+  color: var(--theme);
+}
+
+/* .about-box is absolutely positioned at left:-150px above 1400px, which the
+   theme compensates for with column padding. Reinstate that padding. */
+@media (min-width: 1400px) {
+  .about-section .about-wrapper-2 {
+    padding-left: 150px;
+  }
+}
+
+/* Lawyer profile helpers. */
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-tags span {
+  display: inline-block;
+  padding: 10px 16px;
+  line-height: 1;
+  background: rgba(182, 140, 90, 0.1);
+  color: var(--header);
+  font-weight: 500;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

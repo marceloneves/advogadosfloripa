@@ -1,0 +1,24 @@
+---
+import { stats } from '../data/content';
+
+interface Props {
+  columns?: string;
+  limit?: number;
+}
+
+const { columns = 'col-lg-3 col-md-6', limit } = Astro.props;
+const items = limit ? stats.slice(0, limit) : stats;
+---
+
+<div class="row">
+	{items.map((s) => (
+		<div class={`${columns} wow fadeInUp`} data-wow-delay=".3s">
+			<div class="counter-content">
+				<h2>
+					<span class="count">{s.value}</span>{s.sign}
+				</h2>
+				<p>{s.label}</p>
+			</div>
+		</div>
+	))}
+</div>

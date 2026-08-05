@@ -1,0 +1,20 @@
+---
+/**
+ * Fragmento da marca (grafismo derivado da Ponte Hercílio Luz) usado como
+ * separador entre blocos de conteúdo. Manual da Marca KFS, p. 14.
+ */
+interface Props {
+  /** Versão dourada, para uso sobre fundo escuro. */
+  gold?: boolean;
+  class?: string;
+}
+
+const { gold = false, class: className = '' } = Astro.props;
+const src = gold
+  ? '/theme/img/brand/kfs-fragmento-dourado.svg'
+  : '/theme/img/brand/kfs-fragmento.svg';
+---
+
+<div class:list={['kfs-divider', className]} role="presentation">
+	<img src={src} alt="" width="484" height="341" loading="lazy" />
+</div>

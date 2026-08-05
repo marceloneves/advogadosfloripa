@@ -1,0 +1,72 @@
+---
+import { waLink } from '../data/site';
+
+const highlights = [
+  'Atendimento direto com o advogado responsável pelo caso',
+  'Escritório no Centro de Florianópolis, com atendimento remoto',
+  'Retorno claro sobre prazos, custos e chances reais de êxito',
+];
+---
+
+<section class="about-section section-padding fix">
+	<div class="container">
+		<div class="row g-4 align-items-center">
+			<div class="col-lg-6">
+				<div class="about-wrapper-2">
+					<div class="about-image">
+						<img
+							class="wow img-custom-anim-left"
+							data-wow-duration="1.3s"
+							data-wow-delay="0.3s"
+							src="/theme/img/equipe/sobre-fernando-900.webp"
+							srcset="/theme/img/equipe/sobre-fernando-600.webp 600w, /theme/img/equipe/sobre-fernando-900.webp 900w, /theme/img/equipe/sobre-fernando-1200.webp 1200w"
+							sizes="(max-width: 991px) 100vw, 600px"
+							width="900"
+							height="1125"
+							alt="Fernando Luis Fabre, advogado do KFS Sociedade de Advogados, no escritório"
+							decoding="async"
+						/>
+						<div class="about-box">
+							<span>Ligue agora</span>
+							<h4>
+								<a href="/contato">Consulta inicial sem compromisso</a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6">
+				<div class="about-content">
+					<div class="section-title">
+						<span class="sub-title wow fadeInUp">Quem somos</span>
+						<h2 class="wow fadeInUp" data-wow-delay=".3s">
+							Advocacia técnica, próxima e sem juridiquês
+						</h2>
+					</div>
+					<p class="wow fadeInUp" data-wow-delay=".5s">
+						Reunimos advogados com trajetória no Ministério Público, nas Forças Armadas e na
+						Administração Pública de Santa Catarina. Essa vivência do outro lado do balcão é o
+						que nos permite antecipar o caminho de cada processo.
+					</p>
+
+					<ul class="about-list wow fadeInUp" data-wow-delay=".7s">
+						{highlights.map((h) => (
+							<li>
+								<i class="fa-solid fa-check"></i>
+								{h}
+							</li>
+						))}
+					</ul>
+
+					<div class="about-button wow fadeInUp" data-wow-delay=".9s">
+						<a href={waLink('Olá! Gostaria de conversar sobre o meu caso.')} target="_blank" rel="noopener" class="theme-btn">
+							Falar com um advogado
+							<i class="fa-solid fa-arrow-right-long"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

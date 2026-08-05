@@ -1,33 +1,104 @@
 ---
-import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Preloader from '../components/Preloader.astro';
+import SearchPopup from '../components/SearchPopup.astro';
+import OffcanvasSidebar from '../components/OffcanvasSidebar.astro';
+import BackToTop from '../components/BackToTop.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { site } from '../data/site';
 
 interface Props {
   title?: string;
   description?: string;
+  /** Page title shown in the breadcrumb hero. Omit on the homepage. */
+  heading?: string;
+  crumbs?: { label: string; href?: string }[];
 }
 
 const {
-  title = 'Advogados Floripa — Advocacia em Florianópolis',
-  description = 'Escritório de advocacia em Florianópolis. Atendimento em direito civil, trabalhista, família, empresarial e mais.',
+  title = `${site.name} — ${site.tagline}`,
+  description = 'Escritório de advocacia em Florianópolis. Atuação em Direito Criminal, Militar, da Saúde, Previdenciário, Administrativo e Civil.',
+  heading,
+  crumbs = [],
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://advogadosfloripa.com.br');
 ---
 
+<!doctype html>
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:image" content={new URL('/og.png', Astro.site ?? 'https://advogadosfloripa.com.br')} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="theme-color" content="#2e3754" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- Manrope é a tipografia institucional da marca (Manual da Marca KFS).
+		     O tema Kanun declarava as fontes via PHP, então o link vai explícito. -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+		/>
+
+		<link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/theme/css/all.min.css" />
+		<link rel="stylesheet" href="/theme/css/flacticon.css" />
+		<link rel="stylesheet" href="/theme/css/animate.css" />
+		<link rel="stylesheet" href="/theme/css/magnific-popup.css" />
+		<link rel="stylesheet" href="/theme/css/meanmenu.css" />
+		<link rel="stylesheet" href="/theme/css/nice-select.css" />
+		<link rel="stylesheet" href="/theme/css/swiper-bundle.min.css" />
+		<link rel="stylesheet" href="/theme/css/main.css" />
+		<link rel="stylesheet" href="/theme/css/wp-fix.css" />
+		<link rel="stylesheet" href="/theme/css/site.css" />
+
 		<title>{title}</title>
 	</head>
-	<body class="flex min-h-screen flex-col bg-white text-slate-900 antialiased">
-		<Header />
-		<main class="flex-1">
+
+	<body>
+		<Preloader />
+		<SearchPopup />
+		<OffcanvasSidebar />
+		<div class="offcanvas__overlay"></div>
+
+		<header id="masthead" class="site-header">
+			<Header />
+		</header>
+
+		{heading && <Breadcrumb heading={heading} crumbs={crumbs} />}
+
+		<main>
 			<slot />
 		</main>
+
 		<Footer />
+		<BackToTop />
+
+		<script is:inline src="/theme/js/jquery-3.7.1.min.js"></script>
+		<script is:inline src="/theme/js/bootstrap.bundle.min.js"></script>
+		<script is:inline src="/theme/js/jquery.nice-select.min.js"></script>
+		<script is:inline src="/theme/js/viewport.jquery.js"></script>
+		<script is:inline src="/theme/js/jquery.waypoints.js"></script>
+		<script is:inline src="/theme/js/jquery.counterup.min.js"></script>
+		<script is:inline src="/theme/js/swiper-bundle.min.js"></script>
+		<script is:inline src="/theme/js/jquery.meanmenu.min.js"></script>
+		<script is:inline src="/theme/js/jquery.magnific-popup.min.js"></script>
+		<script is:inline src="/theme/js/wow.min.js"></script>
+		<script is:inline src="/theme/js/main.js"></script>
 	</body>
 </html>
