@@ -188,12 +188,25 @@ select:focus-visible {
   flex: 0 0 auto;
 }
 
-/* O accordion do tema encosta o texto na borda do container quando entra numa
-   coluna cheia (FAQ da home). Um respiro interno resolve sem mexer no tema. */
-.faq-wrapper .accordion-button,
-.faq-wrapper .accordion-body {
-  padding-left: 24px;
-  padding-right: 24px;
+/* O tema zera o padding-left do accordion (regra em .faq-wrapper .faq-content
+   .accordion-item ...), deixando pergunta e resposta coladas na borda do card.
+   Os seletores abaixo precisam da mesma especificidade para vencer. */
+.faq-wrapper .faq-content .accordion-item .accordion-header .accordion-button,
+.faq-item .faq-content .accordion-item .accordion-header .accordion-button {
+  padding-left: 28px;
+  padding-right: 56px;
+}
+
+.faq-wrapper .faq-content .accordion-item .accordion-collapse .accordion-body,
+.faq-item .faq-content .accordion-item .accordion-collapse .accordion-body {
+  padding-left: 28px;
+  padding-right: 56px;
+}
+
+/* O botao de abrir/fechar tambem acompanha o novo respiro. */
+.faq-wrapper .faq-content .accordion-item .accordion-header .accordion-button::after,
+.faq-item .faq-content .accordion-item .accordion-header .accordion-button::after {
+  margin-right: 4px;
 }
 
 /* Credito do rodape: menor e discreto, ao lado do copyright. */
