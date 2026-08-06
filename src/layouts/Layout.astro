@@ -5,6 +5,7 @@ import Preloader from '../components/Preloader.astro';
 import SearchPopup from '../components/SearchPopup.astro';
 import OffcanvasSidebar from '../components/OffcanvasSidebar.astro';
 import BackToTop from '../components/BackToTop.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import Schema from '../components/Schema.astro';
 import { site } from '../data/site';
@@ -144,6 +145,7 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		</main>
 
 		<Footer animate={animate} />
+		<WhatsAppFloat />
 		<BackToTop />
 
 		<script is:inline src="/theme/js/jquery-3.7.1.min.js"></script>

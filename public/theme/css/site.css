@@ -187,6 +187,71 @@ select:focus-visible {
   margin-bottom: 2px;
 }
 
+/* --- Botao flutuante do WhatsApp -------------------------------------------
+   Fica acima do "voltar ao topo", que o tema fixa em right:30px/bottom:30px.
+   No desktop o rotulo aparece no hover; no mobile some, para nao cobrir
+   conteudo. */
+.kfs-whatsapp-float {
+  position: fixed;
+  right: 30px;
+  bottom: 92px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: 28px;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 26px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  transition: gap 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.kfs-whatsapp-float:hover,
+.kfs-whatsapp-float:focus-visible {
+  color: #fff;
+  background-color: #1da851;
+  gap: 10px;
+}
+
+.kfs-whatsapp-float__label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  transition: max-width 0.3s ease;
+}
+
+.kfs-whatsapp-float:hover .kfs-whatsapp-float__label,
+.kfs-whatsapp-float:focus-visible .kfs-whatsapp-float__label {
+  max-width: 140px;
+}
+
+@media (max-width: 767px) {
+  .kfs-whatsapp-float {
+    right: 20px;
+    bottom: 80px;
+    height: 52px;
+    padding: 0 13px;
+    font-size: 24px;
+  }
+
+  /* Sem hover no toque: o rotulo nao abre e so o icone aparece. */
+  .kfs-whatsapp-float__label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kfs-whatsapp-float,
+  .kfs-whatsapp-float__label {
+    transition: none;
+  }
+}
+
 /* Mensagem de erro do formulário: substitui o alert() do navegador. */
 .kfs-form-error {
   margin: 0;

@@ -1,0 +1,22 @@
+---
+import { waLink } from '../data/site';
+
+interface Props {
+  /** Mensagem que já vai preenchida na conversa. */
+  message?: string;
+}
+
+const { message = 'Olá! Gostaria de falar com o escritório.' } = Astro.props;
+---
+
+{/* Fica acima do "voltar ao topo", que o tema fixa em right:30px / bottom:30px. */}
+<a
+	href={waLink(message)}
+	class="kfs-whatsapp-float"
+	target="_blank"
+	rel="noopener"
+	aria-label="Falar com o escritório pelo WhatsApp"
+>
+	<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+	<span class="kfs-whatsapp-float__label">Fale conosco</span>
+</a>
