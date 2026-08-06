@@ -30,7 +30,7 @@ export const team: Lawyer[] = [
     slug: 'asterley-kincezski',
     name: 'Asterley Kincezski da Silva',
     shortName: 'Asterley Kincezski',
-    role: 'Direito da Saúde e Público',
+    role: 'Direito Civil, Público e Trabalhista',
     oab: 'OAB/SC 18.119',
     // Foto de origem 1600x900, bem menor que os retratos de estúdio dos
     // demais; daí o perfil ter uma única largura.
@@ -153,7 +153,7 @@ export const team: Lawyer[] = [
           'Estágio de pós-graduação (MP-Residente) por 3 anos, com confecção de peças privativas de Promotor de Justiça e condução de procedimentos administrativos pré-judiciais.',
       },
       {
-        title: 'Advogado — atuação de mais de 5 anos',
+        title: 'Advogado — atuação de mais de 8 anos',
         detail: 'Exercício da advocacia com ênfase em Direito Criminal, Militar e Administrativo.',
       },
     ],
@@ -167,7 +167,7 @@ export const team: Lawyer[] = [
     slug: 'matheus-stein',
     name: 'Matheus Stein',
     shortName: 'Matheus Stein',
-    role: 'Direito Previdenciário e Civil',
+    role: 'Direito Previdenciário, Civil e da Saúde',
     oab: 'OAB/SC 78.639',
     photo: '/theme/img/equipe/matheus-stein-900.webp',
     photoWidths: [600, 900, 1200],
@@ -176,7 +176,7 @@ export const team: Lawyer[] = [
     birth: '28 de novembro de 1995',
     city: 'Santo Amaro da Imperatriz/SC',
     status: 'Casado',
-    areas: ['Direito Previdenciário', 'Direito Processual Civil', 'Direito Civil'],
+    areas: ['Direito Previdenciário', 'Direito da Saúde', 'Direito Processual Civil', 'Direito Civil'],
     education: [
       {
         title: 'Bacharelado em Direito',

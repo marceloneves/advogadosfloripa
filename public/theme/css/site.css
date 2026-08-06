@@ -218,6 +218,78 @@ select:focus-visible {
   font-size: 17px;
 }
 
+/* --- Paginas legais --------------------------------------------------------
+   Coluna de leitura estreita, hierarquia discreta entre secoes. */
+.kfs-legal {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.kfs-legal h2 {
+  font-size: 21px;
+  margin: 36px 0 12px;
+}
+
+.kfs-legal p {
+  margin-bottom: 16px;
+}
+
+.kfs-legal ul {
+  margin: 0 0 16px 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.kfs-legal li {
+  margin-bottom: 8px;
+}
+
+.kfs-legal a {
+  color: var(--kfs-navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kfs-legal a:hover {
+  color: var(--kfs-gold);
+}
+
+.kfs-legal-meta {
+  font-size: 14px;
+  color: var(--text);
+  opacity: 0.75;
+}
+
+/* O tema nao previa lista ao lado do copyright: sem gap, os dois textos
+   encostam um no outro. */
+.footer-section .footer-bottom .footer-wrapper {
+  gap: 12px 28px;
+}
+
+.footer-section .footer-bottom .footer-wrapper .bottom-list {
+  gap: 24px;
+}
+
+/* Credito do desenvolvedor: linha propria, abaixo do copyright. */
+.footer-section .footer-bottom .kfs-credit {
+  text-align: center;
+  margin: 16px 0 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--kfs-gray);
+  opacity: 0.75;
+}
+
+.footer-section .footer-bottom .kfs-credit a {
+  color: var(--kfs-gray);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-section .footer-bottom .kfs-credit a:hover {
+  color: var(--kfs-gold);
+}
+
 /* --- Listagem de areas e servicos (/servicos) -------------------------------
    Cada area vira um bloco: cabecalho fixo a esquerda e os servicos em cards
    clicaveis a direita, separados por regua. */

@@ -15,6 +15,12 @@ const wow = (delay: string, base = '') => ({
 
 const year = new Date().getFullYear();
 
+const legalLinks = [
+  { label: 'Política de Privacidade', href: '/politica-de-privacidade' },
+  { label: 'Política de Cookies', href: '/politica-de-cookies' },
+  { label: 'Termos de Uso', href: '/termos-de-uso' },
+];
+
 const quickLinks = [
   { label: 'Quem Somos', href: '/quem-somos' },
   { label: 'Advogados', href: '/escritorio' },
@@ -40,7 +46,8 @@ const quickLinks = [
 							<div class="footer-content">
 								<p>
 									Escritório de advocacia no Centro de Florianópolis, com atuação em Direito
-									Criminal, Civil, Militar, Previdenciário e Administrativo.
+									Criminal, Civil, Militar, da Saúde, do Trabalho, Previdenciário e
+										Administrativo.
 								</p>
 								<div class="social-icon">
 									{socials.map((s) => (
@@ -107,10 +114,18 @@ const quickLinks = [
 				<div class="container">
 					<div class="footer-wrapper">
 						<p {...wow('.3s')}>
-							© {year} {site.legalName}. Todos os direitos reservados.
+							© {year} {site.legalName} — CNPJ {site.cnpj}. Todos os direitos reservados.
 						</p>
-						<p class="kfs-credit">Site criado e mantido por PMTurbo</p>
+						<ul class="bottom-list">
+							{legalLinks.map((l) => (
+								<li><a href={l.href}>{l.label}</a></li>
+							))}
+						</ul>
 					</div>
+					<p class="kfs-credit">
+						Site criado e mantido por{' '}
+						<a href="https://pmturbo.com/" target="_blank" rel="noopener">PMTurbo</a>
+					</p>
 				</div>
 			</div>
 		</div>

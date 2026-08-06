@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const atualizacao = 'agosto de 2026';
+---
+
+<Layout
+	title="Política de Privacidade — KFS Sociedade de Advogados"
+	description="Como o escritório KFS trata os dados pessoais coletados neste site, conforme a Lei Geral de Proteção de Dados (Lei 13.709/2018)."
+	heading="Política de Privacidade"
+	crumbs={[{ label: 'Política de Privacidade' }]}
+	animate={false}
+>
+	<section class="section-padding fix">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-9">
+					<div class="kfs-legal">
+						<p class="kfs-legal-meta">Última atualização: {atualizacao}</p>
+
+						<p>
+							Esta política explica como a <strong>{site.legalName}</strong> trata os dados
+							pessoais de quem visita <strong>kfsadvogados.com.br</strong>, em conformidade com a
+							Lei Geral de Proteção de Dados (Lei 13.709/2018).
+						</p>
+
+						<h2>1. Quem é o controlador dos dados</h2>
+						<p>
+							{site.legalName}, inscrita no CNPJ sob o nº {site.cnpj}, com endereço em
+							{' '}{site.address}. Contato para assuntos de privacidade:
+							{' '}<a href={`mailto:${site.email}`}>{site.email}</a>.
+						</p>
+
+						<h2>2. Quais dados coletamos</h2>
+						<p>Coletamos apenas os dados que você mesmo informa, e somente quando você decide nos procurar:</p>
+						<ul>
+							<li>
+								<strong>Formulário de contato:</strong> nome, e-mail, telefone, área do direito e a
+								descrição que você escreve sobre o seu caso.
+							</li>
+							<li>
+								<strong>Contato direto:</strong> os dados que você envia ao falar conosco por
+								WhatsApp, telefone ou e-mail.
+							</li>
+						</ul>
+						<p>
+							Este site <strong>não utiliza ferramentas de analytics, pixels de rastreamento ou
+							perfis publicitários</strong>. Não coletamos dados de navegação para fins de
+							marketing e não vendemos dados a ninguém.
+						</p>
+
+						<h2>3. Como o formulário funciona</h2>
+						<p>
+							O formulário deste site <strong>não armazena informações em servidor</strong>. Ao
+							enviar, os campos preenchidos são usados apenas para montar uma mensagem no seu
+							próprio WhatsApp, que só é transmitida quando você confirma o envio no aplicativo.
+							A partir daí, a conversa passa a ser tratada pelo WhatsApp, sujeita à política de
+							privacidade do próprio serviço.
+						</p>
+
+						<h2>4. Para que usamos os dados</h2>
+						<ul>
+							<li>Responder ao seu contato e avaliar a viabilidade jurídica do caso apresentado.</li>
+							<li>Prestar os serviços advocatícios contratados.</li>
+							<li>Cumprir obrigações legais e regulatórias aplicáveis à advocacia.</li>
+						</ul>
+						<p>
+							As bases legais são o consentimento, a execução de contrato, o cumprimento de
+							obrigação legal e o exercício regular de direitos em processo.
+						</p>
+
+						<h2>5. Sigilo profissional</h2>
+						<p>
+							Tudo que você relata é protegido pelo sigilo profissional do advogado, previsto no
+							Estatuto da Advocacia (Lei 8.906/94) e no Código de Ética e Disciplina da OAB. Esse
+							dever é mais amplo que a LGPD e se mantém mesmo que não haja contratação.
+						</p>
+
+						<h2>6. Compartilhamento</h2>
+						<p>
+							Não compartilhamos seus dados com terceiros para fins comerciais. O compartilhamento
+							ocorre apenas quando necessário para a prestação do serviço — como em petições,
+							procurações e comunicações a órgãos públicos e ao Judiciário — ou por determinação
+							legal ou judicial.
+						</p>
+
+						<h2>7. Serviços de terceiros neste site</h2>
+						<ul>
+							<li>
+								<strong>Google Fonts:</strong> carrega as fontes da identidade visual. O
+								carregamento envolve a comunicação do seu navegador com servidores do Google.
+							</li>
+							<li>
+								<strong>Google Maps:</strong> exibe a localização do escritório na página de
+								contato, apenas naquela página.
+							</li>
+							<li>
+								<strong>WhatsApp (Meta):</strong> utilizado quando você opta por falar conosco pelo
+								aplicativo.
+							</li>
+						</ul>
+						<p>
+							Esses serviços possuem políticas próprias, sobre as quais não temos controle.
+						</p>
+
+						<h2>8. Por quanto tempo guardamos</h2>
+						<p>
+							Contatos que não resultam em contratação são mantidos apenas pelo tempo necessário ao
+							atendimento. Havendo contratação, os documentos do caso são preservados pelos prazos
+							exigidos pela legislação e pelas normas da advocacia, inclusive após o encerramento
+							do processo.
+						</p>
+
+						<h2>9. Seus direitos</h2>
+						<p>
+							A LGPD garante a você confirmar a existência de tratamento, acessar seus dados,
+							corrigir dados incompletos ou desatualizados, solicitar anonimização, bloqueio ou
+							eliminação de dados desnecessários, pedir portabilidade, revogar o consentimento e
+							ser informado sobre compartilhamentos.
+						</p>
+						<p>
+							Para exercer qualquer um deles, escreva para
+							<a href={`mailto:${site.email}`}>{site.email}</a>. Responderemos no menor prazo
+							possível. Note que dados protegidos por sigilo profissional ou cuja guarda seja
+							exigida por lei podem não ser elimináveis a pedido.
+						</p>
+
+						<h2>10. Segurança</h2>
+						<p>
+							Adotamos medidas técnicas e administrativas para proteger os dados sob nossa guarda,
+							incluindo controle de acesso e conexão criptografada (HTTPS) neste site. Nenhum
+							sistema é totalmente imune, e comunicamos incidentes relevantes conforme a lei.
+						</p>
+
+						<h2>11. Alterações</h2>
+						<p>
+							Esta política pode ser atualizada. A data de última atualização aparece no topo
+							desta página.
+						</p>
+
+						<p class="mt-4">
+							Dúvidas? Fale com o escritório em
+							<a href={`mailto:${site.email}`}>{site.email}</a> ou por telefone
+							<a href={`tel:+${site.whatsapp}`}>{site.phone}</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

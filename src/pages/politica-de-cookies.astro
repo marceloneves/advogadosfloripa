@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const atualizacao = 'agosto de 2026';
+---
+
+<Layout
+	title="Política de Cookies — KFS Sociedade de Advogados"
+	description="Quais cookies são utilizados em kfsadvogados.com.br e como controlá-los no seu navegador."
+	heading="Política de Cookies"
+	crumbs={[{ label: 'Política de Cookies' }]}
+	animate={false}
+>
+	<section class="section-padding fix">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-9">
+					<div class="kfs-legal">
+						<p class="kfs-legal-meta">Última atualização: {atualizacao}</p>
+
+						<h2>1. O que são cookies</h2>
+						<p>
+							Cookies são pequenos arquivos que um site grava no seu navegador para guardar
+							informações entre visitas — preferências, sessões de login ou dados de audiência.
+						</p>
+
+						<h2>2. Quais cookies este site usa</h2>
+						<p>
+							<strong>Nenhum cookie próprio.</strong> O site do escritório KFS é estático e não
+							grava cookies de sessão, de preferência, de analytics ou de publicidade. Não há
+							ferramentas de medição de audiência, pixels de redes sociais ou rastreamento entre
+							sites.
+						</p>
+						<p>
+							Por não haver cookies próprios nem coleta de dados de navegação, este site não exibe
+							banner de consentimento de cookies.
+						</p>
+
+						<h2>3. Conteúdo de terceiros</h2>
+						<p>
+							Algumas partes do site carregam recursos hospedados por terceiros, que podem definir
+							cookies ou registrar acessos conforme suas próprias regras:
+						</p>
+						<ul>
+							<li>
+								<strong>Google Fonts</strong> — carrega a tipografia da marca em todas as páginas.
+							</li>
+							<li>
+								<strong>Google Maps</strong> — exibe o mapa do escritório, apenas na página de
+								contato. É o recurso com maior probabilidade de definir cookies no seu navegador.
+							</li>
+							<li>
+								<strong>WhatsApp (Meta)</strong> — acionado somente quando você clica em um botão
+								de conversa e é levado ao aplicativo ou ao WhatsApp Web.
+							</li>
+						</ul>
+						<p>
+							Esses cookies, quando existem, são definidos pelos respectivos provedores e estão
+							sujeitos às políticas de privacidade deles. O escritório não tem acesso ao conteúdo
+							desses arquivos.
+						</p>
+
+						<h2>4. Como controlar cookies</h2>
+						<p>
+							Você pode bloquear ou apagar cookies a qualquer momento nas configurações do seu
+							navegador. Nos principais navegadores, a opção fica em Configurações → Privacidade e
+							segurança. Bloquear cookies de terceiros pode fazer o mapa da página de contato
+							deixar de carregar, sem prejuízo às demais funcionalidades do site.
+						</p>
+
+						<h2>5. Alterações</h2>
+						<p>
+							Caso passemos a utilizar cookies próprios ou ferramentas de medição, esta política
+							será atualizada antes da adoção e, se exigido, o site passará a solicitar o seu
+							consentimento.
+						</p>
+
+						<p class="mt-4">
+							Dúvidas sobre esta política? Escreva para
+							<a href={`mailto:${site.email}`}>{site.email}</a>. Veja também a nossa
+							<a href="/politica-de-privacidade">Política de Privacidade</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

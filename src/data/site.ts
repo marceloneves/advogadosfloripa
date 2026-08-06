@@ -10,6 +10,8 @@ export const site = {
   email: 'contato@kfsadvogados.com.br',
   address: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC, 88010-000',
   addressShort: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC',
+  /** Razão social conforme o CNPJ (o cartão da Receita não inclui "Stein"). */
+  cnpj: '66.828.182/0001-00',
   oab: 'OAB/SC 00.000',
   hours: 'Segunda a sexta, 9h às 18h',
 };
@@ -81,6 +83,12 @@ export const services = [
           'Impetração de habeas corpus, relaxamento de prisão, liberdade provisória e recursos aos tribunais.',
       },
       {
+        slug: 'porte-de-arma',
+        title: 'Registro e porte de arma de fogo',
+        text:
+          'Obtenção, renovação e defesa em processos sobre CR, porte e posse de arma.',
+      },
+      {
         slug: 'crimes-financeiros',
         title: 'Crimes financeiros e patrimoniais',
         text:
@@ -93,12 +101,12 @@ export const services = [
     title: 'Direito Civil',
     icon: 'fa-solid fa-scale-balanced',
     summary:
-      'Contratos, responsabilidade civil, indenizações, família, sucessões e questões patrimoniais.',
+      'Divórcio, inventário, alimentos, indenizações e contratos.',
     bullets: [
-      'Contratos e responsabilidade civil',
-      'Indenização por danos morais e materiais',
       'Divórcio, guarda e alimentos',
-      'Inventário e partilha',
+      'Inventário e partilha de bens',
+      'Indenização por danos morais e materiais',
+      'Contratos',
     ],
     topics: [
       {
@@ -183,11 +191,107 @@ export const services = [
         text:
           'Revisão de soldo, adicionais, promoções e pensão militar para dependentes.',
       },
+    ],
+  },
+  {
+    slug: 'direito-saude',
+    title: 'Direito da Saúde',
+    icon: 'fa-solid fa-heart-pulse',
+    summary:
+      'Plano de saúde que nega cobertura, medicamento de alto custo e tratamento negado pelo SUS.',
+    bullets: [
+      'Negativa de cobertura por plano de saúde',
+      'Cirurgias e tratamentos negados',
+      'Medicamentos de alto custo pelo SUS',
+      'Erro médico e responsabilidade',
+    ],
+    topics: [
       {
-        slug: 'porte-de-arma',
-        title: 'Registro e porte de arma de fogo',
+        slug: 'negativa-de-plano-de-saude',
+        title: 'Plano de saúde negou cobertura',
         text:
-          'Obtenção, renovação e defesa em processos sobre CR, porte e posse de arma.',
+          'Ação contra a recusa de cirurgia, exame, internação ou tratamento previsto em contrato.',
+      },
+      {
+        slug: 'medicamento-alto-custo',
+        title: 'Medicamento de alto custo',
+        text:
+          'Pedido judicial de fornecimento pelo SUS ou pelo plano, inclusive de medicamento sem registro na lista.',
+      },
+      {
+        slug: 'tratamento-fora-do-rol',
+        title: 'Tratamento fora do rol da ANS',
+        text:
+          'Discussão da cobertura de terapias e procedimentos que o plano recusa por não constarem no rol.',
+      },
+      {
+        slug: 'internacao-e-home-care',
+        title: 'Internação e home care',
+        text:
+          'Garantia de internação, UTI, home care e continuidade do tratamento negado pela operadora.',
+      },
+      {
+        slug: 'reajuste-abusivo-de-plano',
+        title: 'Reajuste abusivo de plano',
+        text:
+          'Revisão de aumentos por faixa etária ou sinistralidade aplicados fora dos limites da ANS.',
+      },
+      {
+        slug: 'erro-medico',
+        title: 'Erro médico',
+        text:
+          'Responsabilidade de médicos, clínicas e hospitais por falha na conduta e reparação do dano.',
+      },
+    ],
+  },
+  {
+    slug: 'direito-do-trabalho',
+    title: 'Direito do Trabalho',
+    icon: 'fa-solid fa-helmet-safety',
+    summary:
+      'Verbas rescisórias, horas extras, reconhecimento de vínculo, assédio e acidente de trabalho.',
+    bullets: [
+      'Verbas rescisórias e rescisão indireta',
+      'Horas extras e adicionais',
+      'Reconhecimento de vínculo empregatício',
+      'Assédio moral e acidente de trabalho',
+    ],
+    topics: [
+      {
+        slug: 'verbas-rescisorias',
+        title: 'Verbas rescisórias',
+        text:
+          'Cobrança de saldo de salário, aviso prévio, férias, décimo terceiro, FGTS e multa de 40%.',
+      },
+      {
+        slug: 'rescisao-indireta',
+        title: 'Rescisão indireta',
+        text:
+          'Saída por culpa do empregador, com direito às mesmas verbas da demissão sem justa causa.',
+      },
+      {
+        slug: 'horas-extras-e-adicionais',
+        title: 'Horas extras e adicionais',
+        text:
+          'Jornada não paga, intervalo suprimido e adicionais de insalubridade, periculosidade e noturno.',
+      },
+      {
+        slug: 'reconhecimento-de-vinculo',
+        title: 'Reconhecimento de vínculo',
+        text:
+          'Registro em carteira de quem trabalhou sem contrato, como PJ ou informalmente.',
+      },
+      {
+        slug: 'assedio-e-justa-causa',
+        title: 'Assédio e justa causa',
+        text:
+          'Reparação por assédio moral ou sexual e reversão de justa causa aplicada sem fundamento.',
+      },
+      {
+        slug: 'acidente-de-trabalho',
+        title: 'Acidente de trabalho',
+        text:
+          'Estabilidade, indenização e discussão de doença ocupacional equiparada a acidente.',
       },
     ],
   },

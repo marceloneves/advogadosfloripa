@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const atualizacao = 'agosto de 2026';
+---
+
+<Layout
+	title="Termos de Uso — KFS Sociedade de Advogados"
+	description="Condições de uso do site kfsadvogados.com.br, natureza informativa do conteúdo e regras de propriedade intelectual."
+	heading="Termos de Uso"
+	crumbs={[{ label: 'Termos de Uso' }]}
+	animate={false}
+>
+	<section class="section-padding fix">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-9">
+					<div class="kfs-legal">
+						<p class="kfs-legal-meta">Última atualização: {atualizacao}</p>
+
+						<p>
+							Ao navegar em <strong>kfsadvogados.com.br</strong>, você concorda com as condições
+							abaixo. O site é mantido pela <strong>{site.legalName}</strong>, inscrita no CNPJ
+							sob o nº {site.cnpj}, com endereço em {site.address}.
+						</p>
+
+						<h2>1. Natureza do conteúdo</h2>
+						<p>
+							O conteúdo deste site tem <strong>caráter meramente informativo</strong>. Os textos
+							descrevem procedimentos jurídicos de forma geral e <strong>não constituem consulta,
+							parecer ou orientação jurídica</strong> para um caso concreto.
+						</p>
+						<p>
+							Cada situação tem particularidades que podem alterar completamente o caminho
+							aplicável. Nenhuma decisão deve ser tomada com base apenas no que se lê aqui, sem
+							análise individual por advogado.
+						</p>
+
+						<h2>2. Ausência de relação advogado-cliente</h2>
+						<p>
+							A leitura do site, o envio de mensagem pelo formulário ou o contato inicial por
+							WhatsApp <strong>não criam relação de patrocínio</strong>. A representação só existe
+							após aceitação do caso pelo escritório e assinatura de contrato de honorários e
+							procuração.
+						</p>
+						<p>
+							Recomendamos não enviar documentos sigilosos ou detalhes sensíveis antes desse
+							momento — embora o dever de sigilo do advogado já se aplique ao que for relatado.
+						</p>
+
+						<h2>3. Publicidade e normas da OAB</h2>
+						<p>
+							Este site observa o Estatuto da Advocacia (Lei 8.906/94), o Código de Ética e
+							Disciplina e o Provimento 205/2021 do Conselho Federal da OAB. O conteúdo tem
+							finalidade informativa, sem captação de clientela, promessa de resultado, divulgação
+							de valores de causas ou de êxitos obtidos.
+						</p>
+
+						<h2>4. Atualidade das informações</h2>
+						<p>
+							A legislação e a jurisprudência mudam. Apesar do cuidado na elaboração, prazos,
+							requisitos e entendimentos citados podem ter sido alterados após a publicação. Não
+							garantimos que todo o conteúdo esteja permanentemente atualizado.
+						</p>
+
+						<h2>5. Propriedade intelectual</h2>
+						<p>
+							Textos, marca, logotipo, grafismos e demais elementos visuais são de titularidade do
+							escritório ou licenciados a ele, protegidos pela Lei 9.610/98. É vedada a reprodução
+							total ou parcial sem autorização prévia por escrito. Citações são permitidas desde
+							que com indicação da fonte e link para a página original.
+						</p>
+
+						<h2>6. Links externos</h2>
+						<p>
+							O site pode conter links para páginas de terceiros, como tribunais, órgãos públicos e
+							o WhatsApp. Não temos controle sobre esses conteúdos nem responsabilidade sobre eles.
+						</p>
+
+						<h2>7. Limitação de responsabilidade</h2>
+						<p>
+							O escritório não responde por decisões tomadas com base exclusiva no conteúdo do
+							site, nem por indisponibilidades temporárias, falhas de conexão ou problemas
+							decorrentes de serviços de terceiros.
+						</p>
+
+						<h2>8. Uso adequado</h2>
+						<p>
+							É vedado utilizar o site para fins ilícitos, tentar obter acesso não autorizado a
+							sistemas, coletar dados de forma automatizada ou praticar qualquer conduta que
+							prejudique seu funcionamento.
+						</p>
+
+						<h2>9. Privacidade</h2>
+						<p>
+							O tratamento de dados pessoais está descrito na
+							<a href="/politica-de-privacidade">Política de Privacidade</a> e o uso de cookies na
+							<a href="/politica-de-cookies">Política de Cookies</a>, que integram estes termos.
+						</p>
+
+						<h2>10. Alterações e foro</h2>
+						<p>
+							Estes termos podem ser alterados a qualquer momento, com efeito a partir da
+							publicação nesta página. Aplica-se a legislação brasileira, eleito o foro da Comarca
+							da Capital, Florianópolis/SC, ressalvadas as hipóteses de competência legal diversa,
+							como as relações de consumo.
+						</p>
+
+						<p class="mt-4">
+							Dúvidas sobre estes termos? Escreva para
+							<a href={`mailto:${site.email}`}>{site.email}</a>.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>

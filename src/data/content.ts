@@ -1,7 +1,7 @@
 export const stats = [
   { value: 20, sign: '+', label: 'Anos de experiência' },
   { value: 1500, sign: '+', label: 'Casos atendidos' },
-  { value: 5, sign: '', label: 'Áreas de atuação' },
+  { value: 7, sign: '', label: 'Áreas de atuação' },
   { value: 3, sign: '', label: 'Advogados' },
 ];
 
@@ -21,7 +21,7 @@ export const process = [
   {
     number: '02',
     title: 'Análise do caso',
-    text: 'Estudamos a documentação, avaliamos a viabilidade jurídica e explicamos os caminhos possíveis.',
+    text: 'Estudamos a documentação e avaliamos a viabilidade jurídica. Esta etapa é condicionada à consulta de valores, informados previamente.',
     image: '/theme/img/equipe/proc-analise-220.webp',
     image2x: '/theme/img/equipe/proc-analise-440.webp',
     alt: 'Documento e caneta sobre a mesa durante a análise do caso',
@@ -152,11 +152,11 @@ export const faqs = [
   },
   {
     q: 'Quanto tempo demora um processo?',
-    a: 'Depende da área e da complexidade. Medidas urgentes, como liminares na área da saúde, podem sair em dias. Processos previdenciários e criminais costumam levar meses ou anos. Sempre informamos uma expectativa realista logo na análise inicial.',
+    a: 'Depende da área e da complexidade. Medidas urgentes, como liminares, podem sair em dias. Processos previdenciários e criminais costumam levar meses ou anos. Sempre informamos uma expectativa realista logo na análise inicial.',
   },
   {
     q: 'Como funcionam os honorários?',
-    a: 'Os honorários seguem a Tabela da OAB/SC e são definidos caso a caso, conforme a complexidade e o tempo de dedicação. Tudo fica formalizado em contrato antes de qualquer trabalho, sem surpresas.',
+    a: 'Os honorários têm por base a Tabela da OAB/SC e são definidos caso a caso, conforme a complexidade e o tempo de dedicação. Tudo fica formalizado em contrato antes de qualquer trabalho, sem surpresas.',
   },
   {
     q: 'Preciso levar quais documentos na primeira reunião?',

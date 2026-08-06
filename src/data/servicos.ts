@@ -583,6 +583,382 @@ export const servicoContent: Record<string, ServicoContent> = {
     ],
   },
 
+  /* ------------------------------------------------------------------ SAÚDE */
+  'negativa-de-plano-de-saude': {
+    intro: 'Quando a operadora recusa cirurgia, exame ou internação.',
+    oQueE: [
+      'É a ação contra a recusa do plano de saúde em cobrir procedimento previsto em contrato ou na regulamentação da ANS.',
+      'A negativa costuma vir por escrito ou pelo aplicativo, com justificativas como carência, doença preexistente ou ausência de cobertura.',
+    ],
+    comoFunciona: [
+      'Obtenção da negativa por escrito — a operadora é obrigada a fornecê-la quando solicitada.',
+      'Reunião do relatório médico que indica o procedimento e justifica a urgência.',
+      'Reclamação na ANS quando há tempo hábil, ou ação judicial direta nos casos urgentes.',
+      'Pedido de tutela de urgência, que costuma ser decidido em 24 a 72 horas.',
+    ],
+    porQue: [
+      'O relatório médico é a peça decisiva: precisa dizer o que, por que e o que acontece se o tratamento não ocorrer.',
+      'A liminar bem instruída evita a espera do processo inteiro — e é ela que garante o procedimento a tempo.',
+    ],
+    faqs: [
+      {
+        q: 'A negativa precisa ser por escrito?',
+        a: 'A operadora é obrigada a fornecer a recusa por escrito quando solicitada. Ela facilita muito a ação, mas o processo pode seguir sem ela por outros meios de prova.',
+      },
+      {
+        q: 'Quanto tempo demora para conseguir uma liminar?',
+        a: 'Nos casos urgentes, costuma ser apreciada em poucos dias, às vezes em 24 horas, inclusive em plantão judiciário.',
+      },
+      {
+        q: 'Doença preexistente autoriza a recusa?',
+        a: 'Só dentro do prazo de cobertura parcial temporária e para procedimentos ligados àquela doença. Fora disso, a negativa é indevida.',
+      },
+    ],
+  },
+  'medicamento-alto-custo': {
+    intro: 'Fornecimento de medicamento pelo SUS ou pelo plano de saúde.',
+    oQueE: [
+      'É o pedido judicial para que o poder público ou a operadora forneça medicamento indispensável ao tratamento e que o paciente não consegue custear.',
+      'Alcança tanto remédios já padronizados quanto os que não constam nas listas oficiais.',
+    ],
+    comoFunciona: [
+      'Laudo médico detalhado, com CID, posologia, tempo de tratamento e justificativa da escolha do medicamento.',
+      'Comprovação da negativa administrativa e da incapacidade financeira de arcar com o custo.',
+      'Ação com pedido de tutela de urgência contra o ente público competente ou contra o plano.',
+      'Acompanhamento da entrega, com pedido de bloqueio de verba se a decisão não for cumprida.',
+    ],
+    porQue: [
+      'Os tribunais superiores fixaram requisitos específicos para medicamento fora da lista — sem cumpri-los na petição, o pedido é negado.',
+      'A escolha do réu (União, Estado ou Município) e do juízo competente define a rapidez da entrega.',
+    ],
+    faqs: [
+      {
+        q: 'Remédio que não está na lista do SUS pode ser obtido?',
+        a: 'Pode, desde que demonstrada a imprescindibilidade por laudo, a ineficácia das alternativas disponíveis e a impossibilidade de custeio pelo paciente.',
+      },
+      {
+        q: 'Preciso pedir na farmácia do Estado antes?',
+        a: 'A negativa administrativa é importante para demonstrar a resistência ao pedido, e costuma ser exigida antes da ação.',
+      },
+      {
+        q: 'O plano de saúde é obrigado a fornecer medicamento oral em casa?',
+        a: 'Há obrigação para os antineoplásicos orais e outras hipóteses previstas em lei e no rol da ANS.',
+      },
+    ],
+  },
+  'tratamento-fora-do-rol': {
+    intro: 'Terapias e procedimentos que o plano recusa por não estarem no rol.',
+    oQueE: [
+      'É a discussão sobre cobertura de tratamento que o médico indica mas a operadora nega alegando ausência no rol da ANS.',
+      'Envolve terapias continuadas, técnicas cirúrgicas novas e tratamentos multidisciplinares, como os indicados no transtorno do espectro autista.',
+    ],
+    comoFunciona: [
+      'Relatório do médico assistente demonstrando a indicação e a inexistência de alternativa eficaz no rol.',
+      'Comprovação da recomendação por evidência científica ou por órgão técnico reconhecido.',
+      'Ação com pedido liminar, sobretudo quando a interrupção do tratamento causa retrocesso ao paciente.',
+      'Discussão sobre número de sessões, quando a operadora impõe limite não previsto em lei.',
+    ],
+    porQue: [
+      'A Lei 14.454/22 estabeleceu critérios para cobertura fora do rol — a petição precisa demonstrar exatamente esses requisitos.',
+      'Limitação de sessões em terapias continuadas é uma das negativas mais frequentes e das mais combatíveis.',
+    ],
+    faqs: [
+      {
+        q: 'O rol da ANS é taxativo?',
+        a: 'A Lei 14.454/22 permite a cobertura fora do rol quando há comprovação de eficácia científica ou recomendação de órgão técnico reconhecido.',
+      },
+      {
+        q: 'O plano pode limitar o número de sessões de terapia?',
+        a: 'Não pode impor limite quando o médico assistente indica a continuidade do tratamento, especialmente em terapias multidisciplinares.',
+      },
+      {
+        q: 'Quem decide o tratamento: o médico ou o plano?',
+        a: 'A escolha da técnica cabe ao médico assistente. À operadora cabe custear, não substituir a decisão clínica.',
+      },
+    ],
+  },
+  'internacao-e-home-care': {
+    intro: 'Internação, UTI e atendimento domiciliar negados pela operadora.',
+    oQueE: [
+      'Trata das recusas de internação, permanência em UTI, transferência de hospital e fornecimento de home care.',
+      'Também alcança a alta forçada determinada pelo plano contra indicação médica.',
+    ],
+    comoFunciona: [
+      'Relatório médico com a indicação da internação ou do home care e o risco da interrupção.',
+      'Ação com pedido de urgência, cabível inclusive em plantão judiciário e fim de semana.',
+      'Discussão de limite de diárias em UTI, prática vedada pela legislação.',
+      'Pedido de manutenção do atendimento até a alta médica efetiva.',
+    ],
+    porQue: [
+      'São situações em que o tempo de resposta é medido em horas, não em dias — a petição precisa estar pronta para protocolo imediato.',
+      'Home care negado por ausência de previsão contratual costuma ser revertido quando substitui internação hospitalar.',
+    ],
+    faqs: [
+      {
+        q: 'O plano pode limitar dias de internação ou UTI?',
+        a: 'Não. A limitação de prazo de internação, inclusive em UTI, é vedada e considerada abusiva.',
+      },
+      {
+        q: 'Home care é obrigatório?',
+        a: 'Quando indicado pelo médico como substituto da internação hospitalar, a recusa costuma ser considerada abusiva.',
+      },
+      {
+        q: 'Dá para entrar com ação no fim de semana?',
+        a: 'Sim. O plantão judiciário atende pedidos urgentes fora do horário e em dias não úteis.',
+      },
+    ],
+  },
+  'reajuste-abusivo-de-plano': {
+    intro: 'Revisão de aumentos por faixa etária ou sinistralidade.',
+    oQueE: [
+      'É a discussão de reajustes aplicados fora dos limites legais, seja na mudança de faixa etária, seja no reajuste anual por sinistralidade dos contratos coletivos.',
+      'Inclui a devolução dos valores pagos a maior.',
+    ],
+    comoFunciona: [
+      'Levantamento do histórico de mensalidades e dos percentuais aplicados em cada ano.',
+      'Análise contratual e comparação com os índices autorizados pela ANS.',
+      'Pedido de revisão com recálculo da mensalidade e restituição do excedente.',
+      'Tutela de urgência para suspender o aumento enquanto o processo corre, evitando o cancelamento por inadimplência.',
+    ],
+    porQue: [
+      'Reajuste por faixa etária após os 60 anos encontra vedação no Estatuto do Idoso, tese consolidada nos tribunais.',
+      'Em contratos coletivos, a operadora precisa demonstrar o cálculo da sinistralidade — a falta de memória de cálculo derruba o aumento.',
+    ],
+    faqs: [
+      {
+        q: 'Existe reajuste por idade depois dos 60 anos?',
+        a: 'O Estatuto do Idoso veda a variação por faixa etária a partir dos 60 anos, e os tribunais afastam esses aumentos.',
+      },
+      {
+        q: 'Posso pedir de volta o que paguei a mais?',
+        a: 'Sim. É possível pedir a restituição dos valores pagos a maior, respeitado o prazo de prescrição.',
+      },
+      {
+        q: 'Perco o plano se eu discutir o reajuste?',
+        a: 'Não. É possível pedir liminar para depositar o valor incontroverso e impedir o cancelamento por falta de pagamento.',
+      },
+    ],
+  },
+  'erro-medico': {
+    intro: 'Responsabilidade por falha em procedimento ou diagnóstico.',
+    oQueE: [
+      'É a ação de reparação por dano decorrente de conduta médica inadequada, falha de diagnóstico, erro cirúrgico ou infecção hospitalar.',
+      'Pode atingir o profissional, a clínica, o hospital e o plano de saúde, conforme o caso.',
+    ],
+    comoFunciona: [
+      'Obtenção do prontuário completo, direito do paciente e base de toda a discussão.',
+      'Análise técnica por profissional da área para identificar a falha na conduta.',
+      'Ação de indenização com pedido de perícia judicial.',
+      'Discussão de danos morais, materiais, estéticos e pensionamento quando há incapacidade.',
+    ],
+    porQue: [
+      'A responsabilidade do médico depende de culpa; a do hospital e da clínica é objetiva em várias situações — enquadrar corretamente muda o ônus da prova.',
+      'O prontuário é o documento central e precisa ser requisitado logo, antes de qualquer discussão.',
+    ],
+    faqs: [
+      {
+        q: 'Tenho direito ao meu prontuário?',
+        a: 'Sim. O prontuário pertence ao paciente e deve ser fornecido pelo hospital ou clínica quando solicitado.',
+      },
+      {
+        q: 'Todo resultado ruim é erro médico?',
+        a: 'Não. É preciso demonstrar falha na conduta. Em regra a obrigação é de meio, salvo em procedimentos estéticos, onde é de resultado.',
+      },
+      {
+        q: 'Qual o prazo para processar?',
+        a: 'Em relação de consumo, cinco anos contados do conhecimento do dano e de sua autoria.',
+      },
+    ],
+  },
+
+  /* -------------------------------------------------------------- TRABALHO */
+  'verbas-rescisorias': {
+    intro: 'O que a empresa deve pagar quando o contrato termina.',
+    oQueE: [
+      'São os valores devidos no encerramento do contrato de trabalho: saldo de salário, aviso prévio, férias com um terço, décimo terceiro proporcional, FGTS e multa de 40% na dispensa sem justa causa.',
+      'A ação cabe quando a empresa não paga, paga a menor ou atrasa o acerto.',
+    ],
+    comoFunciona: [
+      'Conferência da CTPS, contracheques, extrato do FGTS e do termo de rescisão.',
+      'Cálculo do que era devido e comparação com o que foi pago.',
+      'Reclamação trabalhista com pedido das diferenças e da multa por atraso.',
+      'Tentativa de acordo em audiência, etapa em que boa parte dos casos se resolve.',
+    ],
+    porQue: [
+      'O prazo é curto: dois anos após a saída para ajuizar, alcançando os cinco anos anteriores.',
+      'Assinar o termo de rescisão não impede a cobrança de diferenças — a quitação é apenas dos valores ali constantes.',
+    ],
+    faqs: [
+      {
+        q: 'Qual o prazo para entrar com ação trabalhista?',
+        a: 'Dois anos contados do fim do contrato, podendo cobrar as verbas dos últimos cinco anos trabalhados.',
+      },
+      {
+        q: 'Assinei a rescisão. Ainda posso reclamar?',
+        a: 'Pode. A assinatura quita apenas os valores discriminados no termo, não eventuais diferenças.',
+      },
+      {
+        q: 'A empresa atrasou o acerto. Tem multa?',
+        a: 'Sim. O pagamento fora do prazo legal gera multa equivalente a um salário do empregado.',
+      },
+    ],
+  },
+  'rescisao-indireta': {
+    intro: 'Sair do emprego por culpa da empresa, com os mesmos direitos.',
+    oQueE: [
+      'É a "justa causa do empregador": o trabalhador pede judicialmente o fim do contrato por falta grave da empresa e recebe como se tivesse sido dispensado sem justa causa.',
+      'Cabe em casos como salário atrasado, FGTS não depositado, assédio, exigência de tarefa alheia ao contrato e descumprimento de obrigações.',
+    ],
+    comoFunciona: [
+      'Reunião das provas da falta: extratos de FGTS, comprovantes de atraso, mensagens, testemunhas.',
+      'Ação de rescisão indireta, que pode ser ajuizada com ou sem afastamento imediato do trabalho.',
+      'Pedido de tutela para afastamento quando a permanência é insustentável.',
+      'Reconhecida a falta, a empresa paga todas as verbas da dispensa sem justa causa, inclusive multa de 40% e seguro-desemprego.',
+    ],
+    porQue: [
+      'Pedir demissão por conta própria faz perder aviso, multa de 40% e seguro-desemprego — a rescisão indireta é o caminho para preservar tudo isso.',
+      'A demora em reclamar pode ser lida como perdão da falta, o que enfraquece o pedido.',
+    ],
+    faqs: [
+      {
+        q: 'Preciso parar de trabalhar para pedir?',
+        a: 'Não necessariamente. É possível continuar trabalhando durante o processo, embora em situações graves caiba pedido de afastamento imediato.',
+      },
+      {
+        q: 'Tenho direito a seguro-desemprego?',
+        a: 'Sim. Reconhecida a rescisão indireta, o trabalhador recebe as mesmas verbas da dispensa sem justa causa, inclusive as guias.',
+      },
+      {
+        q: 'Atraso de salário é motivo suficiente?',
+        a: 'O atraso reiterado é uma das faltas graves mais aceitas, assim como a ausência de depósitos do FGTS.',
+      },
+    ],
+  },
+  'horas-extras-e-adicionais': {
+    intro: 'Jornada não paga, intervalo suprimido e adicionais devidos.',
+    oQueE: [
+      'Reúne a cobrança do que excede a jornada contratada e dos adicionais legais: noturno, insalubridade, periculosidade e sobreaviso.',
+      'Inclui o intervalo intrajornada não usufruído e o tempo à disposição do empregador.',
+    ],
+    comoFunciona: [
+      'Levantamento de cartões de ponto, escalas, mensagens e testemunhas que demonstrem a jornada real.',
+      'Cálculo das diferenças com os reflexos em férias, décimo terceiro, FGTS e repouso semanal.',
+      'Perícia técnica nos pedidos de insalubridade e periculosidade.',
+      'Reclamação trabalhista com pedido de pagamento e integração ao salário.',
+    ],
+    porQue: [
+      'Empresa com mais de 20 empregados é obrigada a manter controle de jornada; a ausência dos cartões inverte a situação a favor do trabalhador.',
+      'Os reflexos costumam superar o valor principal — pedido mal formulado deixa dinheiro na mesa.',
+    ],
+    faqs: [
+      {
+        q: 'Não tenho cartão de ponto. Perco o direito?',
+        a: 'Não. A empresa obrigada a manter o controle e que não o apresenta faz presumir verdadeira a jornada alegada na inicial.',
+      },
+      {
+        q: 'Insalubridade e periculosidade podem ser acumuladas?',
+        a: 'A regra é a escolha do mais benéfico, embora exista discussão sobre a acumulação em situações específicas.',
+      },
+      {
+        q: 'Intervalo de almoço reduzido gera pagamento?',
+        a: 'Sim. A supressão parcial ou total do intervalo gera pagamento do período suprimido com adicional.',
+      },
+    ],
+  },
+  'reconhecimento-de-vinculo': {
+    intro: 'Registro em carteira de quem trabalhou sem contrato.',
+    oQueE: [
+      'É a ação que reconhece a relação de emprego de quem trabalhou sem registro, como PJ, autônomo ou informalmente.',
+      'Reconhecido o vínculo, decorrem todos os direitos do período: FGTS, férias, décimo terceiro, INSS e verbas rescisórias.',
+    ],
+    comoFunciona: [
+      'Demonstração dos quatro requisitos legais: pessoalidade, habitualidade, onerosidade e subordinação.',
+      'Prova por mensagens, escalas, uniformes, crachá, e-mails, comprovantes de pagamento e testemunhas.',
+      'Pedido de anotação da CTPS e recolhimento das contribuições do período.',
+      'Cobrança de todas as verbas do contrato reconhecido.',
+    ],
+    porQue: [
+      'Contrato de PJ ou de autônomo não impede o reconhecimento: o que vale é como o trabalho acontecia na prática.',
+      'O reconhecimento repercute também na aposentadoria, ao recompor o tempo de contribuição.',
+    ],
+    faqs: [
+      {
+        q: 'Trabalhei como PJ. Dá para reconhecer vínculo?',
+        a: 'Dá, quando presentes pessoalidade, habitualidade, onerosidade e subordinação. A forma do contrato não prevalece sobre a realidade.',
+      },
+      {
+        q: 'Sem carteira assinada, como provo?',
+        a: 'Por mensagens, escalas, depósitos, fotos, crachá, uniforme e testemunhas. A prova testemunhal tem peso relevante.',
+      },
+      {
+        q: 'O reconhecimento conta para a aposentadoria?',
+        a: 'Sim. Reconhecido o período, cabe o recolhimento das contribuições e a averbação junto ao INSS.',
+      },
+    ],
+  },
+  'assedio-e-justa-causa': {
+    intro: 'Reparação por assédio e reversão de justa causa indevida.',
+    oQueE: [
+      'Reúne duas situações frequentes: o dano causado por assédio moral ou sexual no ambiente de trabalho e a dispensa por justa causa aplicada sem fundamento.',
+      'A justa causa é a punição mais grave do direito do trabalho e exige prova robusta pela empresa.',
+    ],
+    comoFunciona: [
+      'Reunião de provas: mensagens, gravações, e-mails, testemunhas e registros de atendimento médico ou psicológico.',
+      'Ação com pedido de indenização por dano moral e, quando for o caso, de reversão da justa causa.',
+      'Discussão dos requisitos da punição: imediatidade, proporcionalidade e ausência de dupla penalidade.',
+      'Revertida a justa causa, a empresa paga todas as verbas da dispensa imotivada.',
+    ],
+    porQue: [
+      'O ônus de provar a justa causa é da empresa — e boa parte das dispensas cai por falta de prova ou por punição desproporcional.',
+      'Em assédio, o registro imediato dos fatos é o que sustenta o pedido meses depois.',
+    ],
+    faqs: [
+      {
+        q: 'Quem prova a justa causa?',
+        a: 'A empresa. Cabe a ela demonstrar o fato e o enquadramento legal, sob pena de reversão para dispensa imotivada.',
+      },
+      {
+        q: 'Posso gravar uma conversa com meu chefe?',
+        a: 'A gravação de conversa da qual você participa é admitida como prova pelos tribunais.',
+      },
+      {
+        q: 'Assédio gera quanto de indenização?',
+        a: 'Não há valor fixo. O juiz considera a gravidade, a duração, a repercussão e a capacidade econômica da empresa.',
+      },
+    ],
+  },
+  'acidente-de-trabalho': {
+    intro: 'Estabilidade, indenização e doença ocupacional.',
+    oQueE: [
+      'Acidente de trabalho é o que ocorre no exercício da atividade e causa lesão ou perda funcional, incluindo o acidente de trajeto e a doença ocupacional equiparada.',
+      'Gera direitos junto ao INSS e, havendo culpa da empresa, indenização na Justiça do Trabalho.',
+    ],
+    comoFunciona: [
+      'Emissão da CAT, obrigação da empresa que pode ser suprida pelo próprio trabalhador, sindicato ou médico.',
+      'Afastamento pelo INSS com o benefício acidentário, que garante estabilidade de 12 meses no retorno.',
+      'Ação contra a empresa quando há culpa, com perícia sobre condições de trabalho e nexo.',
+      'Pedidos de dano moral, estético, material e pensionamento em caso de redução da capacidade.',
+    ],
+    porQue: [
+      'A empresa costuma emitir a CAT como doença comum, o que retira a estabilidade e o caráter acidentário — corrigir isso é decisivo.',
+      'A responsabilidade da empresa por acidente não se confunde com o benefício do INSS: são direitos cumuláveis.',
+    ],
+    faqs: [
+      {
+        q: 'A empresa não emitiu a CAT. E agora?',
+        a: 'O próprio trabalhador, o sindicato, o médico ou a autoridade pública podem emitir a CAT, sem prazo prescricional para isso.',
+      },
+      {
+        q: 'Tenho estabilidade depois do acidente?',
+        a: 'Sim. Há garantia de 12 meses de emprego após o retorno do auxílio por acidente de trabalho.',
+      },
+      {
+        q: 'Doença de esforço repetitivo conta como acidente?',
+        a: 'Conta, quando há nexo com a atividade. A LER/DORT é equiparada a acidente de trabalho.',
+      },
+    ],
+  },
+
   /* --------------------------------------------------------- PREVIDENCIÁRIO */
   'aposentadoria-idade-e-tempo': {
     intro: 'Análise do tempo de contribuição e da melhor data para se aposentar.',
