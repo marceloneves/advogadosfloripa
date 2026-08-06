@@ -340,20 +340,6 @@
             e.stopPropagation();
         });
 
-        //>> Back To Top Slider Start <<//
-        $(window).on('scroll', function() {
-            if ($(this).scrollTop() > 20) {
-                $("#back-top").addClass("show");
-            } else {
-                $("#back-top").removeClass("show");
-            }
-        });
-        
-        $(document).on('click', '#back-top', function() {
-            $('html, body').animate({ scrollTop: 0 }, 800);
-            return false;
-        });
-
         $(window).ready(function() {
             // Loader JS Start
             $(".loader-box").fadeOut();

@@ -106,7 +106,8 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 	<section class="service-section section-padding fix kfs-service-page" aria-label="Áreas de atuação">
 		<div class="container">
 			<div class="row g-5">
-				<div class="col-lg-8">
+				{/* Conteúdo autônomo da página: <article> é o wrapper correto. */}
+				<article class="col-lg-8">
 					<div class="section-title">
 						<span class="sub-title">{area.title}</span>
 						<h2>O que é {topic.title.toLowerCase()}</h2>
@@ -148,9 +149,10 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 							<Accordion id={`faq-${topic.slug}`} items={content.faqs} />
 						</>
 					) : null}
-				</div>
+				</article>
 
-				<div class="col-lg-4">
+				{/* Complementar ao artigo: contato e demais serviços da área. */}
+				<aside class="col-lg-4" aria-label="Contato e outros serviços">
 					<div class="service-box-items">
 						<div class="service-content">
 							<h4>Fale sobre o seu caso</h4>
@@ -185,7 +187,7 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 							</div>
 						</div>
 					)}
-				</div>
+				</aside>
 			</div>
 		</div>
 	</section>
