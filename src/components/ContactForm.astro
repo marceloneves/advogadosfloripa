@@ -39,22 +39,49 @@ const wow = (delay: string, base = '') => ({
 			<div class="row g-4">
 				<div {...wow('.3s', 'col-lg-6')}>
 					<div class="form-clt">
-						<input type="text" name="nome" placeholder="Seu nome" required aria-label="Seu nome" />
+						<label class="sr-only" for={`${id}-nome`}>Seu nome</label>
+						<input
+							type="text"
+							id={`${id}-nome`}
+							name="nome"
+							placeholder="Seu nome"
+							autocomplete="name"
+							required
+							aria-required="true"
+						/>
 					</div>
 				</div>
 				<div {...wow('.5s', 'col-lg-6')}>
 					<div class="form-clt">
-						<input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" />
+						<label class="sr-only" for={`${id}-email`}>Seu e-mail</label>
+						<input
+							type="email"
+							id={`${id}-email`}
+							name="email"
+							placeholder="Seu e-mail"
+							autocomplete="email"
+							required
+							aria-required="true"
+						/>
 					</div>
 				</div>
 				<div {...wow('.3s', 'col-lg-6')}>
 					<div class="form-clt">
-						<input type="tel" name="telefone" placeholder="Telefone / WhatsApp" aria-label="Telefone" />
+						<label class="sr-only" for={`${id}-telefone`}>Telefone ou WhatsApp</label>
+						<input
+							type="tel"
+							id={`${id}-telefone`}
+							name="telefone"
+							placeholder="Telefone / WhatsApp"
+							autocomplete="tel"
+							inputmode="tel"
+						/>
 					</div>
 				</div>
 				<div {...wow('.5s', 'col-lg-6')}>
 					<div class="form-clt">
-						<select name="area" aria-label="Área do direito">
+						<label class="sr-only" for={`${id}-area`}>Área do direito</label>
+						<select id={`${id}-area`} name="area">
 							<option value="">Área do direito</option>
 							{services.map((s) => (
 								<option value={s.title}>{s.title}</option>
@@ -65,8 +92,19 @@ const wow = (delay: string, base = '') => ({
 				</div>
 				<div {...wow('.3s', 'col-lg-12')}>
 					<div class="form-clt">
-						<textarea name="mensagem" rows="5" placeholder="Descreva brevemente o seu caso" required aria-label="Mensagem"></textarea>
+						<label class="sr-only" for={`${id}-mensagem`}>Descreva brevemente o seu caso</label>
+						<textarea
+							id={`${id}-mensagem`}
+							name="mensagem"
+							rows="5"
+							placeholder="Descreva brevemente o seu caso"
+							required
+							aria-required="true"
+						></textarea>
 					</div>
+				</div>
+				<div class="col-lg-12">
+					<p id={`${id}-erro`} class="kfs-form-error" role="alert" aria-live="polite" hidden></p>
 				</div>
 				<div {...wow('.5s', 'col-lg-12')}>
 					<button type="submit" class="theme-btn">
@@ -84,11 +122,20 @@ const wow = (delay: string, base = '') => ({
 		e.preventDefault();
 		const f = e.target;
 		const get = (n) => (f.elements[n]?.value || '').trim();
+		const erro = document.getElementById(id + '-erro');
 
-		if (!get('nome') || !get('email') || !get('mensagem')) {
-			alert('Preencha nome, e-mail e mensagem.');
+		const faltando = ['nome', 'email', 'mensagem'].filter((n) => !get(n));
+		if (faltando.length) {
+			erro.textContent = 'Preencha nome, e-mail e mensagem para enviar.';
+			erro.hidden = false;
+			const campo = f.elements[faltando[0]];
+			campo?.setAttribute('aria-invalid', 'true');
+			campo?.focus();
 			return;
 		}
+
+		erro.hidden = true;
+		['nome', 'email', 'mensagem'].forEach((n) => f.elements[n]?.removeAttribute('aria-invalid'));
 
 		const linhas = [
 			`Olá! Meu nome é ${get('nome')}.`,

@@ -12,7 +12,7 @@ import { services } from '../data/site';
 	crumbs={[{ label: 'Serviços' }]}
 	animate={false}
 >
-	<section class="service-section section-padding fix">
+	<section class="service-section section-padding fix" aria-label="Áreas de atuação">
 		<div class="container">
 			<div class="section-title text-center mb-5">
 				<span class="sub-title">O que fazemos</span>
@@ -45,7 +45,7 @@ import { services } from '../data/site';
 											<h4>{t.title}</h4>
 											<p>{t.text}</p>
 											<span class="kfs-service-more">
-												Saiba mais
+												Saiba mais<span class="sr-only"> sobre {t.title}</span>
 												<i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
 											</span>
 										</a>

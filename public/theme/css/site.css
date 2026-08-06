@@ -187,6 +187,81 @@ select:focus-visible {
   margin-bottom: 2px;
 }
 
+/* Mensagem de erro do formulário: substitui o alert() do navegador. */
+.kfs-form-error {
+  margin: 0;
+  padding: 12px 16px;
+  border-left: 3px solid #b3261e;
+  background: rgba(179, 38, 30, 0.08);
+  color: #8c1d18;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact-form-items [aria-invalid='true'] {
+  border-color: #b3261e !important;
+}
+
+/* Skip link: visível só ao receber foco pelo teclado. */
+.kfs-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: var(--kfs-navy);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+}
+
+.kfs-skip-link:focus {
+  left: 0;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Texto só para leitor de tela. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Ordem do documento: o bloco de contato da sidebar abria a página com um
+   heading antes do <h1>, e os cards de advogado saltavam h2→h4. */
+.offcanvas__wrapper .offcanvas__content .offcanvas__contact-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.team-card-items .team-content h3,
+.team-main-item .team-content-hover h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.about-wrapper-2 .about-image .about-box h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.about-wrapper-2 .about-image .about-box h2 a {
+  color: inherit;
+}
+
 /* Mais headings promovidos: cards do about, timeline e perfis. */
 .about-box h3,
 .history-content h3,

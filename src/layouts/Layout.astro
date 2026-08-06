@@ -80,6 +80,8 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<meta name="author" content={site.legalName} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
@@ -123,6 +125,9 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 	</head>
 
 	<body>
+		{/* Primeiro elemento focável: quem navega por teclado pula o menu. */}
+		<a href="#conteudo" class="kfs-skip-link">Pular para o conteúdo</a>
+
 		<Preloader />
 		<SearchPopup />
 		<OffcanvasSidebar />
@@ -134,7 +139,7 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 
 		{heading && <Breadcrumb heading={heading} crumbs={crumbs} animate={animate} />}
 
-		<main>
+		<main id="conteudo" tabindex="-1">
 			{slotHtml === null ? <slot /> : <Fragment set:html={slotHtml} />}
 		</main>
 
