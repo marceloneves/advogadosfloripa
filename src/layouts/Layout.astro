@@ -19,6 +19,8 @@ interface Props {
   animate?: boolean;
   /** Blocos JSON-LD específicos da página (Service, Person, FAQPage…). */
   schema?: Record<string, unknown>[];
+  /** Carrega o Swiper. Só a página que tem carrossel precisa dos ~250 KB. */
+  swiper?: boolean;
 }
 
 const {
@@ -28,6 +30,7 @@ const {
   crumbs = [],
   animate = true,
   schema = [],
+  swiper = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://kfsadvogados.com.br');
@@ -94,13 +97,14 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		/>
 
 		<link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/theme/css/all.min.css" />
+		<!-- Subset do Font Awesome: só os ícones usados (all.min.css tem 512 KB).
+		     Regenerar com scripts/fa-subset.py ao adicionar ícone novo. -->
+		<link rel="stylesheet" href="/theme/css/fa-subset.css" />
 		<link rel="stylesheet" href="/theme/css/flacticon.css" />
 		<link rel="stylesheet" href="/theme/css/animate.css" />
-		<link rel="stylesheet" href="/theme/css/magnific-popup.css" />
 		<link rel="stylesheet" href="/theme/css/meanmenu.css" />
 		<link rel="stylesheet" href="/theme/css/nice-select.css" />
-		<link rel="stylesheet" href="/theme/css/swiper-bundle.min.css" />
+		{swiper && <link rel="stylesheet" href="/theme/css/swiper-bundle.min.css" />}
 		<link rel="stylesheet" href="/theme/css/main.css" />
 		<link rel="stylesheet" href="/theme/css/wp-fix.css" />
 		<link rel="stylesheet" href="/theme/css/site.css" />
@@ -135,9 +139,8 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<script is:inline src="/theme/js/viewport.jquery.js"></script>
 		<script is:inline src="/theme/js/jquery.waypoints.js"></script>
 		<script is:inline src="/theme/js/jquery.counterup.min.js"></script>
-		<script is:inline src="/theme/js/swiper-bundle.min.js"></script>
+		{swiper && <script is:inline src="/theme/js/swiper-bundle.min.js"></script>}
 		<script is:inline src="/theme/js/jquery.meanmenu.min.js"></script>
-		<script is:inline src="/theme/js/jquery.magnific-popup.min.js"></script>
 		<script is:inline src="/theme/js/wow.min.js"></script>
 		<script is:inline src="/theme/js/main.js"></script>
 	</body>

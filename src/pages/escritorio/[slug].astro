@@ -34,7 +34,7 @@ const schema = [
 ---
 
 <Layout
-	title={`${lawyer.name} — Advogado | KFS Sociedade de Advogados`}
+	title={`${lawyer.shortName} — Advogado em Florianópolis | KFS`}
 	description={`${lawyer.name}${lawyer.oab ? `, ${lawyer.oab}` : ''}. Advogado em Florianópolis com atuação em ${lawyer.areas.slice(0, 3).join(', ')}.`}
 	heading={lawyer.name}
 	crumbs={[{ label: 'Advogados', href: '/escritorio' }, { label: lawyer.shortName }]}

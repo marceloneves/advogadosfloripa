@@ -5,6 +5,7 @@ import ContactSection from '../../components/ContactSection.astro';
 import Accordion from '../../components/Accordion.astro';
 import { services, waLink } from '../../data/site';
 import { servicoContent } from '../../data/servicos';
+import { getLawyer } from '../../data/team';
 
 export function getStaticPaths() {
   return services.flatMap((area) =>
@@ -20,6 +21,25 @@ const content = servicoContent[topic.slug];
 
 const origin = (Astro.site ?? new URL('https://kfsadvogados.com.br')).origin;
 
+/** Autoria: YMYL jurídico exige responsável identificável e data de revisão. */
+const responsavel = area.lawyer ? getLawyer(area.lawyer) : undefined;
+const revisadoEm = '2026-08-06';
+const revisadoLabel = '6 de agosto de 2026';
+
+/** Google corta a description por volta de 160 caracteres. */
+/** Google trunca o title por volta de 60 caracteres. */
+const TITLE_SUF = ' | KFS Advogados';
+const pageTitle =
+  `${topic.title} em Florianópolis`.length + TITLE_SUF.length <= 60
+    ? `${topic.title} em Florianópolis${TITLE_SUF}`
+    : `${topic.title}${TITLE_SUF}`;
+
+const SUFIXO = ' Advogados em Florianópolis/SC.';
+const metaDescription =
+  (topic.text.length + SUFIXO.length <= 160
+    ? topic.text
+    : `${topic.text.slice(0, 157 - SUFIXO.length).trimEnd()}…`) + SUFIXO;
+
 /**
  * FAQPage não gera mais rich result no Google (retirado em maio/2026), mas
  * segue sendo lido por assistentes de IA ao citar a página — por isso fica.
@@ -33,7 +53,30 @@ const schema = [
     category: area.title,
     provider: { '@id': `${origin}/#escritorio` },
     areaServed: { '@type': 'City', name: 'Florianópolis' },
+    ...(responsavel
+      ? {
+          review: undefined,
+          termsOfService: `${origin}/termos-de-uso`,
+        }
+      : {}),
   },
+  ...(responsavel
+    ? [
+        {
+          '@type': 'WebPage',
+          url: `${origin}/servicos/${topic.slug}`,
+          name: `${topic.title} em Florianópolis`,
+          dateModified: revisadoEm,
+          about: { '@id': `${origin}/#escritorio` },
+          reviewedBy: {
+            '@type': 'Attorney',
+            name: responsavel.name,
+            url: `${origin}/escritorio/${responsavel.slug}`,
+            ...(responsavel.oab ? { identifier: responsavel.oab } : {}),
+          },
+        },
+      ]
+    : []),
   ...(content?.faqs?.length
     ? [
         {
@@ -53,8 +96,8 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 ---
 
 <Layout
-	title={`${topic.title} em Florianópolis — ${area.title} | KFS Sociedade de Advogados`}
-	description={`${topic.text} Advogados em Florianópolis/SC, com atendimento presencial no Centro e por videoconferência.`}
+	title={pageTitle}
+	description={metaDescription}
 	heading={`${topic.title} em Florianópolis`}
 	crumbs={[{ label: 'Áreas de Atuação', href: '/servicos' }, { label: topic.title }]}
 	schema={schema}
@@ -86,6 +129,20 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 						<h2>Por que contar com um advogado</h2>
 					</div>
 					{content?.porQue.map((p) => <p class="mb-3">{p}</p>)}
+
+					{responsavel && (
+						<div class="kfs-authorship">
+							<p>
+								Conteúdo sob responsabilidade de{' '}
+								<a href={`/escritorio/${responsavel.slug}`}>{responsavel.name}</a>
+								{responsavel.oab ? `, ${responsavel.oab}` : ''} — {responsavel.role}.
+							</p>
+							<p class="kfs-authorship-date">
+								Última revisão em {revisadoLabel}. Conteúdo informativo: não substitui a análise
+								do seu caso por um advogado.
+							</p>
+						</div>
+					)}
 
 					{content?.faqs?.length ? (
 						<>

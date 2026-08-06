@@ -236,6 +236,32 @@ select:focus-visible {
   font-size: 17px;
 }
 
+/* Autoria das paginas de servico: exigencia de E-E-A-T em conteudo YMYL. */
+.kfs-authorship {
+  margin-top: 32px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--kfs-gold);
+  background: var(--kfs-sand);
+}
+
+.kfs-authorship p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.kfs-authorship a {
+  color: var(--kfs-navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kfs-authorship-date {
+  margin-top: 6px !important;
+  font-size: 13.5px;
+  opacity: 0.8;
+}
+
 /* --- Paginas legais --------------------------------------------------------
    Coluna de leitura estreita, hierarquia discreta entre secoes. */
 .kfs-legal {

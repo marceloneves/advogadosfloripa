@@ -42,6 +42,9 @@
         }
 
         //>> Video Popup Start <<//
+        // O Magnific Popup saiu do bundle: nenhuma pagina usa lightbox. O guard
+        // evita que a ausencia do plugin interrompa o restante deste arquivo.
+        if ($.fn.magnificPopup) {
         $(".img-popup").magnificPopup({
             type: "image",
             gallery: {
@@ -54,6 +57,7 @@
             callbacks: {
             }
         });
+        }
         
         //>> Counterup Start <<//
         $(".count").counterUp({
@@ -76,7 +80,7 @@
 
    
         //>> team Slider Start <<//
-        if($('.team-slider').length > 0) {
+        if (typeof Swiper !== 'undefined' && $('.team-slider').length > 0) {
             const teamSlider = new Swiper(".team-slider", {
                 spaceBetween: 30,
                 observer: true,
@@ -113,7 +117,7 @@
         }
 
         //>> Brand Slider Start <<//
-        if($('.brand-slider').length > 0) {
+        if (typeof Swiper !== 'undefined' && $('.brand-slider').length > 0) {
             const brandSlider = new Swiper(".brand-slider", {
                 spaceBetween: 30,
                 observer: true,
@@ -148,7 +152,7 @@
         }
 
         //>> Testimonial Slider Start <<//
-        if($('.testimonial-slider').length > 0) {
+        if (typeof Swiper !== 'undefined' && $('.testimonial-slider').length > 0) {
             const testimonialSlider = new Swiper(".testimonial-slider", {
                 spaceBetween: 30,
                 observer: true,
@@ -185,7 +189,7 @@
         }
 
          //>> Testimonial Slider Start <<//
-         if($('.testimonial-slider2').length > 0) {
+         if (typeof Swiper !== 'undefined' && $('.testimonial-slider2').length > 0) {
             const testimonialSlider2 = new Swiper(".testimonial-slider2", {
                 spaceBetween: 30,
                 observer: true,
@@ -218,7 +222,7 @@
         }
 
          //>> Testimonial Slider Start <<//
-         if($('.testimonial-slider3').length > 0) {
+         if (typeof Swiper !== 'undefined' && $('.testimonial-slider3').length > 0) {
             const testimonialSlider3 = new Swiper(".testimonial-slider3", {
                 spaceBetween: 30,
                 observer: true,
@@ -254,7 +258,7 @@
             });
         }
 
-        if($('.process-slider').length > 0) {
+        if (typeof Swiper !== 'undefined' && $('.process-slider').length > 0) {
             const processSlider = new Swiper(".process-slider", {
                 spaceBetween: 30,
                 observer: true,

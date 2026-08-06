@@ -41,6 +41,8 @@ export const socials = [
 export const services = [
   {
     slug: 'direito-criminal',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'fernando-fabre',
     title: 'Direito Criminal',
     icon: 'fa-solid fa-gavel',
     summary:
@@ -98,6 +100,8 @@ export const services = [
   },
   {
     slug: 'direito-civil',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'asterley-kincezski',
     title: 'Direito Civil',
     icon: 'fa-solid fa-scale-balanced',
     summary:
@@ -149,6 +153,8 @@ export const services = [
   },
   {
     slug: 'direito-militar',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'fernando-fabre',
     title: 'Direito Militar',
     // O all.min.css do tema não traz o nome novo (fa-shield-halved), só o antigo.
     icon: 'fa-solid fa-shield-alt',
@@ -195,6 +201,8 @@ export const services = [
   },
   {
     slug: 'direito-saude',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'matheus-stein',
     title: 'Direito da Saúde',
     icon: 'fa-solid fa-heart-pulse',
     summary:
@@ -246,6 +254,8 @@ export const services = [
   },
   {
     slug: 'direito-do-trabalho',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'asterley-kincezski',
     title: 'Direito do Trabalho',
     icon: 'fa-solid fa-helmet-safety',
     summary:
@@ -297,6 +307,8 @@ export const services = [
   },
   {
     slug: 'direito-previdenciario',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'matheus-stein',
     title: 'Direito Previdenciário',
     icon: 'fa-solid fa-user-clock',
     summary:
@@ -348,6 +360,8 @@ export const services = [
   },
   {
     slug: 'direito-administrativo',
+    /** Advogado responsável pela área, exibido como autoria das páginas. */
+    lawyer: 'asterley-kincezski',
     title: 'Direito Administrativo',
     icon: 'fa-solid fa-landmark',
     summary:
