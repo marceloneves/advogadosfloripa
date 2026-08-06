@@ -23,9 +23,9 @@ const items = limit ? services.slice(0, limit) : services;
 							<i class={s.icon}></i>
 						</div>
 						<div class="content">
-							<h4>
+							<h3>
 								<a href={`/servicos#${s.slug}`}>{s.title}</a>
-							</h4>
+							</h3>
 							<p>{s.summary}</p>
 						</div>
 					</div>
@@ -44,9 +44,9 @@ const items = limit ? services.slice(0, limit) : services;
 			<div class={`${columns} col-md-6 wow fadeInUp`} data-wow-delay=".3s">
 				<div class="service-box-items">
 					<div class="service-content">
-						<h4>
+						<h3>
 							<a href={`/servicos#${s.slug}`}>{s.title}</a>
-						</h4>
+						</h3>
 						<p>{s.summary}</p>
 						<div class="service-button">
 							<div class="icon">
@@ -54,7 +54,7 @@ const items = limit ? services.slice(0, limit) : services;
 							</div>
 							<a href={`/servicos#${s.slug}`} class="theme-btn">
 								Saiba mais
-								<i class="fa-solid fa-arrow-right"></i>
+								<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
 							</a>
 						</div>
 					</div>

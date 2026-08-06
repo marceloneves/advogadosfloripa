@@ -27,9 +27,9 @@ const highlights = [
 							decoding="async" loading="lazy" decoding="async" />
 						<div class="about-box">
 							<span>Ligue agora</span>
-							<h4>
+							<h3>
 								<a href="/contato">Consulta inicial sem compromisso</a>
-							</h4>
+							</h3>
 						</div>
 					</div>
 				</div>
@@ -52,7 +52,7 @@ const highlights = [
 					<ul class="about-list wow fadeInUp" data-wow-delay=".7s">
 						{highlights.map((h) => (
 							<li>
-								<i class="fa-solid fa-check"></i>
+								<i class="fa-solid fa-check" aria-hidden="true"></i>
 								{h}
 							</li>
 						))}
@@ -61,7 +61,7 @@ const highlights = [
 					<div class="about-button wow fadeInUp" data-wow-delay=".9s">
 						<a href={waLink('Olá! Gostaria de conversar sobre o meu caso.')} target="_blank" rel="noopener" class="theme-btn">
 							Falar com um advogado
-							<i class="fa-brands fa-whatsapp"></i>
+							<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
 						</a>
 					</div>
 				</div>

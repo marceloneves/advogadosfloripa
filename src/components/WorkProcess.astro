@@ -20,7 +20,7 @@ const items = limit ? process.slice(0, limit) : process;
 				</div>
 				{items.map((p) => (
 					<div class="process-items wow fadeInUp" data-wow-delay=".2s">
-						<h6 class="number">{p.number}</h6>
+						<span class="number">{p.number}</span>
 						<div class="content">
 							<h3>{p.title}</h3>
 							<p>{p.text}</p>
@@ -55,10 +55,10 @@ const items = limit ? process.slice(0, limit) : process;
 								loading="lazy"
 								decoding="async"
 							/>
-							<h6 class="number">{p.number}</h6>
+							<span class="number">{p.number}</span>
 						</div>
 						<div class="feature-content">
-							<h4>{p.title}</h4>
+							<h3>{p.title}</h3>
 							<p>{p.text}</p>
 						</div>
 					</div>

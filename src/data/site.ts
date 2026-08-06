@@ -31,12 +31,18 @@ export const nav = [
   { label: 'Contato', href: '/contato' },
 ];
 
+/**
+ * Só entram no site as redes com URL real: `activeSocials` filtra os
+ * placeholders, então basta preencher a url aqui para o ícone voltar.
+ */
 export const socials = [
   { icon: 'fab fa-facebook-f', url: '#', label: 'Facebook' },
   { icon: 'fab fa-instagram', url: '#', label: 'Instagram' },
   { icon: 'fab fa-linkedin-in', url: '#', label: 'LinkedIn' },
   { icon: 'fab fa-whatsapp', url: `https://wa.me/${site.whatsapp}`, label: 'WhatsApp' },
 ];
+
+export const activeSocials = socials.filter((s) => s.url && s.url !== '#');
 
 export const services = [
   {

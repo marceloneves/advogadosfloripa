@@ -9,9 +9,9 @@ const { variant = '' } = Astro.props;
 
 <div class:list={['array-button', variant, 'wow fadeInUp']} data-wow-delay=".5s">
 	<button class="array-prev" aria-label="Anterior">
-		<i class="fa-solid fa-arrow-left"></i>
+		<i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
 	</button>
 	<button class="array-next" aria-label="Próximo">
-		<i class="fa-solid fa-arrow-right"></i>
+		<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
 	</button>
 </div>

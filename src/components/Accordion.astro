@@ -20,7 +20,7 @@ const items = limit ? source.slice(0, limit) : source;
 			<div class="accordion" id={id}>
 				{items.map((f, i) => (
 					<div class="accordion-item mb-3">
-						<h5 class="accordion-header">
+						<h3 class="accordion-header">
 							<button
 								class:list={['accordion-button', i !== 0 && 'collapsed']}
 								type="button"
@@ -31,7 +31,7 @@ const items = limit ? source.slice(0, limit) : source;
 							>
 								{f.q}
 							</button>
-						</h5>
+						</h3>
 						<div
 							id={`${id}-${i}`}
 							class:list={['accordion-collapse', 'collapse', i === 0 && 'show']}

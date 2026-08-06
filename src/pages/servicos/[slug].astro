@@ -116,14 +116,10 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 					<div class="section-title mt-5">
 						<h2>Como funciona</h2>
 					</div>
-					<ul class="about-list">
-						{content?.comoFunciona.map((step) => (
-							<li>
-								<i class="fa-solid fa-check"></i>
-								{step}
-							</li>
-						))}
-					</ul>
+					{/* Etapas em sequência: <ol> comunica a ordem, <ul> não. */}
+					<ol class="about-list kfs-steps">
+						{content?.comoFunciona.map((step) => <li>{step}</li>)}
+					</ol>
 
 					<div class="section-title mt-5">
 						<h2>Por que contar com um advogado</h2>
@@ -138,7 +134,7 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 								{responsavel.oab ? `, ${responsavel.oab}` : ''} — {responsavel.role}.
 							</p>
 							<p class="kfs-authorship-date">
-								Última revisão em {revisadoLabel}. Conteúdo informativo: não substitui a análise
+								Última revisão em <time datetime={revisadoEm}>{revisadoLabel}</time>. Conteúdo informativo: não substitui a análise
 								do seu caso por um advogado.
 							</p>
 						</div>
@@ -169,7 +165,7 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 								class="theme-btn mt-3"
 							>
 								Falar com um advogado
-								<i class="fa-brands fa-whatsapp"></i>
+								<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
 							</a>
 						</div>
 					</div>
@@ -181,7 +177,7 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 								<ul class="about-list mt-3">
 									{siblings.map((t) => (
 										<li>
-											<i class="fa-solid fa-check"></i>
+											<i class="fa-solid fa-check" aria-hidden="true"></i>
 											<a href={`/servicos/${t.slug}`}>{t.title}</a>
 										</li>
 									))}

@@ -59,11 +59,11 @@ import { waLink } from '../data/site';
 
 						<div class="counter-items wow fadeInUp" data-wow-delay=".7s">
 							<div class="content">
-								<h5>+20</h5>
+								<p class="counter-value">+20</p>
 								<p>Anos de experiência somada</p>
 							</div>
 							<div class="content">
-								<h5>+1.500</h5>
+								<p class="counter-value">+1.500</p>
 								<p>Casos atendidos</p>
 							</div>
 						</div>
@@ -71,7 +71,7 @@ import { waLink } from '../data/site';
 						<div class="about-button wow fadeInUp" data-wow-delay=".9s">
 							<a href={waLink('Olá! Gostaria de conhecer o escritório.')} target="_blank" rel="noopener" class="theme-btn">
 								Falar com o escritório
-								<i class="fa-brands fa-whatsapp"></i>
+								<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
 							</a>
 						</div>
 					</div>
@@ -95,7 +95,7 @@ import { waLink } from '../data/site';
 								<div class="icon mb-3">
 									<i class={v.icon}></i>
 								</div>
-								<h4>{v.title}</h4>
+								<h3>{v.title}</h3>
 								<p>{v.text}</p>
 							</div>
 						</div>

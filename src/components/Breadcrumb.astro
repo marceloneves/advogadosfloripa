@@ -19,15 +19,17 @@ const { heading, crumbs = [], animate = true } = Astro.props;
 				<div class="breadcrumb-sub-title">
 					<h1 class:list={[animate && 'wow fadeInUp']} data-wow-delay={animate ? '.3s' : undefined}>{heading}</h1>
 				</div>
+				<nav aria-label="Trilha de navegação">
 				<ul class:list={['breadcrumb-list', animate && 'wow fadeInUp']} data-wow-delay={animate ? '.5s' : undefined}>
 					<li><a href="/">Início</a></li>
 					{crumbs.map((c) => (
 						<li>
-							<i class="fa-sharp fa-solid fa-slash-forward"></i>
+							<i class="fa-sharp fa-solid fa-slash-forward" aria-hidden="true"></i>
 							{c.href ? <a href={c.href}>{c.label}</a> : c.label}
 						</li>
 					))}
 				</ul>
+				</nav>
 			</div>
 		</div>
 	</div>

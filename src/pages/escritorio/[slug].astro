@@ -58,30 +58,30 @@ const schema = [
 
 					<div class="single-footer-widget mt-4">
 						<div class="widget-head">
-							<h4>Dados profissionais</h4>
+							<h3>Dados profissionais</h3>
 						</div>
 						<ul class="about-list">
 							{lawyer.oab && (
 								<li>
-									<i class="fa-solid fa-id-badge"></i>
+									<i class="fa-solid fa-id-badge" aria-hidden="true"></i>
 									{lawyer.oab}
 								</li>
 							)}
 							{lawyer.city && (
 								<li>
-									<i class="fa-solid fa-location-dot"></i>
+									<i class="fa-solid fa-location-dot" aria-hidden="true"></i>
 									{lawyer.city}
 								</li>
 							)}
 							{lawyer.birth && (
 								<li>
-									<i class="fa-solid fa-cake-candles"></i>
+									<i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
 									{lawyer.birth}
 								</li>
 							)}
 							{lawyer.status && (
 								<li>
-									<i class="fa-solid fa-ring"></i>
+									<i class="fa-solid fa-ring" aria-hidden="true"></i>
 									{lawyer.status}
 								</li>
 							)}
@@ -95,7 +95,7 @@ const schema = [
 								class="theme-btn"
 							>
 								Falar com {lawyer.shortName}
-								<i class="fa-solid fa-arrow-right"></i>
+								<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
 							</a>
 						</div>
 					</div>
@@ -108,7 +108,7 @@ const schema = [
 					</div>
 					<p class="wow fadeInUp" data-wow-delay=".5s">{lawyer.bio}</p>
 
-					<h4 class="mt-5 mb-3">Áreas de atuação</h4>
+					<h3 class="mt-5 mb-3">Áreas de atuação</h3>
 					<div class="profile-tags wow fadeInUp" data-wow-delay=".6s">
 						{lawyer.areas.map((a) => (
 							<span>{a}</span>
@@ -117,11 +117,11 @@ const schema = [
 
 					{lawyer.roles && (
 						<>
-							<h4 class="mt-5 mb-3">Atuação institucional</h4>
+							<h3 class="mt-5 mb-3">Atuação institucional</h3>
 							<ul class="about-list">
 								{lawyer.roles.map((r) => (
 									<li>
-										<i class="fa-solid fa-check"></i>
+										<i class="fa-solid fa-check" aria-hidden="true"></i>
 										{r}
 									</li>
 								))}
@@ -131,11 +131,11 @@ const schema = [
 
 					{lawyer.highlights && (
 						<>
-							<h4 class="mt-5 mb-3">Destaques</h4>
+							<h3 class="mt-5 mb-3">Destaques</h3>
 							<ul class="about-list">
 								{lawyer.highlights.map((h) => (
 									<li>
-										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star" aria-hidden="true"></i>
 										{h}
 									</li>
 								))}
@@ -163,7 +163,7 @@ const schema = [
 						</div>
 						{lawyer.experience.map((e, i) => (
 							<div class="process-items wow fadeInUp" data-wow-delay=".2s">
-								<h6 class="number">{e.period ?? String(i + 1).padStart(2, '0')}</h6>
+								<span class="number">{e.period ?? String(i + 1).padStart(2, '0')}</span>
 								<div class="content">
 									{e.title && <h3>{e.title}</h3>}
 									<p>{e.detail}</p>
@@ -189,7 +189,7 @@ const schema = [
 						<div class="service-box-items h-100">
 							<div class="service-content">
 								<span class="sub-title">{e.period}</span>
-								<h4 class="mt-2">{e.title}</h4>
+								<h3 class="mt-2">{e.title}</h3>
 								<p>{e.org}</p>
 							</div>
 						</div>

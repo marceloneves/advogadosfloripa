@@ -160,6 +160,137 @@ select:focus-visible {
   margin-bottom: 12px;
 }
 
+/* Headings promovidos de h4/h5 para h3 (a hierarquia saltava níveis). O tema
+   estilizava pela tag, então as regras equivalentes vêm aqui. */
+.footer-widget-wrapper .single-footer-widget .widget-head h3,
+.service-box-items .service-content h3,
+.feature-main-area .feature-card-item2 .feature-content h3,
+.contact-details .content h3,
+.kfs-service-card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.footer-widget-wrapper .single-footer-widget .widget-head h3 {
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.service-box-items .service-content h3 a {
+  color: inherit;
+}
+
+.contact-details .content h3 {
+  font-size: 17px;
+  margin-bottom: 2px;
+}
+
+/* Mais headings promovidos: cards do about, timeline e perfis. */
+.about-box h3,
+.history-content h3,
+.experience-items .content h3,
+.education-items .content h3,
+.profile-card h3,
+.about-wrapper-2 .about-box h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.experience-items .number,
+.history-items .number,
+.process-items .number,
+.feature-image .number {
+  display: inline-block;
+}
+
+/* Etapas numeradas: o <ol> substitui a lista com ícone de check, que sugeria
+   itens equivalentes em vez de sequência. */
+.kfs-steps {
+  counter-reset: etapa;
+  list-style: none;
+  padding-left: 0;
+}
+
+.kfs-steps li {
+  counter-increment: etapa;
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 14px;
+}
+
+.kfs-steps li::before {
+  content: counter(etapa);
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--kfs-navy);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* --- HTML semantico -------------------------------------------------------
+   Telefone, endereco, horario e numeros de contador estavam em <h6>/<h2> e
+   entravam no indice do documento como titulos, gerando saltos de nivel. As
+   tags viraram <p>/<span>; estas regras replicam o estilo que o tema aplicava
+   pela tag, para o visual nao mudar. */
+.footer-section .footer-widget-wrapper .single-footer-widget .contact-info p {
+  color: var(--kfs-gray);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 162%;
+  margin: 0;
+}
+
+.footer-section .footer-widget-wrapper .single-footer-widget .contact-info p:not(:last-child) {
+  margin-bottom: 22px;
+}
+
+.footer-section .footer-widget-wrapper .single-footer-widget .contact-info p a {
+  color: var(--kfs-gray);
+  font-weight: 400;
+}
+
+.footer-section .contact-info {
+  font-style: normal; /* <address> vem em italico por padrao */
+}
+
+.countact-call .content .header-phone {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--kfs-navy);
+  line-height: 1.3;
+}
+
+.countact-call .content .header-phone a {
+  color: inherit;
+}
+
+.counter-content .counter-value {
+  font-family: inherit;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--kfs-navy);
+  margin: 0 0 4px;
+}
+
+@media (max-width: 767px) {
+  .counter-content .counter-value {
+    font-size: 40px;
+  }
+}
+
 /* --- Faixa de CTA ----------------------------------------------------------
    Substitui o bloco alto do tema (section-padding + pattern): faixa baixa,
    Azul Oceano chapado, frase em uma linha ao lado do botao. */
