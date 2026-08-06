@@ -932,17 +932,31 @@ main:focus {
 }
 
 .kfs-logo img {
-  height: 58px;
+  height: 84px;
   width: auto;
   display: block;
 }
 
+/* O logo com os nomes é mais alto que o anterior (proporção 1,49:1 contra
+   3,4:1), então a altura sobe um pouco para o texto continuar legível. */
+.header-main .kfs-logo img {
+  height: 86px;
+}
+
+/* No rodapé preto o logo em Azul Oceano desapareceria. O filtro clareia a
+   arte inteira; substituir por uma versão branca do arquivo original é o
+   ideal, quando ela existir. */
+.kfs-logo-invertido {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
+
 .footer-widget-wrapper .kfs-logo img {
-  height: 62px;
+  height: 88px;
 }
 
 .offcanvas__logo .kfs-logo img {
-  height: 46px;
+  height: 64px;
 }
 
 @media (max-width: 575px) {
