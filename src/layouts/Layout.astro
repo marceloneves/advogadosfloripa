@@ -6,6 +6,7 @@ import SearchPopup from '../components/SearchPopup.astro';
 import OffcanvasSidebar from '../components/OffcanvasSidebar.astro';
 import BackToTop from '../components/BackToTop.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
+import Schema from '../components/Schema.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
   crumbs?: { label: string; href?: string }[];
   /** Set to false to render the breadcrumb hero without reveal animations. */
   animate?: boolean;
+  /** Blocos JSON-LD específicos da página (Service, Person, FAQPage…). */
+  schema?: Record<string, unknown>[];
 }
 
 const {
@@ -24,6 +27,7 @@ const {
   heading,
   crumbs = [],
   animate = true,
+  schema = [],
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://kfsadvogados.com.br');
@@ -102,6 +106,8 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<link rel="stylesheet" href="/theme/css/site.css" />
 
 		<title>{title}</title>
+
+		<Schema crumbs={crumbs} extra={schema} />
 	</head>
 
 	<body>

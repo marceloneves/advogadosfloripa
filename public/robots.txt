@@ -1,0 +1,21 @@
+# KFS Sociedade de Advogados
+User-agent: *
+Allow: /
+
+# Rotas antigas mantidas apenas por redirect
+Disallow: /equipe/
+
+# Crawlers de IA liberados: o conteúdo é institucional e informativo
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://kfsadvogados.com.br/sitemap-index.xml

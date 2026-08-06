@@ -18,6 +18,36 @@ export function getStaticPaths() {
 const { area, topic } = Astro.props;
 const content = servicoContent[topic.slug];
 
+const origin = (Astro.site ?? new URL('https://kfsadvogados.com.br')).origin;
+
+/**
+ * FAQPage não gera mais rich result no Google (retirado em maio/2026), mas
+ * segue sendo lido por assistentes de IA ao citar a página — por isso fica.
+ */
+const schema = [
+  {
+    '@type': 'Service',
+    name: `${topic.title} em Florianópolis`,
+    description: topic.text,
+    serviceType: topic.title,
+    category: area.title,
+    provider: { '@id': `${origin}/#escritorio` },
+    areaServed: { '@type': 'City', name: 'Florianópolis' },
+  },
+  ...(content?.faqs?.length
+    ? [
+        {
+          '@type': 'FAQPage',
+          mainEntity: content.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.q,
+            acceptedAnswer: { '@type': 'Answer', text: f.a },
+          })),
+        },
+      ]
+    : []),
+];
+
 /** Demais serviços da mesma área, para navegação lateral. */
 const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 ---
@@ -27,6 +57,7 @@ const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
 	description={`${topic.text} Advogados em Florianópolis/SC, com atendimento presencial no Centro e por videoconferência.`}
 	heading={`${topic.title} em Florianópolis`}
 	crumbs={[{ label: 'Áreas de Atuação', href: '/servicos' }, { label: topic.title }]}
+	schema={schema}
 	animate={false}
 >
 	<section class="service-section section-padding fix kfs-service-page">

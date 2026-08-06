@@ -13,6 +13,24 @@ export function getStaticPaths() {
 }
 
 const { lawyer } = Astro.props;
+
+const origin = (Astro.site ?? new URL('https://kfsadvogados.com.br')).origin;
+
+const schema = [
+  {
+    '@type': 'Attorney',
+    name: lawyer.name,
+    jobTitle: lawyer.role,
+    description: lawyer.bio,
+    image: `${origin}${lawyer.photo}`,
+    url: `${origin}/escritorio/${lawyer.slug}`,
+    ...(lawyer.oab ? { identifier: lawyer.oab } : {}),
+    knowsAbout: lawyer.areas,
+    knowsLanguage: 'pt-BR',
+    worksFor: { '@id': `${origin}/#escritorio` },
+    areaServed: { '@type': 'City', name: 'Florianópolis' },
+  },
+];
 ---
 
 <Layout
@@ -20,6 +38,7 @@ const { lawyer } = Astro.props;
 	description={`${lawyer.name}${lawyer.oab ? `, ${lawyer.oab}` : ''}. Advogado em Florianópolis com atuação em ${lawyer.areas.slice(0, 3).join(', ')}.`}
 	heading={lawyer.name}
 	crumbs={[{ label: 'Advogados', href: '/escritorio' }, { label: lawyer.shortName }]}
+	schema={schema}
 	animate={false}
 >
 	<!-- Perfil -->

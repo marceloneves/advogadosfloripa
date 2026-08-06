@@ -1,0 +1,88 @@
+---
+import { site, socials } from '../data/site';
+
+interface Props {
+  /** Trilha do breadcrumb, na mesma ordem exibida na página. */
+  crumbs?: { label: string; href?: string }[];
+  /** Blocos adicionais (Service, Person, FAQPage…) já montados pela página. */
+  extra?: Record<string, unknown>[];
+}
+
+const { crumbs = [], extra = [] } = Astro.props;
+
+const origin = (Astro.site ?? new URL('https://kfsadvogados.com.br')).origin;
+const url = new URL(Astro.url.pathname, origin).href;
+
+/**
+ * O escritório é o mesmo nó em todas as páginas, por isso o @id fixo: os demais
+ * blocos apenas referenciam `${origin}/#escritorio` em vez de repetir o NAP.
+ */
+const escritorio = {
+  '@type': 'LegalService',
+  '@id': `${origin}/#escritorio`,
+  name: site.name,
+  legalName: site.legalName,
+  url: origin,
+  email: site.email,
+  telephone: `+${site.whatsapp}`,
+  taxID: site.cnpj,
+  image: `${origin}/og.png`,
+  logo: `${origin}/theme/img/brand/kfs-logo.svg`,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rua Felipe Schmidt, 51 — Sala 501',
+    addressLocality: 'Florianópolis',
+    addressRegion: 'SC',
+    postalCode: '88010-000',
+    addressCountry: 'BR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: -27.5969,
+    longitude: -48.5495,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Florianópolis' },
+    { '@type': 'City', name: 'São José' },
+    { '@type': 'City', name: 'Palhoça' },
+    { '@type': 'State', name: 'Santa Catarina' },
+  ],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '18:00',
+  },
+  sameAs: socials.filter((s) => s.url !== '#').map((s) => s.url),
+};
+
+const website = {
+  '@type': 'WebSite',
+  '@id': `${origin}/#website`,
+  url: origin,
+  name: site.name,
+  inLanguage: 'pt-BR',
+  publisher: { '@id': `${origin}/#escritorio` },
+};
+
+const breadcrumb =
+  crumbs.length > 0
+    ? {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Início', item: origin },
+          ...crumbs.map((c, i) => ({
+            '@type': 'ListItem',
+            position: i + 2,
+            name: c.label,
+            ...(c.href ? { item: new URL(c.href, origin).href } : { item: url }),
+          })),
+        ],
+      }
+    : null;
+
+const graph = [escritorio, website, breadcrumb, ...extra].filter(Boolean);
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })} />

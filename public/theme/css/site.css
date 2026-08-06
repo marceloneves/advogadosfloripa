@@ -150,8 +150,13 @@ select:focus-visible {
   }
 }
 
+/* O tema estilizava o titulo do breadcrumb como h2; virou h1 porque as paginas
+   internas ficavam sem H1 nenhum. */
+.breadcrumb-wrapper .page-heading h1,
 .breadcrumb-wrapper .page-heading h2 {
+  color: var(--white);
   font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.15;
   margin-bottom: 12px;
 }
 
