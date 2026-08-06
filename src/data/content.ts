@@ -1,8 +1,8 @@
 export const stats = [
   { value: 20, sign: '+', label: 'Anos de experiência' },
   { value: 1500, sign: '+', label: 'Casos atendidos' },
-  { value: 6, sign: '', label: 'Áreas de atuação' },
-  { value: 98, sign: '%', label: 'Clientes satisfeitos' },
+  { value: 5, sign: '', label: 'Áreas de atuação' },
+  { value: 3, sign: '', label: 'Advogados' },
 ];
 
 /**
@@ -14,25 +14,25 @@ export const process = [
     number: '01',
     title: 'Primeiro contato',
     text: 'Você nos procura por telefone, WhatsApp ou formulário. Ouvimos o seu caso sem compromisso.',
-    image: '/theme/img/equipe/proc-asterley-220.webp',
-    image2x: '/theme/img/equipe/proc-asterley-440.webp',
-    alt: 'Asterley Kincezski da Silva, advogado do KFS',
+    image: '/theme/img/equipe/proc-contato-220.webp',
+    image2x: '/theme/img/equipe/proc-contato-440.webp',
+    alt: 'Mão segurando um celular ao entrar em contato com o escritório',
   },
   {
     number: '02',
     title: 'Análise do caso',
     text: 'Estudamos a documentação, avaliamos a viabilidade jurídica e explicamos os caminhos possíveis.',
-    image: '/theme/img/equipe/proc-fernando-220.webp',
-    image2x: '/theme/img/equipe/proc-fernando-440.webp',
-    alt: 'Fernando Luis Fabre, advogado do KFS',
+    image: '/theme/img/equipe/proc-analise-220.webp',
+    image2x: '/theme/img/equipe/proc-analise-440.webp',
+    alt: 'Documento e caneta sobre a mesa durante a análise do caso',
   },
   {
     number: '03',
     title: 'Estratégia e proposta',
     text: 'Definimos a estratégia mais adequada e apresentamos honorários de forma clara e transparente.',
-    image: '/theme/img/equipe/proc-matheus-220.webp',
-    image2x: '/theme/img/equipe/proc-matheus-440.webp',
-    alt: 'Matheus Stein, advogado do KFS',
+    image: '/theme/img/equipe/proc-estrategia-220.webp',
+    image2x: '/theme/img/equipe/proc-estrategia-440.webp',
+    alt: 'Advogado apresentando documentos ao cliente durante reunião',
   },
   {
     number: '04',
@@ -175,12 +175,6 @@ export const faqs = [
  */
 export const cases = [
   {
-    category: 'Direito da Saúde',
-    title: 'Cirurgia ou exame negado pelo plano',
-    image: '/theme/img/demo/01-4.jpg',
-    href: '/servicos#direito-saude',
-  },
-  {
     category: 'Direito Criminal',
     title: 'Defesa em Tribunal do Júri',
     image: '/theme/img/demo/02-2.jpg',
@@ -193,6 +187,18 @@ export const cases = [
     href: '/servicos#direito-militar',
   },
   {
+    category: 'Direito Civil',
+    title: 'Indenização por danos morais e materiais',
+    image: '/theme/img/demo/06-1.jpg',
+    href: '/servicos#direito-civil',
+  },
+  {
+    category: 'Direito Civil',
+    title: 'Divórcio, guarda e partilha de bens',
+    image: '/theme/img/demo/12-1.jpg',
+    href: '/servicos#direito-civil',
+  },
+  {
     category: 'Direito Previdenciário',
     title: 'Aposentadoria especial e por tempo',
     image: '/theme/img/demo/04-1.jpg',
@@ -203,24 +209,6 @@ export const cases = [
     title: 'Defesa em processo disciplinar (PAD)',
     image: '/theme/img/demo/05-1.jpg',
     href: '/servicos#direito-administrativo',
-  },
-  {
-    category: 'Direito Civil',
-    title: 'Indenização por danos morais e materiais',
-    image: '/theme/img/demo/06-1.jpg',
-    href: '/servicos#direito-civil',
-  },
-  {
-    category: 'Direito da Saúde',
-    title: 'Medicamento de alto custo pelo SUS',
-    image: '/theme/img/demo/11-1.jpg',
-    href: '/servicos#direito-saude',
-  },
-  {
-    category: 'Direito Civil',
-    title: 'Divórcio, guarda e partilha de bens',
-    image: '/theme/img/demo/12-1.jpg',
-    href: '/servicos#direito-civil',
   },
   {
     category: 'Direito Administrativo',

@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ConsultationCta from '../../components/ConsultationCta.astro';
+import ContactSection from '../../components/ContactSection.astro';
+import Accordion from '../../components/Accordion.astro';
+import { services, waLink } from '../../data/site';
+import { servicoContent } from '../../data/servicos';
+
+export function getStaticPaths() {
+  return services.flatMap((area) =>
+    (area.topics ?? []).map((topic) => ({
+      params: { slug: topic.slug },
+      props: { area, topic },
+    }))
+  );
+}
+
+const { area, topic } = Astro.props;
+const content = servicoContent[topic.slug];
+
+/** Demais serviços da mesma área, para navegação lateral. */
+const siblings = (area.topics ?? []).filter((t) => t.slug !== topic.slug);
+---
+
+<Layout
+	title={`${topic.title} em Florianópolis — ${area.title} | KFS Sociedade de Advogados`}
+	description={`${topic.text} Advogados em Florianópolis/SC, com atendimento presencial no Centro e por videoconferência.`}
+	heading={`${topic.title} em Florianópolis`}
+	crumbs={[{ label: 'Áreas de Atuação', href: '/servicos' }, { label: topic.title }]}
+	animate={false}
+>
+	<section class="service-section section-padding fix kfs-service-page">
+		<div class="container">
+			<div class="row g-5">
+				<div class="col-lg-8">
+					<div class="section-title">
+						<span class="sub-title">{area.title}</span>
+						<h2>O que é {topic.title.toLowerCase()}</h2>
+					</div>
+					{content?.oQueE.map((p) => <p class="mb-3">{p}</p>)}
+
+					<div class="section-title mt-5">
+						<h2>Como funciona</h2>
+					</div>
+					<ul class="about-list">
+						{content?.comoFunciona.map((step) => (
+							<li>
+								<i class="fa-solid fa-check"></i>
+								{step}
+							</li>
+						))}
+					</ul>
+
+					<div class="section-title mt-5">
+						<h2>Por que contar com um advogado</h2>
+					</div>
+					{content?.porQue.map((p) => <p class="mb-3">{p}</p>)}
+
+					{content?.faqs?.length ? (
+						<>
+							<div class="section-title mt-5">
+								<h2>Perguntas frequentes</h2>
+							</div>
+							<Accordion id={`faq-${topic.slug}`} items={content.faqs} />
+						</>
+					) : null}
+				</div>
+
+				<div class="col-lg-4">
+					<div class="service-box-items">
+						<div class="service-content">
+							<h4>Fale sobre o seu caso</h4>
+							<p>
+								Conte o que aconteceu e retornamos com os caminhos possíveis. Atendimento
+								presencial em Florianópolis e por videoconferência.
+							</p>
+							<a
+								href={waLink(`Olá! Gostaria de falar sobre ${topic.title}.`)}
+								target="_blank"
+								rel="noopener"
+								class="theme-btn mt-3"
+							>
+								Falar com um advogado
+								<i class="fa-solid fa-arrow-right"></i>
+							</a>
+						</div>
+					</div>
+
+					{siblings.length > 0 && (
+						<div class="service-box-items mt-4">
+							<div class="service-content">
+								<h4>Em {area.title}</h4>
+								<ul class="about-list mt-3">
+									{siblings.map((t) => (
+										<li>
+											<i class="fa-solid fa-check"></i>
+											<a href={`/servicos/${t.slug}`}>{t.title}</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						</div>
+					)}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<ConsultationCta title={`Precisa de orientação sobre ${topic.title.toLowerCase()}?`} />
+
+	<ContactSection formId={`${topic.slug}-contact`} animate={false} />
+</Layout>

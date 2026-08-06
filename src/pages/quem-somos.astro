@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WorkProcess from '../components/WorkProcess.astro';
-import TeamGrid from '../components/TeamGrid.astro';
 import Testimonials from '../components/Testimonials.astro';
 import HistorySlider from '../components/HistorySlider.astro';
 import ConsultationCta from '../components/ConsultationCta.astro';
@@ -16,6 +15,7 @@ import { waLink } from '../data/site';
 	description="Conheça o escritório KFS: trajetória, valores e a equipe de advogados que atua em Florianópolis."
 	heading="Quem Somos"
 	crumbs={[{ label: 'Quem Somos' }]}
+	animate={false}
 >
 	<!-- História -->
 	<section class="about-section section-padding fix">
@@ -28,13 +28,13 @@ import { waLink } from '../data/site';
 								class="wow img-custom-anim-left"
 								data-wow-duration="1.3s"
 								data-wow-delay="0.3s"
-								src="/theme/img/demo/01.jpg"
-								alt="KFS Sociedade de Advogados"
+								src="/theme/img/equipe/equipe-kfs-900.webp"
+								srcset="/theme/img/equipe/equipe-kfs-600.webp 600w, /theme/img/equipe/equipe-kfs-900.webp 900w, /theme/img/equipe/equipe-kfs-1200.webp 1200w"
+								sizes="(max-width: 991px) 100vw, 560px"
+								width="900"
+								height="675"
+								alt="Os advogados Fernando Fabre, Matheus Stein e Asterley Kincezski no escritório KFS, em Florianópolis"
 							/>
-							<div class="about-box">
-								<span>Centro de Florianópolis</span>
-								<h4><a href="/contato">Rua Felipe Schmidt, 51</a></h4>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -54,8 +54,7 @@ import { waLink } from '../data/site';
 							processo por dentro.
 						</p>
 						<p class="wow fadeInUp" data-wow-delay=".6s">
-							Atuamos em Direito Criminal, Militar, da Saúde, Previdenciário, Administrativo e
-							Civil, sempre com o mesmo compromisso: explicar o caso em português claro,
+							Atuamos em Direito Criminal, Civil, Militar, Previdenciário e Administrativo, sempre com o mesmo compromisso: explicar o caso em português claro,
 							apresentar os cenários possíveis e conduzir com transparência do início ao fim.
 						</p>
 
@@ -159,17 +158,6 @@ import { waLink } from '../data/site';
 				<h2 class="wow fadeInUp" data-wow-delay=".3s">Resultados que falam por nós</h2>
 			</div>
 			<Testimonials />
-		</div>
-	</section>
-
-	<!-- Equipe -->
-	<section class="team-section section-padding fix section-bg">
-		<div class="container">
-			<div class="section-title text-center mb-5">
-				<span class="sub-title wow fadeInUp">Advogados associados</span>
-				<h2 class="wow fadeInUp" data-wow-delay=".3s">Quem vai cuidar do seu caso</h2>
-			</div>
-			<TeamGrid variant="style1" />
 		</div>
 	</section>
 

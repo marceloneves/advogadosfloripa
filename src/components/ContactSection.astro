@@ -4,9 +4,11 @@ import { site } from '../data/site';
 
 interface Props {
   formId?: string;
+  /** Set to false to render without the WOW.js reveal animations. */
+  animate?: boolean;
 }
 
-const { formId = 'contact-form' } = Astro.props;
+const { formId = 'contact-form', animate = true } = Astro.props;
 
 const details = [
   {
@@ -37,15 +39,15 @@ const details = [
 		<div class="row g-5 align-items-center">
 			<div class="col-lg-5">
 				<div class="section-title">
-					<span class="sub-title wow fadeInUp">Contato</span>
-					<h2 class="wow fadeInUp" data-wow-delay=".3s">Estamos no Centro de Florianópolis</h2>
+					<span class:list={['sub-title', animate && 'wow fadeInUp']}>Contato</span>
+					<h2 class:list={[animate && 'wow fadeInUp']} data-wow-delay={animate ? '.3s' : undefined}>Estamos no Centro de Florianópolis</h2>
 				</div>
-				<p class="wow fadeInUp" data-wow-delay=".5s">
+				<p class:list={[animate && 'wow fadeInUp']} data-wow-delay={animate ? '.5s' : undefined}>
 					Atendemos presencialmente na Grande Florianópolis e por videoconferência para todo o
 					Brasil.
 				</p>
 
-				<ul class="contact-details wow fadeInUp" data-wow-delay=".7s">
+				<ul class:list={['contact-details', animate && 'wow fadeInUp']} data-wow-delay={animate ? '.7s' : undefined}>
 					{details.map((d) => (
 						<li class="contact-detail-item">
 							<div class="icon">
@@ -71,7 +73,7 @@ const details = [
 			</div>
 
 			<div class="col-lg-7">
-				<ContactForm id={formId} boxed />
+				<ContactForm id={formId} boxed animate={animate} />
 			</div>
 		</div>
 	</div>

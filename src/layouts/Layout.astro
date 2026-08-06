@@ -14,16 +14,50 @@ interface Props {
   /** Page title shown in the breadcrumb hero. Omit on the homepage. */
   heading?: string;
   crumbs?: { label: string; href?: string }[];
+  /** Set to false to render the breadcrumb hero without reveal animations. */
+  animate?: boolean;
 }
 
 const {
   title = `${site.name} — ${site.tagline}`,
-  description = 'Escritório de advocacia em Florianópolis. Atuação em Direito Criminal, Militar, da Saúde, Previdenciário, Administrativo e Civil.',
+  description = 'Escritório de advocacia em Florianópolis. Atuação em Direito Criminal, Civil, Militar, Previdenciário e Administrativo.',
   heading,
   crumbs = [],
+  animate = true,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://advogadosfloripa.com.br');
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://kfsadvogados.com.br');
+
+/**
+ * Com `animate={false}`, o conteúdo da página é renderizado e as classes de
+ * animação são retiradas do HTML. Precisa ser no HTML mesmo, e não só no CSS:
+ * o WOW.js aplica `visibility:hidden` inline nos `.wow` antes de animar, então
+ * desligar só a animação deixaria o conteúdo invisível. Breadcrumb e Footer
+ * recebem `animate` por prop; o resto passa por aqui porque a página monta
+ * dezenas de componentes de tema.
+ */
+const ANIM_CLASS = /^(wow|animated|fadeIn\w*|fadeOut\w*|img-custom-anim-\w+)$/;
+
+/** Trechos entre <!--keep-anim--> e <!--/keep-anim--> ficam intactos. */
+const KEEP = /<!--keep-anim-->[\s\S]*?<!--\/keep-anim-->/g;
+
+const stripOne = (html: string) =>
+  html
+    .replace(/\sdata-wow-[\w-]+="[^"]*"/g, '')
+    .replace(/class="([^"]*)"/g, (match, cls: string) => {
+      const kept = cls.split(/\s+/).filter((c) => c && !ANIM_CLASS.test(c));
+      return kept.length ? `class="${kept.join(' ')}"` : '';
+    });
+
+const stripAnimations = (html: string) => {
+  const preserved: string[] = [];
+  // Token improvável de aparecer no conteúdo: um número solto quebraria em
+  // textos como "das 9 às 18".
+  const masked = html.replace(KEEP, (block) => `@@keep-${preserved.push(block) - 1}@@`);
+  return stripOne(masked).replace(/@@keep-(\d+)@@/g, (_, i) => preserved[Number(i)]);
+};
+
+const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('default'));
 ---
 
 <!doctype html>
@@ -42,7 +76,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://advogadosfl
 		<meta property="og:url" content={canonical} />
 		<meta property="og:site_name" content={site.name} />
 		<meta property="og:locale" content="pt_BR" />
-		<meta property="og:image" content={new URL('/og.png', Astro.site ?? 'https://advogadosfloripa.com.br')} />
+		<meta property="og:image" content={new URL('/og.png', Astro.site ?? 'https://kfsadvogados.com.br')} />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="theme-color" content="#2e3754" />
 
@@ -80,13 +114,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://advogadosfl
 			<Header />
 		</header>
 
-		{heading && <Breadcrumb heading={heading} crumbs={crumbs} />}
+		{heading && <Breadcrumb heading={heading} crumbs={crumbs} animate={animate} />}
 
 		<main>
-			<slot />
+			{slotHtml === null ? <slot /> : <Fragment set:html={slotHtml} />}
 		</main>
 
-		<Footer />
+		<Footer animate={animate} />
 		<BackToTop />
 
 		<script is:inline src="/theme/js/jquery-3.7.1.min.js"></script>

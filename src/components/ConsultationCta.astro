@@ -2,37 +2,31 @@
 import { waLink } from '../data/site';
 
 interface Props {
-  sub?: string;
   title?: string;
-  text?: string;
+  /** Texto do botão. */
+  cta?: string;
 }
 
 const {
-  sub = 'Atendimento',
   title = 'Solicite uma avaliação do seu caso',
-  text = 'Conte a sua situação e retornamos com os caminhos jurídicos possíveis. Sem compromisso e com total sigilo.',
+  cta = 'Falar com um advogado',
 } = Astro.props;
 ---
 
-<section class="cta-request-section section-padding fix kfs-pattern-bg">
-	<div class="kfs-pattern"></div>
+{/* Faixa baixa: frase em uma linha, fundo Azul Oceano chapado, botão ao lado. */}
+<section class="kfs-cta-band">
 	<div class="container">
-		<div class="row">
-			<div class="col-xl-7">
-				<div class="cta-request-content">
-					<div class="section-title">
-						<span class="sub-title text-white wow fadeInUp">{sub}</span>
-						<h2 class="text-white wow fadeInUp" data-wow-delay=".3s">{title}</h2>
-					</div>
-					<p class="text-white wow fadeInUp" data-wow-delay=".5s">{text}</p>
-					<div class="search-widget wow fadeInUp" data-wow-delay=".7s">
-						<a href={waLink('Olá! Gostaria de uma avaliação do meu caso.')} target="_blank" rel="noopener" class="theme-btn">
-							Falar com um advogado
-							<i class="fa-solid fa-arrow-right-long"></i>
-						</a>
-					</div>
-				</div>
-			</div>
+		<div class="kfs-cta-inner">
+			<h2>{title}</h2>
+			<a
+				href={waLink('Olá! Gostaria de uma avaliação do meu caso.')}
+				target="_blank"
+				rel="noopener"
+				class="theme-btn"
+			>
+				{cta}
+				<i class="fa-solid fa-arrow-right-long"></i>
+			</a>
 		</div>
 	</div>
 </section>

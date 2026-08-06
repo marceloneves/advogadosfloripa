@@ -27,63 +27,6 @@ export interface Lawyer {
 
 export const team: Lawyer[] = [
   {
-    slug: 'fernando-fabre',
-    name: 'Fernando Luis Fabre',
-    shortName: 'Fernando Fabre',
-    role: 'Direito Criminal e Militar',
-    photo: '/theme/img/equipe/fernando-fabre-900.webp',
-    photoWidths: [600, 900, 1200],
-    photoCard: '/theme/img/equipe/fernando-fabre-card-600.webp',
-    photoCardWidths: [400, 600, 900],
-    city: 'Florianópolis/SC',
-    status: 'Casado',
-    areas: [
-      'Direito Criminal',
-      'Tribunal do Júri',
-      'Direito Militar',
-      'Direito Administrativo',
-      'Defesa de Servidores Públicos',
-      'Registro e Porte de Arma de Fogo',
-    ],
-    roles: [
-      'Membro da Comissão de Direito Militar da OAB/SC',
-      'Membro da Comissão de Direito do Servidor Público da OAB/SC',
-    ],
-    education: [
-      { title: 'Bacharelado em Direito', org: 'Univali', period: '2008' },
-      { title: 'Ciências Políticas', org: 'UNINTER', period: 'Cursando' },
-      { title: 'Especialização em Ciências Penais', org: 'Universidade Anhanguera', period: '2010' },
-      { title: 'Especialização em Direito Público', org: 'Universidade Anhanguera', period: '2012' },
-      {
-        title: 'Criminologia, Política Criminal e Segurança Pública',
-        org: 'Universidade Anhanguera',
-        period: '2014',
-      },
-      { title: 'Especialização em Direito Militar', org: 'Faculdade Legale', period: 'Cursando' },
-    ],
-    experience: [
-      {
-        title: 'Oficial (1º Tenente) da Força Aérea Brasileira',
-        detail:
-          'Chefe da Assessoria Jurídica ao Comando da Base Aérea de Florianópolis, por 8 anos. Docente de Direito Penal e Processual Penal Militar, Organização Judiciária Militar e Sindicância em formação militar.',
-      },
-      {
-        title: 'Residente Jurídico — Ministério Público de Santa Catarina',
-        detail:
-          'Estágio de pós-graduação (MP-Residente) por 3 anos, com confecção de peças privativas de Promotor de Justiça e condução de procedimentos administrativos pré-judiciais.',
-      },
-      {
-        title: 'Advogado — atuação de mais de 5 anos',
-        detail: 'Exercício da advocacia com ênfase em Direito Criminal, Militar e Administrativo.',
-      },
-    ],
-    bio: 'Fernando Luis Fabre é advogado com sólida trajetória no Direito Criminal, Militar e Administrativo. Atuou por oito anos como Oficial (1º Tenente) da Força Aérea Brasileira, chefiando a Assessoria Jurídica ao Comando da Base Aérea de Florianópolis, e por três anos como Residente Jurídico junto ao Ministério Público de Santa Catarina. Especialista em Tribunal do Júri, crimes financeiros, questões de vencimentos e pensões militares, defesa de servidores públicos e obtenção de registro e porte de arma de fogo. É membro das Comissões de Direito Militar e de Direito do Servidor Público da OAB/SC.',
-    cta: {
-      title: 'Precisa de defesa criminal ou militar?',
-      text: 'Fale diretamente com o advogado Fernando Luis Fabre e receba uma avaliação do seu caso.',
-    },
-  },
-  {
     slug: 'asterley-kincezski',
     name: 'Asterley Kincezski da Silva',
     shortName: 'Asterley Kincezski',
@@ -161,6 +104,63 @@ export const team: Lawyer[] = [
     cta: {
       title: 'Plano de saúde negou seu tratamento?',
       text: 'Fale com o advogado Asterley Kincezski e entenda quais são os seus direitos.',
+    },
+  },
+  {
+    slug: 'fernando-fabre',
+    name: 'Fernando Luis Fabre',
+    shortName: 'Fernando Fabre',
+    role: 'Direito Criminal e Militar',
+    photo: '/theme/img/equipe/fernando-fabre-900.webp',
+    photoWidths: [600, 900, 1200],
+    photoCard: '/theme/img/equipe/fernando-fabre-card-600.webp',
+    photoCardWidths: [400, 600, 900],
+    city: 'Florianópolis/SC',
+    status: 'Casado',
+    areas: [
+      'Direito Criminal',
+      'Tribunal do Júri',
+      'Direito Militar',
+      'Direito Administrativo',
+      'Defesa de Servidores Públicos',
+      'Registro e Porte de Arma de Fogo',
+    ],
+    roles: [
+      'Membro da Comissão de Direito Militar da OAB/SC',
+      'Membro da Comissão de Direito do Servidor Público da OAB/SC',
+    ],
+    education: [
+      { title: 'Bacharelado em Direito', org: 'Univali', period: '2008' },
+      { title: 'Ciências Políticas', org: 'UNINTER', period: 'Cursando' },
+      { title: 'Especialização em Ciências Penais', org: 'Universidade Anhanguera', period: '2010' },
+      { title: 'Especialização em Direito Público', org: 'Universidade Anhanguera', period: '2012' },
+      {
+        title: 'Criminologia, Política Criminal e Segurança Pública',
+        org: 'Universidade Anhanguera',
+        period: '2014',
+      },
+      { title: 'Especialização em Direito Militar', org: 'Faculdade Legale', period: 'Cursando' },
+    ],
+    experience: [
+      {
+        title: 'Oficial (1º Tenente) da Força Aérea Brasileira',
+        detail:
+          'Chefe da Assessoria Jurídica ao Comando da Base Aérea de Florianópolis, por 8 anos. Docente de Direito Penal e Processual Penal Militar, Organização Judiciária Militar e Sindicância em formação militar.',
+      },
+      {
+        title: 'Residente Jurídico — Ministério Público de Santa Catarina',
+        detail:
+          'Estágio de pós-graduação (MP-Residente) por 3 anos, com confecção de peças privativas de Promotor de Justiça e condução de procedimentos administrativos pré-judiciais.',
+      },
+      {
+        title: 'Advogado — atuação de mais de 5 anos',
+        detail: 'Exercício da advocacia com ênfase em Direito Criminal, Militar e Administrativo.',
+      },
+    ],
+    bio: 'Fernando Luis Fabre é advogado com sólida trajetória no Direito Criminal, Militar e Administrativo. Atuou por oito anos como Oficial (1º Tenente) da Força Aérea Brasileira, chefiando a Assessoria Jurídica ao Comando da Base Aérea de Florianópolis, e por três anos como Residente Jurídico junto ao Ministério Público de Santa Catarina. Especialista em Tribunal do Júri, crimes financeiros, questões de vencimentos e pensões militares, defesa de servidores públicos e obtenção de registro e porte de arma de fogo. É membro das Comissões de Direito Militar e de Direito do Servidor Público da OAB/SC.',
+    cta: {
+      title: 'Precisa de defesa criminal ou militar?',
+      text: 'Fale diretamente com o advogado Fernando Luis Fabre e receba uma avaliação do seu caso.',
     },
   },
   {

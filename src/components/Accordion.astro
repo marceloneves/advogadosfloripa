@@ -3,16 +3,21 @@ import { faqs } from '../data/content';
 
 interface Props {
   limit?: number;
+  /** Perguntas próprias; sem isso, usa o FAQ geral do escritório. */
+  items?: { q: string; a: string }[];
+  /** Precisa ser único quando há mais de um acordeão na mesma página. */
+  id?: string;
 }
 
-const { limit } = Astro.props;
-const items = limit ? faqs.slice(0, limit) : faqs;
+const { limit, items: custom, id = 'accordion' } = Astro.props;
+const source = custom ?? faqs;
+const items = limit ? source.slice(0, limit) : source;
 ---
 
 <div class="faq-wrapper">
 	<div class="faq-content m-0">
 		<div class="faq-accordion mt-0">
-			<div class="accordion" id="accordion">
+			<div class="accordion" id={id}>
 				{items.map((f, i) => (
 					<div class="accordion-item mb-3">
 						<h5 class="accordion-header">
@@ -20,17 +25,17 @@ const items = limit ? faqs.slice(0, limit) : faqs;
 								class:list={['accordion-button', i !== 0 && 'collapsed']}
 								type="button"
 								data-bs-toggle="collapse"
-								data-bs-target={`#faq${i}`}
+								data-bs-target={`#${id}-${i}`}
 								aria-expanded={i === 0 ? 'true' : 'false'}
-								aria-controls={`faq${i}`}
+								aria-controls={`${id}-${i}`}
 							>
 								{f.q}
 							</button>
 						</h5>
 						<div
-							id={`faq${i}`}
+							id={`${id}-${i}`}
 							class:list={['accordion-collapse', 'collapse', i === 0 && 'show']}
-							data-bs-parent="#accordion"
+							data-bs-parent={`#${id}`}
 						>
 							<div class="accordion-body pt-2">{f.a}</div>
 						</div>

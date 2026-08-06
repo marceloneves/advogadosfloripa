@@ -8,6 +8,8 @@ interface Props {
   boxed?: boolean;
   sub?: string;
   title?: string;
+  /** Set to false to render without the WOW.js reveal animations. */
+  animate?: boolean;
 }
 
 const {
@@ -15,36 +17,42 @@ const {
   boxed = false,
   sub = 'Agende um atendimento',
   title = 'Conte o seu caso',
+  animate = true,
 } = Astro.props;
+
+const wow = (delay: string, base = '') => ({
+  class: [base, animate && 'wow fadeInUp'].filter(Boolean).join(' ') || undefined,
+  'data-wow-delay': animate ? delay : undefined,
+});
 ---
 
 <div class:list={[boxed && 'appointment-wrapper']}>
 	<div class:list={[boxed && 'contact-content']}>
 		{boxed && (
 			<>
-				<span class="wow fadeInUp" data-wow-delay=".3s">{sub}</span>
-				<h3 class="wow fadeInUp" data-wow-delay=".5s">{title}</h3>
+				<span {...wow('.3s')}>{sub}</span>
+				<h3 {...wow('.5s')}>{title}</h3>
 			</>
 		)}
 
 		<form id={id} class="contact-form-items" novalidate>
 			<div class="row g-4">
-				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+				<div {...wow('.3s', 'col-lg-6')}>
 					<div class="form-clt">
 						<input type="text" name="nome" placeholder="Seu nome" required aria-label="Seu nome" />
 					</div>
 				</div>
-				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+				<div {...wow('.5s', 'col-lg-6')}>
 					<div class="form-clt">
 						<input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" />
 					</div>
 				</div>
-				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
+				<div {...wow('.3s', 'col-lg-6')}>
 					<div class="form-clt">
 						<input type="tel" name="telefone" placeholder="Telefone / WhatsApp" aria-label="Telefone" />
 					</div>
 				</div>
-				<div class="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
+				<div {...wow('.5s', 'col-lg-6')}>
 					<div class="form-clt">
 						<select name="area" aria-label="Área do direito">
 							<option value="">Área do direito</option>
@@ -55,12 +63,12 @@ const {
 						</select>
 					</div>
 				</div>
-				<div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
+				<div {...wow('.3s', 'col-lg-12')}>
 					<div class="form-clt">
 						<textarea name="mensagem" rows="5" placeholder="Descreva brevemente o seu caso" required aria-label="Mensagem"></textarea>
 					</div>
 				</div>
-				<div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
+				<div {...wow('.5s', 'col-lg-12')}>
 					<button type="submit" class="theme-btn">
 						Enviar pelo WhatsApp
 						<i class="fa-solid fa-arrow-right"></i>

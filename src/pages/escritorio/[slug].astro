@@ -19,7 +19,8 @@ const { lawyer } = Astro.props;
 	title={`${lawyer.name} — Advogado | KFS Sociedade de Advogados`}
 	description={`${lawyer.name}${lawyer.oab ? `, ${lawyer.oab}` : ''}. Advogado em Florianópolis com atuação em ${lawyer.areas.slice(0, 3).join(', ')}.`}
 	heading={lawyer.name}
-	crumbs={[{ label: 'Advogados', href: '/equipe' }, { label: lawyer.shortName }]}
+	crumbs={[{ label: 'Advogados', href: '/escritorio' }, { label: lawyer.shortName }]}
+	animate={false}
 >
 	<!-- Perfil -->
 	<section class="team-details-section section-padding fix">
