@@ -30,7 +30,7 @@ const items = limit ? services.slice(0, limit) : services;
 						</div>
 					</div>
 					<div class="service-image img-custom-anim-right wow" data-wow-delay=".5s">
-						<img src={serviceImages[i % serviceImages.length]} alt={s.title} />
+						<img src={serviceImages[i % serviceImages.length]} alt={s.title} loading="lazy" decoding="async" />
 					</div>
 				</div>
 			</div>

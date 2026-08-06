@@ -15,7 +15,7 @@ const items = limit ? cases.slice(0, limit) : cases;
 		<div class={columns}>
 			<div class="project-card-items img-custom-anim-left wow" data-wow-delay=".3s">
 				<div class="project-image">
-					<img src={c.image} alt={c.title} />
+					<img src={c.image} alt={c.title} loading="lazy" decoding="async" />
 					<div class="project-content">
 						<span>{c.category}</span>
 						<h3>

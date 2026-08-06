@@ -15,6 +15,7 @@ const posts = (await getCollection('blog')).sort(
 	heading="Blog"
 	crumbs={[{ label: 'Blog' }]}
 	animate={false}
+	noindex={posts.length === 0}
 >
 	<section class="news-section section-padding fix">
 		<div class="container">

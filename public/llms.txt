@@ -1,0 +1,69 @@
+# KFS Sociedade de Advogados
+
+> Escritório de advocacia no Centro de Florianópolis/SC, com atuação em Direito Criminal, Civil, Militar, da Saúde, do Trabalho, Previdenciário e Administrativo. Atendimento presencial na Grande Florianópolis e por videoconferência para todo o Brasil.
+
+Kincezski e Fabre Sociedade de Advogados — CNPJ 66.828.182/0001-00.
+Rua Felipe Schmidt, 51, Sala 501, Centro, Florianópolis/SC, 88010-000.
+Contato: contato@kfsadvogados.com.br · (48) 93381-8578.
+
+O conteúdo do site é informativo e não substitui a análise de um caso concreto por advogado.
+Cada página de serviço indica o advogado responsável e a data da última revisão.
+
+## Institucional
+
+- [Quem somos](https://kfsadvogados.com.br/quem-somos): trajetória, valores e forma de trabalho do escritório
+- [Advogados](https://kfsadvogados.com.br/escritorio): perfis com formação, OAB e áreas de atuação
+- [Áreas de atuação](https://kfsadvogados.com.br/servicos): índice das áreas e de todos os serviços
+- [Perguntas frequentes](https://kfsadvogados.com.br/faq): honorários, prazos e atendimento
+- [Contato](https://kfsadvogados.com.br/contato): endereço, telefone e formulário
+
+## Serviços
+
+- [Medida protetiva](https://kfsadvogados.com.br/servicos/medida-protetiva)
+- [Defesa do homem na Maria da Penha](https://kfsadvogados.com.br/servicos/defesa-maria-da-penha)
+- [Tribunal do Júri](https://kfsadvogados.com.br/servicos/tribunal-do-juri)
+- [Inquérito policial e ação penal](https://kfsadvogados.com.br/servicos/inquerito-e-acao-penal)
+- [Habeas corpus e recursos](https://kfsadvogados.com.br/servicos/habeas-corpus)
+- [Registro e porte de arma de fogo](https://kfsadvogados.com.br/servicos/porte-de-arma)
+- [Crimes financeiros e patrimoniais](https://kfsadvogados.com.br/servicos/crimes-financeiros)
+- [Indenização por danos](https://kfsadvogados.com.br/servicos/indenizacao-por-danos)
+- [Contratos](https://kfsadvogados.com.br/servicos/contratos)
+- [Divórcio, guarda e alimentos](https://kfsadvogados.com.br/servicos/divorcio-guarda-alimentos)
+- [Inventário e partilha](https://kfsadvogados.com.br/servicos/inventario-e-partilha)
+- [Direito do consumidor](https://kfsadvogados.com.br/servicos/direito-do-consumidor)
+- [Questões patrimoniais e imobiliárias](https://kfsadvogados.com.br/servicos/questoes-imobiliarias)
+- [Processo penal militar](https://kfsadvogados.com.br/servicos/processo-penal-militar)
+- [Conselho de Justificação e Disciplina](https://kfsadvogados.com.br/servicos/conselho-justificacao-disciplina)
+- [Sindicâncias e punições disciplinares](https://kfsadvogados.com.br/servicos/sindicancias-e-punicoes)
+- [Reforma e reintegração](https://kfsadvogados.com.br/servicos/reforma-e-reintegracao)
+- [Vencimentos e pensões militares](https://kfsadvogados.com.br/servicos/vencimentos-e-pensoes-militares)
+- [Plano de saúde negou cobertura](https://kfsadvogados.com.br/servicos/negativa-de-plano-de-saude)
+- [Medicamento de alto custo](https://kfsadvogados.com.br/servicos/medicamento-alto-custo)
+- [Tratamento fora do rol da ANS](https://kfsadvogados.com.br/servicos/tratamento-fora-do-rol)
+- [Internação e home care](https://kfsadvogados.com.br/servicos/internacao-e-home-care)
+- [Reajuste abusivo de plano](https://kfsadvogados.com.br/servicos/reajuste-abusivo-de-plano)
+- [Erro médico](https://kfsadvogados.com.br/servicos/erro-medico)
+- [Verbas rescisórias](https://kfsadvogados.com.br/servicos/verbas-rescisorias)
+- [Rescisão indireta](https://kfsadvogados.com.br/servicos/rescisao-indireta)
+- [Horas extras e adicionais](https://kfsadvogados.com.br/servicos/horas-extras-e-adicionais)
+- [Reconhecimento de vínculo](https://kfsadvogados.com.br/servicos/reconhecimento-de-vinculo)
+- [Assédio e justa causa](https://kfsadvogados.com.br/servicos/assedio-e-justa-causa)
+- [Acidente de trabalho](https://kfsadvogados.com.br/servicos/acidente-de-trabalho)
+- [Aposentadoria por idade e tempo](https://kfsadvogados.com.br/servicos/aposentadoria-idade-e-tempo)
+- [Aposentadoria especial](https://kfsadvogados.com.br/servicos/aposentadoria-especial)
+- [Auxílio-doença e invalidez](https://kfsadvogados.com.br/servicos/auxilio-doenca-e-invalidez)
+- [BPC/LOAS](https://kfsadvogados.com.br/servicos/bpc-loas)
+- [Pensão por morte](https://kfsadvogados.com.br/servicos/pensao-por-morte)
+- [Revisão de benefício](https://kfsadvogados.com.br/servicos/revisao-de-beneficio)
+- [Processo Administrativo Disciplinar (PAD)](https://kfsadvogados.com.br/servicos/processo-administrativo-disciplinar)
+- [Concursos públicos](https://kfsadvogados.com.br/servicos/concursos-publicos)
+- [Vantagens e gratificações](https://kfsadvogados.com.br/servicos/vantagens-e-gratificacoes)
+- [Improbidade administrativa](https://kfsadvogados.com.br/servicos/improbidade-administrativa)
+- [Licitações e contratos administrativos](https://kfsadvogados.com.br/servicos/licitacoes-e-contratos)
+- [Responsabilidade civil do Estado](https://kfsadvogados.com.br/servicos/responsabilidade-do-estado)
+
+## Políticas
+
+- [Política de Privacidade](https://kfsadvogados.com.br/politica-de-privacidade)
+- [Política de Cookies](https://kfsadvogados.com.br/politica-de-cookies)
+- [Termos de Uso](https://kfsadvogados.com.br/termos-de-uso)

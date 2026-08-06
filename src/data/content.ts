@@ -177,43 +177,43 @@ export const cases = [
   {
     category: 'Direito Criminal',
     title: 'Defesa em Tribunal do Júri',
-    image: '/theme/img/demo/02-2.jpg',
+    image: '/theme/img/demo/02-2.webp',
     href: '/servicos#direito-criminal',
   },
   {
     category: 'Direito Militar',
     title: 'Licenciamento e reintegração de militar',
-    image: '/theme/img/demo/03-1.jpg',
+    image: '/theme/img/demo/03-1.webp',
     href: '/servicos#direito-militar',
   },
   {
     category: 'Direito Civil',
     title: 'Indenização por danos morais e materiais',
-    image: '/theme/img/demo/06-1.jpg',
+    image: '/theme/img/demo/06-1.webp',
     href: '/servicos#direito-civil',
   },
   {
     category: 'Direito Civil',
     title: 'Divórcio, guarda e partilha de bens',
-    image: '/theme/img/demo/12-1.jpg',
+    image: '/theme/img/demo/12-1.webp',
     href: '/servicos#direito-civil',
   },
   {
     category: 'Direito Previdenciário',
     title: 'Aposentadoria especial e por tempo',
-    image: '/theme/img/demo/04-1.jpg',
+    image: '/theme/img/demo/04-1.webp',
     href: '/servicos#direito-previdenciario',
   },
   {
     category: 'Direito Administrativo',
     title: 'Defesa em processo disciplinar (PAD)',
-    image: '/theme/img/demo/05-1.jpg',
+    image: '/theme/img/demo/05-1.webp',
     href: '/servicos#direito-administrativo',
   },
   {
     category: 'Direito Administrativo',
     title: 'Concurso público e nomeação',
-    image: '/theme/img/demo/13-1.jpg',
+    image: '/theme/img/demo/13-1.webp',
     href: '/servicos#direito-administrativo',
   },
 ];
@@ -228,10 +228,10 @@ export const serviceIcons = [
 ];
 
 export const serviceImages = [
-  '/theme/img/demo/01-5.jpg',
-  '/theme/img/demo/02-3.jpg',
-  '/theme/img/demo/03-2.jpg',
-  '/theme/img/demo/04-2.jpg',
-  '/theme/img/demo/05-2.jpg',
-  '/theme/img/demo/06-2.jpg',
+  '/theme/img/demo/01-5.webp',
+  '/theme/img/demo/02-3.webp',
+  '/theme/img/demo/03-2.webp',
+  '/theme/img/demo/04-2.webp',
+  '/theme/img/demo/05-2.webp',
+  '/theme/img/demo/06-2.webp',
 ];

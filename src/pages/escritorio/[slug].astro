@@ -38,6 +38,7 @@ const schema = [
 	description={`${lawyer.name}${lawyer.oab ? `, ${lawyer.oab}` : ''}. Advogado em Florianópolis com atuação em ${lawyer.areas.slice(0, 3).join(', ')}.`}
 	heading={lawyer.name}
 	crumbs={[{ label: 'Advogados', href: '/escritorio' }, { label: lawyer.shortName }]}
+	ogImage={lawyer.photo}
 	schema={schema}
 	animate={false}
 >
@@ -158,7 +159,7 @@ const schema = [
 				<div class="process-content ms-0">
 					<div class="process-ber">
 						<div class="line-shape">
-							<img src="/theme/img/demo/line-shape.png" alt="" />
+							<img src="/theme/img/demo/line-shape.png" alt="" loading="lazy" decoding="async" />
 						</div>
 						{lawyer.experience.map((e, i) => (
 							<div class="process-items wow fadeInUp" data-wow-delay=".2s">

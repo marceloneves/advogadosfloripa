@@ -9,7 +9,7 @@ const blog = defineCollection({
     date: z.coerce.date(),
     category: z.string(),
     author: z.string().default("KFS Sociedade de Advogados"),
-    image: z.string().default('/theme/img/demo/01-5.jpg'),
+    image: z.string().default('/theme/img/demo/01-5.webp'),
   }),
 });
 

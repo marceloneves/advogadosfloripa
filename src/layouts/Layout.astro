@@ -21,6 +21,10 @@ interface Props {
   schema?: Record<string, unknown>[];
   /** Carrega o Swiper. Só a página que tem carrossel precisa dos ~250 KB. */
   swiper?: boolean;
+  /** Imagem de compartilhamento específica da página. */
+  ogImage?: string;
+  /** Mantém a página fora do índice — usar em páginas ainda sem conteúdo. */
+  noindex?: boolean;
 }
 
 const {
@@ -31,9 +35,12 @@ const {
   animate = true,
   schema = [],
   swiper = false,
+  ogImage,
+  noindex = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://kfsadvogados.com.br');
+const ogUrl = new URL(ogImage ?? '/og.png', Astro.site ?? 'https://kfsadvogados.com.br');
 
 /**
  * Com `animate={false}`, o conteúdo da página é renderizado e as classes de
@@ -76,6 +83,7 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
@@ -83,7 +91,7 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<meta property="og:url" content={canonical} />
 		<meta property="og:site_name" content={site.name} />
 		<meta property="og:locale" content="pt_BR" />
-		<meta property="og:image" content={new URL('/og.png', Astro.site ?? 'https://kfsadvogados.com.br')} />
+		<meta property="og:image" content={ogUrl} />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="theme-color" content="#2e3754" />
 
