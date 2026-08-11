@@ -1,0 +1,1866 @@
+---
+/**
+ * Landing page autônoma da reclamação trabalhista (lado do trabalhador): não
+ * usa o Layout do tema (Header, Footer, Bootstrap, jQuery). Mesma estrutura e
+ * mesmo CSS da landing da Lei Maria da Penha.
+ *
+ * Publicidade dentro do Código de Ética e do Provimento 205/2021 da OAB:
+ * sem promessa de resultado, sem preço, sem depoimento de cliente, sem
+ * mercantilização. Tom informativo e sóbrio.
+ */
+import Schema from '../components/Schema.astro';
+import { site, waLink } from '../data/site';
+import { getLawyer } from '../data/team';
+
+const advogado = getLawyer('asterley-kincezski');
+
+const origin = (Astro.site ?? new URL('https://kfsadvogados.com.br')).origin;
+const canonical = `${origin}/reclamacao-trabalhista`;
+
+const title = 'Reclamação Trabalhista — Defesa do Colaborador | KFS Advogados';
+const description =
+  'Reclamação trabalhista em Florianópolis pelo lado do trabalhador: verbas rescisórias, horas extras, reconhecimento de vínculo, rescisão indireta, assédio e estabilidade.';
+
+/**
+ * A bio de team.ts está em terceira pessoa e é usada nas páginas do escritório.
+ * Esta landing fala na voz do próprio advogado, então tem a sua própria versão.
+ */
+const bioPrimeiraPessoa =
+  'Sou advogado inscrito na OAB/SC 18.119, com mais de duas décadas de trajetória no Direito Civil, no Direito Público e no Direito do Trabalho. Sou servidor da Secretaria de Estado da Administração de Santa Catarina, onde atuo como Gerente de Processos Institucionais da Diretoria do Plano de Saúde do Servidor (SC Saúde), e membro da Comissão de Direito da Saúde da OAB/SC. Nesses anos reuni experiência em assessoria jurídica institucional, administração pública e na discussão judicial de direitos de trabalhadores e servidores.';
+
+/** Sem o número em team.ts, a inscrição fica marcada até ser preenchida. */
+const oabAdvogado = 'OAB/SC nº [INSERIR NÚMERO OAB]';
+
+const revisadoEm = '2026-08-11';
+const revisadoLabel = '11 de agosto de 2026';
+
+/** Mensagem inicial do WhatsApp: já chega com contexto para a triagem. */
+const waTexto = 'Olá! Preciso de orientação sobre uma reclamação trabalhista.';
+
+const situacoes = [
+  {
+    title: 'Rescisão sem pagamento',
+    text: 'Você saiu da empresa e as verbas não vieram, vieram incompletas ou passaram do prazo de dez dias da lei.',
+  },
+  {
+    title: 'Horas extras não pagas',
+    text: 'Ficava depois do expediente, entrava antes, almoçava trabalhando ou respondia mensagens fora do horário — sem receber por isso.',
+  },
+  {
+    title: 'FGTS sem depósito',
+    text: 'O extrato do FGTS tem meses em branco, ou os descontos do seu holerite não chegaram ao INSS.',
+  },
+  {
+    title: 'Trabalho sem registro',
+    text: 'Trabalhou sem carteira assinada, foi contratado como PJ ou recebia parte do salário por fora.',
+  },
+  {
+    title: 'Assédio no ambiente de trabalho',
+    text: 'Humilhação diante dos colegas, ameaça de demissão como cobrança, exposição de metas ou investidas de superiores.',
+  },
+  {
+    title: 'Demissão em período de estabilidade',
+    text: 'Foi dispensado grávida, logo após acidente de trabalho, no retorno do afastamento pelo INSS ou como cipeiro.',
+  },
+];
+
+const frentes = [
+  {
+    title: 'Verbas rescisórias e a multa do atraso',
+    text: 'Aviso prévio, saldo de salário, férias com um terço, 13º proporcional, FGTS e a multa de 40%. O pagamento fora do prazo do art. 477 da CLT gera multa de um salário em favor do trabalhador.',
+  },
+  {
+    title: 'Horas extras, intervalo e adicionais',
+    text: 'Reconstruo a jornada real a partir de cartões de ponto, escalas, mensagens e testemunhas, com pedido das horas, do intervalo suprimido, do adicional noturno e dos reflexos em férias, 13º e FGTS.',
+  },
+  {
+    title: 'Reconhecimento de vínculo',
+    text: 'Havendo pessoalidade, habitualidade, subordinação e salário, o contrato pode ser reconhecido mesmo sob a forma de PJ, cooperativa ou trabalho sem registro — com anotação na carteira e todos os reflexos.',
+  },
+  {
+    title: 'Rescisão indireta',
+    text: 'Quando é a empresa que descumpre o contrato — atraso de salário, FGTS não depositado, assédio, desvio de função —, é possível romper o vínculo por culpa dela e receber como em uma dispensa sem justa causa.',
+  },
+  {
+    title: 'Assédio, acidente e danos morais',
+    text: 'Indenização por assédio moral ou sexual, revista vexatória, exposição indevida e acidente de trabalho ou doença ocupacional, com discussão de estabilidade e pensionamento.',
+  },
+  {
+    title: 'Estabilidade e reintegração',
+    text: 'Gestante, cipeiro, acidentado e quem retorna de afastamento têm estabilidade no emprego. Cabe pedir a reintegração ou a indenização do período garantido.',
+  },
+];
+
+const primeirasHoras = {
+  fazer: [
+    'Guarde tudo que registre a sua rotina: holerites, cartões de ponto, escalas, e-mails, ordens de serviço e conversas com a chefia.',
+    'Baixe o extrato do FGTS e o extrato do CNIS enquanto ainda tem acesso — depois do desligamento fica mais difícil reunir.',
+    'Anote nome e contato de colegas que conheciam a sua jornada. Na Justiça do Trabalho, a testemunha é a prova mais usada.',
+    'Salve as mensagens dos grupos de trabalho, as metas e as escalas antes de perder o acesso ao sistema da empresa.',
+    'Confira o termo de rescisão (TRCT) item por item e fale com um advogado antes de assinar qualquer quitação.',
+  ],
+  evitar: [
+    'Assinar termo de quitação total, acordo ou plano de desligamento sem entender o que exatamente está sendo quitado.',
+    'Apagar conversas com a chefia ou sair dos grupos de trabalho: é ali que costuma estar a prova da jornada e das ordens.',
+    'Aceitar acerto por fora, sem recibo discriminado das verbas — o pagamento informal costuma ser difícil de comprovar depois.',
+    'Deixar o prazo correr. São dois anos após o fim do contrato para ajuizar, e a ação alcança os últimos cinco anos trabalhados.',
+    'Expor a empresa ou o caso nas redes sociais: o que você publica pode ser usado como prova contra você no processo.',
+  ],
+};
+
+/** Verbas que costumam ficar de fora do acerto — a seção 01 é uma lista de conferência. */
+const verbas = [
+  { title: 'Aviso prévio', text: 'Indenizado ou trabalhado, com acréscimo de três dias por ano de casa, até 90 dias.' },
+  { title: 'Saldo de salário', text: 'Os dias efetivamente trabalhados no mês do desligamento.' },
+  { title: 'Férias vencidas e proporcionais', text: 'Sempre com o acréscimo de um terço, inclusive sobre o período proporcional.' },
+  { title: '13º proporcional', text: 'Um doze avos por mês trabalhado, contando como mês inteiro a fração acima de 14 dias.' },
+  { title: 'FGTS e multa de 40%', text: 'Todos os depósitos do contrato mais a multa rescisória na dispensa sem justa causa.' },
+  { title: 'Horas extras e reflexos', text: 'As horas além da jornada e o efeito delas em férias, 13º, aviso e FGTS.' },
+  { title: 'Adicionais', text: 'Noturno, insalubridade, periculosidade e acúmulo de função, quando presentes na rotina.' },
+  { title: 'Guias do seguro-desemprego', text: 'A entrega das guias e a baixa na carteira também são obrigação da empresa.' },
+];
+
+/** Marcos de prazo — a seção 03 é uma linha do tempo, não uma lista de urgência. */
+const prazos = [
+  {
+    marco: '10 dias',
+    title: 'Prazo do acerto',
+    text: 'A empresa tem dez dias corridos após o fim do contrato para pagar as verbas. Passou disso, cabe a multa do art. 477 da CLT, equivalente a um salário.',
+  },
+  {
+    marco: '2 anos',
+    title: 'Prazo para ajuizar',
+    text: 'Contados do último dia do contrato. Depois disso o direito prescreve, mesmo que a empresa nunca tenha pago nada.',
+  },
+  {
+    marco: '5 anos',
+    title: 'Alcance da cobrança',
+    text: 'Dentro daqueles dois anos, a ação alcança as verbas dos cinco anos anteriores ao ajuizamento. Cada mês parado apaga um mês de direito.',
+  },
+];
+
+/** Checklist da seção 05: o que trazer para a primeira conversa. */
+const documentos = [
+  'Carteira de trabalho (física ou o print da CTPS Digital)',
+  'Contrato de trabalho e aditivos, se houver',
+  'Últimos holerites — de preferência os doze últimos',
+  'Cartões de ponto, escalas ou espelho da jornada',
+  'Termo de rescisão (TRCT) e comprovante do que foi pago',
+  'Extrato do FGTS e extrato do CNIS',
+  'Conversas com a chefia sobre horário, metas e ordens',
+  'Nome e contato de colegas que conheciam a sua rotina',
+];
+
+const etapas = [
+  {
+    n: '01',
+    title: 'Triagem do caso',
+    text: 'Converso com você para entender a rotina de trabalho, como foi a saída e o que a empresa já pagou.',
+  },
+  {
+    n: '02',
+    title: 'Análise dos documentos',
+    text: 'Leio contrato, holerites, cartões de ponto, TRCT e extratos do FGTS para separar o que é devido do que ainda depende de prova.',
+  },
+  {
+    n: '03',
+    title: 'Cálculo e ajuizamento',
+    text: 'Levanto os valores, defino os pedidos e ajuízo a reclamação na Vara do Trabalho competente.',
+  },
+  {
+    n: '04',
+    title: 'Audiências e execução',
+    text: 'Acompanho as audiências, produzo a prova testemunhal e sigo na execução do que for reconhecido até o crédito ser pago.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Qual é o prazo para entrar com a reclamação trabalhista?',
+    a: 'São dois anos contados do fim do contrato. Dentro desse prazo, a ação pode cobrar as verbas dos últimos cinco anos trabalhados.',
+  },
+  {
+    q: 'Assinei o termo de rescisão. Ainda posso reclamar?',
+    a: 'Sim. A assinatura do TRCT quita apenas os valores ali discriminados, e não o contrato inteiro. Verbas não pagas continuam exigíveis dentro do prazo.',
+  },
+  {
+    q: 'Fui contratado como PJ. Tenho os direitos da CLT?',
+    a: 'Depende de como o trabalho acontecia. Havendo pessoalidade, habitualidade, subordinação e salário, o vínculo de emprego pode ser reconhecido mesmo com contrato de prestação de serviços assinado.',
+  },
+  {
+    q: 'Preciso pagar custas para entrar com a ação?',
+    a: 'A Justiça do Trabalho concede gratuidade a quem comprova não ter condições de arcar com as custas. Os honorários são combinados por escrito antes de qualquer trabalho.',
+  },
+  {
+    q: 'Ainda estou trabalhando na empresa. Posso reclamar?',
+    a: 'Pode. A lei proíbe represália por ajuizamento de reclamação. Ainda assim, avaliamos juntos o momento e as consequências práticas antes de qualquer passo.',
+  },
+  {
+    q: 'O atendimento pode ser feito a distância?',
+    a: 'Sim. Atendo presencialmente no Centro de Florianópolis e por videoconferência, com envio de documentos por meio digital.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'Service',
+    name: 'Reclamação trabalhista para o trabalhador em Florianópolis',
+    description:
+      'Atuação em reclamações trabalhistas pelo lado do empregado: verbas rescisórias, horas extras, reconhecimento de vínculo, rescisão indireta, assédio e estabilidade.',
+    serviceType: 'Reclamação trabalhista — defesa do colaborador',
+    category: 'Direito do Trabalho',
+    provider: { '@id': `${origin}/#escritorio` },
+    areaServed: { '@type': 'City', name: 'Florianópolis' },
+    termsOfService: `${origin}/termos-de-uso`,
+  },
+  {
+    '@type': 'WebPage',
+    url: canonical,
+    name: 'Reclamação trabalhista — defesa do colaborador',
+    dateModified: revisadoEm,
+    about: { '@id': `${origin}/#escritorio` },
+    ...(advogado
+      ? {
+          reviewedBy: {
+            '@type': 'Attorney',
+            name: advogado.name,
+            url: `${origin}/escritorio/${advogado.slug}`,
+            ...(advogado.oab ? { identifier: advogado.oab } : {}),
+          },
+        }
+      : {}),
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<meta name="author" content={site.legalName} />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:image" content={`${origin}/og.png`} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="theme-color" content="#0f4a37" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+		/>
+
+		<title>{title}</title>
+
+		<Schema crumbs={[{ label: 'Reclamação trabalhista' }]} extra={schema} />
+	</head>
+
+	<body>
+		<a href="#conteudo" class="skip">Pular para o conteúdo</a>
+
+		<header class="topbar">
+			<a href="/" class="brand" aria-label={`${site.name} — página inicial`}>
+				<span class="brand-mark">KFS</span>
+				<span class="brand-text">Sociedade de Advogados</span>
+			</a>
+			<a class="topbar-cta" href={waLink(waTexto)} target="_blank" rel="noopener">
+				Falar com Dr. Asterley
+			</a>
+		</header>
+
+		<main id="conteudo" tabindex="-1">
+			<!-- Hero -->
+			<section class="hero" aria-labelledby="hero-title">
+				{/* Foto de fundo puramente decorativa: o degradê por cima é que garante
+				    o contraste do texto, então ela entra com alt vazio. */}
+				<img
+					class="hero-bg"
+					src="/theme/img/hero-trab-1920.webp"
+					srcset="/theme/img/hero-trab-960.webp 960w, /theme/img/hero-trab-1280.webp 1280w, /theme/img/hero-trab-1920.webp 1920w, /theme/img/hero-trab-2560.webp 2560w"
+					sizes="100vw"
+					width="1920"
+					height="1280"
+					fetchpriority="high"
+					decoding="async"
+					alt=""
+					aria-hidden="true"
+				/>
+				<div class="wrap hero-inner">
+					<div class="hero-main">
+						<p class="eyebrow">Direito do Trabalho · CLT</p>
+						<h1 id="hero-title">
+							Você trabalhou e não recebeu o que era seu. <em>Mas o prazo para cobrar já está
+							correndo.</em>
+						</h1>
+						<p class="lead">
+							Verbas rescisórias que não vieram, horas extras nunca pagas, FGTS sem depósito,
+							carteira sem registro, assédio na rotina. A reclamação trabalhista existe para isso — e
+							a prova é mais fácil de reunir agora do que daqui a um ano.
+						</p>
+						<div class="cta-row">
+							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+								Falar com Dr. Asterley
+							</a>
+							<a class="btn btn-ghost" href={`tel:+${site.whatsapp}`}>
+								{site.phone}
+							</a>
+						</div>
+						<p class="hero-note">
+							Atendo no Centro de Florianópolis e por videoconferência. {site.hours}.
+						</p>
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Verbas devidas -->
+			<section class="band band-sand" aria-labelledby="verbas-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">01</span>
+						<h2 id="verbas-title">Você ainda pode ter valores a receber</h2>
+						<p class="sec-intro">
+							Quase todo acerto é feito na pressa do desligamento, com a conta que a empresa
+							apresentou. Confira item por item o que deveria estar nessa conta.
+						</p>
+					</div>
+					<dl class="verbas">
+						{verbas.map((v) => (
+							<div class="verba">
+								<dt>{v.title}</dt>
+								<dd>{v.text}</dd>
+							</div>
+						))}
+					</dl>
+				</div>
+			</section>
+
+			<!-- Frentes de atuação -->
+			<section class="band" aria-labelledby="frentes-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">02</span>
+						<h2 id="frentes-title">O que eu posso fazer por você</h2>
+						<p class="sec-intro">
+							O caminho depende de como o contrato foi cumprido e do que ficou registrado. Estas são
+							as frentes que costumo colocar em discussão.
+						</p>
+					</div>
+					<ul class="cards">
+						{frentes.map((f) => (
+							<li class="card">
+								<h3>{f.title}</h3>
+								<p>{f.text}</p>
+							</li>
+						))}
+					</ul>
+
+					<div class="cta-strip">
+						<p class="cta-strip-text">
+							Não sabe em qual dessas o seu caso entra? Descreva a sua rotina que eu digo o que dá
+							para pedir.
+						</p>
+						<div class="cta-strip-actions">
+							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+								Falar com Dr. Asterley
+							</a>
+							<a class="btn btn-line" href="#contato">Enviar o caso</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Prazos -->
+			<section class="band band-dark band-slate" aria-labelledby="prazos-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">03</span>
+						<h2 id="prazos-title">O relógio já está correndo</h2>
+						<p class="sec-intro">
+							Não é questão de dias, mas também não é para deixar parado. São três prazos diferentes,
+							e eles correm ao mesmo tempo.
+						</p>
+					</div>
+					<ol class="prazos">
+						{prazos.map((p) => (
+							<li class="prazo">
+								<span class="prazo-marco" aria-hidden="true">{p.marco}</span>
+								<div>
+									<h3>{p.title}</h3>
+									<p>{p.text}</p>
+								</div>
+							</li>
+						))}
+					</ol>
+
+					<div class="cta-strip">
+						<p class="cta-strip-text">
+							Saiu da empresa há quanto tempo? Em um minuto eu digo se ainda dá para cobrar.
+						</p>
+						<div class="cta-strip-actions">
+							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+								Falar com Dr. Asterley
+							</a>
+							<a class="btn btn-ghost" href={`tel:+${site.whatsapp}`}>Ligar</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Prova -->
+			<section class="band band-sand" aria-labelledby="prova-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">04</span>
+						<h2 id="prova-title">O que pode te ajudar nesse momento</h2>
+						<p class="sec-intro">
+							O direito continua seu por dois anos. O que muda com o tempo é a facilidade de provar
+							— e algumas assinaturas fecham portas que não reabrem.
+						</p>
+					</div>
+					<div class="horas">
+						<div class="horas-group">
+							<h3 class="split-title split-do">Faça isto agora</h3>
+							<p class="split-sub">Estas atitudes preservam a sua prova.</p>
+							<ul class="horas-cards">
+								{primeirasHoras.fazer.map((i) => (
+									<li class="hora-card hora-do">
+										<span class="hora-mark" aria-hidden="true">✓</span>
+										<p>{i}</p>
+									</li>
+								))}
+							</ul>
+						</div>
+						<div class="horas-group">
+							<h3 class="split-title split-dont">Não faça de jeito nenhum</h3>
+							<p class="split-sub">Estas atitudes costumam enfraquecer o seu caso.</p>
+							<ul class="horas-cards">
+								{primeirasHoras.evitar.map((i) => (
+									<li class="hora-card hora-dont">
+										<span class="hora-mark" aria-hidden="true">×</span>
+										<p>{i}</p>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Documentos -->
+			<section class="band" aria-labelledby="docs-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">05</span>
+						<h2 id="docs-title">O que trazer na primeira conversa</h2>
+						<p class="sec-intro">
+							Não precisa ter tudo para começar — mas cada item desta lista encurta o caminho.
+						</p>
+					</div>
+					<ul class="docs">
+						{documentos.map((d) => (
+							<li class="doc">
+								<span class="doc-mark" aria-hidden="true">✓</span>
+								<span>{d}</span>
+							</li>
+						))}
+					</ul>
+
+					<div class="cta-strip">
+						<p class="cta-strip-text">
+							Tem só parte dos documentos? Comece assim mesmo — o resto dá para reunir depois.
+						</p>
+						<div class="cta-strip-actions">
+							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+								Falar com Dr. Asterley
+							</a>
+							<a class="btn btn-line" href="#contato">Enviar o caso</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Como conduzo -->
+			<section class="band band-dark band-slate" aria-labelledby="etapas-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">06</span>
+						<h2 id="etapas-title">Como eu conduzo a reclamação</h2>
+					</div>
+					<ol class="steps">
+						{etapas.map((e) => (
+							<li class="step">
+								<span class="step-n" aria-hidden="true">{e.n}</span>
+								<div>
+									<h3>{e.title}</h3>
+									<p>{e.text}</p>
+								</div>
+							</li>
+						))}
+					</ol>
+
+					<div class="cta-strip">
+						<p class="cta-strip-text">
+							A triagem do caso começa por uma conversa comigo, sem compromisso.
+						</p>
+						<div class="cta-strip-actions">
+							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+								Falar com Dr. Asterley
+							</a>
+							<a class="btn btn-line" href="#contato">Enviar o caso</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Advogado responsável -->
+			{advogado && (
+				<section class="band" aria-labelledby="quem-title">
+					<div class="wrap">
+						<div class="sec-head">
+							<span class="sec-num">07</span>
+							<h2 id="quem-title">Quem vai te ajudar</h2>
+						</div>
+
+						<div class="lawyer">
+							<figure class="lawyer-photo">
+								<img
+									src={advogado.photoCard ?? advogado.photo}
+									srcset={(advogado.photoCardWidths ?? [])
+										.map((w) => `${advogado.photoCard?.replace(/-\d+\.webp$/, `-${w}.webp`)} ${w}w`)
+										.join(', ')}
+									sizes="(max-width: 860px) 100vw, 360px"
+									width="600"
+									height="800"
+									loading="lazy"
+									decoding="async"
+									alt={`Retrato de ${advogado.name}`}
+								/>
+							</figure>
+
+							<div class="lawyer-body">
+								<p class="lawyer-name">{advogado.name}</p>
+								<p class="lawyer-role">
+									{[advogado.oab ?? oabAdvogado, advogado.role, advogado.city].filter(Boolean).join(' · ')}
+								</p>
+
+								<p class="lawyer-bio">{bioPrimeiraPessoa}</p>
+
+								{advogado.roles?.length ? (
+									<ul class="lawyer-tags" aria-label="Atuação institucional">
+										{advogado.roles.map((r) => <li>{r}</li>)}
+									</ul>
+								) : null}
+
+								<dl class="lawyer-facts">
+									{advogado.experience.slice(0, 3).map((e) => (
+										<>
+											<dt>{e.title ?? 'Experiência'}</dt>
+											<dd>{e.detail}</dd>
+										</>
+									))}
+								</dl>
+
+								<div class="cta-row">
+									<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+										Falar com Dr. Asterley
+									</a>
+									<a class="btn btn-line" href={`/escritorio/${advogado.slug}`}>
+										Ver perfil completo
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			)}
+
+			<!-- FAQ -->
+			<section class="band band-sand" aria-labelledby="faq-title">
+				<div class="wrap">
+					<div class="sec-head">
+						<span class="sec-num">08</span>
+						<h2 id="faq-title">Perguntas frequentes</h2>
+					</div>
+					<div class="faq">
+						{faqs.map((f) => (
+							<details class="faq-item">
+								<summary>
+									<span>{f.q}</span>
+								</summary>
+								<p>{f.a}</p>
+							</details>
+						))}
+					</div>
+
+					<div class="cta-strip">
+						<p class="cta-strip-text">
+							Ficou uma dúvida que não está aqui? Descreva o caso que eu respondo no retorno.
+						</p>
+						<div class="cta-strip-actions">
+							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+								Falar com Dr. Asterley
+							</a>
+							<a class="btn btn-line" href="#contato">Enviar o caso</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contato -->
+			<section class="band band-plain" id="contato" aria-labelledby="contato-title">
+				<div class="wrap contact-grid">
+					<div>
+						<span class="sec-num">09</span>
+						<h2 id="contato-title">Conte como foi o seu trabalho</h2>
+						<p class="sec-intro">
+							Descreva a função, o tempo de casa e como terminou o contrato. Eu retorno indicando o
+							que dá para cobrar e o que é urgente. Nenhuma informação enviada aqui é compartilhada
+							com terceiros.
+						</p>
+						<p class="sec-intro">
+							O primeiro contato serve para eu entender o caso e explicar os caminhos possíveis. Os
+							honorários são definidos depois, por escrito.
+						</p>
+						<ul class="contact-list">
+							<li><strong>WhatsApp e telefone</strong> {site.phone}</li>
+							<li><strong>E-mail</strong> {site.email}</li>
+							<li><strong>Escritório</strong> {site.addressShort}</li>
+							<li><strong>Horário</strong> {site.hours}</li>
+						</ul>
+					</div>
+
+					<form id="lp-form" class="form" novalidate>
+						<div class="field">
+							<label for="lp-nome">Seu nome</label>
+							<input id="lp-nome" name="nome" type="text" autocomplete="name" required />
+						</div>
+						<div class="field">
+							<label for="lp-telefone">Telefone / WhatsApp</label>
+							<input
+								id="lp-telefone"
+								name="telefone"
+								type="tel"
+								inputmode="tel"
+								autocomplete="tel"
+								required
+							/>
+						</div>
+						<div class="field">
+							<label for="lp-fase">Como está a sua situação</label>
+							<select id="lp-fase" name="fase">
+								<option value="">Selecione</option>
+								<option>Fui demitido e as verbas não foram pagas</option>
+								<option>Pedi demissão ou quero pedir</option>
+								<option>Ainda estou trabalhando na empresa</option>
+								<option>Trabalhei sem registro ou como PJ</option>
+								<option>Sofri assédio ou acidente de trabalho</option>
+								<option>Outra situação</option>
+							</select>
+						</div>
+						<div class="field">
+							<label for="lp-mensagem">Como foi o seu trabalho</label>
+							<textarea id="lp-mensagem" name="mensagem" rows="5" required></textarea>
+						</div>
+						<p id="lp-erro" class="form-error" role="alert" aria-live="polite" hidden></p>
+						<button type="submit" class="btn btn-primary btn-block">Falar com Dr. Asterley</button>
+						<p class="form-note">
+							O envio abre o WhatsApp com a mensagem já preenchida. Você revisa antes de enviar.
+						</p>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer class="foot">
+			<div class="wrap foot-grid">
+				<div>
+					<p class="foot-name">{site.legalName}</p>
+					<p>{site.address}</p>
+					<p>CNPJ {site.cnpj}</p>
+				</div>
+				<div>
+					<p>
+						Conteúdo informativo sob responsabilidade de{' '}
+						{advogado ? (
+							<>
+								<a href={`/escritorio/${advogado.slug}`}>{advogado.name}</a>
+								{`, ${advogado.oab ?? oabAdvogado}`}
+							</>
+						) : (
+							site.legalName
+						)}. Última revisão em <time datetime={revisadoEm}>{revisadoLabel}</time>.
+					</p>
+					<p>
+						Não substitui a análise do caso concreto por um advogado e não implica promessa de
+						resultado. Publicidade em conformidade com o Código de Ética e Disciplina e o
+						Provimento 205/2021 da OAB.
+					</p>
+					<p class="foot-links">
+						<a href="/">Site institucional</a>
+						<a href="/servicos/verbas-rescisorias">Área de Direito do Trabalho</a>
+						<a href="/politica-de-privacidade">Privacidade</a>
+						<a href="/termos-de-uso">Termos de uso</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Botão flutuante clássico do WhatsApp: círculo verde da marca, só
+		     ícone. No mobile sobe para não colidir com a barra fixa de ação. -->
+		<a
+			href={waLink(waTexto)}
+			class="wa-float"
+			target="_blank"
+			rel="noopener"
+			aria-label="Falar com o Dr. Asterley pelo WhatsApp"
+		>
+			<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false">
+				<path
+					fill="currentColor"
+					d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.18 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"
+				/>
+			</svg>
+		</a>
+
+		<!-- Barra fixa de ação no mobile, onde o CTA do topo sai da tela. -->
+		<div class="sticky-cta">
+			<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
+				Falar com Dr. Asterley
+			</a>
+			<a class="btn btn-ghost" href="#contato">Enviar o caso</a>
+		</div>
+
+		<script is:inline define:vars={{ whatsapp: site.whatsapp }}>
+			document.getElementById('lp-form')?.addEventListener('submit', (e) => {
+				e.preventDefault();
+				const f = e.target;
+				const get = (n) => (f.elements[n]?.value || '').trim();
+				const erro = document.getElementById('lp-erro');
+
+				const faltando = ['nome', 'telefone', 'mensagem'].filter((n) => !get(n));
+				if (faltando.length) {
+					erro.textContent = 'Preencha nome, telefone e o relato para enviar.';
+					erro.hidden = false;
+					const campo = f.elements[faltando[0]];
+					campo?.setAttribute('aria-invalid', 'true');
+					campo?.focus();
+					return;
+				}
+
+				erro.hidden = true;
+				['nome', 'telefone', 'mensagem'].forEach((n) =>
+					f.elements[n]?.removeAttribute('aria-invalid')
+				);
+
+				const linhas = [
+					`Olá! Meu nome é ${get('nome')}.`,
+					'Assunto: reclamação trabalhista.',
+					get('fase') && `Fase: ${get('fase')}`,
+					`Telefone: ${get('telefone')}`,
+					'',
+					get('mensagem'),
+				].filter(Boolean);
+
+				window.open(
+					`https://wa.me/${whatsapp}?text=${encodeURIComponent(linhas.join('\n'))}`,
+					'_blank',
+					'noopener'
+				);
+			});
+		</script>
+
+		<style is:global>
+			/* --- Paleta -------------------------------------------------------
+			   Navy da marca com acento azul sereno no lugar do dourado. Três
+			   tons porque o mesmo acento aparece sobre fundo escuro e claro:
+			   `--calm` só sobre escuro, `--calm-deep` só sobre claro (ambos
+			   acima de 4.5:1); `--calm-mid` fica para hover e filetes. */
+			:root {
+				/* Verde-mata: paleta própria desta landing, para não se confundir com
+				   a página criminal. Mesma lógica de três tons de acento — `--calm`
+				   só sobre escuro, `--calm-deep` só sobre claro (5:1 no branco). */
+				--ink: #17624a;
+				--ink-deep: #0f4a37;
+				--ink-deep-rgb: 15, 74, 55;
+				--sea: #1b7355;
+				--calm: #d2eee0;
+				--calm-mid: #8fd3b4;
+				--calm-deep: #14654a;
+				--sand: #eaf6f0;
+				--paper: #ffffff;
+				--text: #35443f;
+				--text-soft: #586a63;
+				--line: #cfe7da;
+				--line-dark: #ffffff2e;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				margin: 0;
+				background: var(--paper);
+				color: var(--text);
+				font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+				font-size: 19px;
+				line-height: 1.65;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			h1,
+			h2,
+			h3 {
+				color: var(--ink);
+				font-weight: 700;
+				letter-spacing: -0.02em;
+				line-height: 1.15;
+				margin: 0;
+			}
+
+			p {
+				margin: 0 0 1rem;
+			}
+
+			a {
+				color: inherit;
+			}
+
+			:focus-visible {
+				outline: 3px solid var(--calm-mid);
+				outline-offset: 3px;
+			}
+
+			.wrap {
+				width: min(1160px, 100% - 3rem);
+				margin-inline: auto;
+			}
+
+			.skip {
+				position: absolute;
+				left: -9999px;
+				top: 0;
+				background: var(--ink);
+				color: #fff;
+				padding: 0.75rem 1.25rem;
+				z-index: 50;
+			}
+			.skip:focus {
+				left: 0;
+			}
+
+			/* --- Topo ---------------------------------------------------------- */
+			.topbar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+				padding: 1.1rem clamp(1.5rem, 4vw, 3rem);
+				background: var(--ink-deep);
+				border-bottom: 1px solid var(--line-dark);
+			}
+
+			.brand {
+				display: flex;
+				align-items: baseline;
+				gap: 0.6rem;
+				text-decoration: none;
+				color: #fff;
+			}
+
+			.brand-mark {
+				font-size: 1.3rem;
+				font-weight: 800;
+				letter-spacing: 0.18em;
+				color: var(--calm);
+			}
+
+			.brand-text {
+				font-size: 0.88rem;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: #ffffffb3;
+			}
+
+			.topbar-cta {
+				font-size: 0.92rem;
+				font-weight: 600;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				text-decoration: none;
+				color: var(--calm);
+				border-bottom: 1px solid var(--calm-mid);
+				padding-bottom: 2px;
+			}
+
+			/* --- Botões -------------------------------------------------------- */
+			.btn {
+				display: inline-block;
+				padding: 1.05rem 2rem;
+				font-size: 1.1rem;
+				font-weight: 600;
+				letter-spacing: 0.04em;
+				text-decoration: none;
+				border: 1px solid transparent;
+				transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+			}
+
+			.btn-primary {
+				background: var(--calm);
+				color: var(--ink);
+			}
+			.btn-primary:hover {
+				background: var(--calm-mid);
+			}
+
+			.btn-ghost {
+				border-color: currentColor;
+				color: inherit;
+			}
+			.btn-ghost:hover {
+				background: #ffffff14;
+			}
+
+			/* Contorno para fundo claro — o .btn-ghost usa hover branco translúcido. */
+			.btn-line {
+				border-color: var(--calm-mid);
+				color: var(--calm-deep);
+			}
+			.btn-line:hover {
+				background: var(--sand);
+			}
+
+			.btn-block {
+				display: block;
+				width: 100%;
+				text-align: center;
+				cursor: pointer;
+				font-family: inherit;
+			}
+
+			/* --- Hero ---------------------------------------------------------- */
+			/* Sem imagem acima da dobra: fundo sólido, zero requisição extra. */
+			/* Foto de fundo + degradê grafite: o texto ocupa a faixa esquerda, que é
+			   a parte mais fechada do degradê; a imagem respira à direita. */
+			.hero {
+				position: relative;
+				isolation: isolate;
+				overflow: hidden;
+				background: #0f5480;
+				color: #ffffffd9;
+				padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(3rem, 7vw, 5.5rem);
+			}
+
+			/* A imagem é mais larga que o hero e entra deslocada para a direita: as
+			   mãos entrelaçadas, que ficam no terço esquerdo da foto, saem de baixo
+			   do degradê e caem na parte clara, ao lado do texto. */
+			.hero-inner {
+				position: relative;
+				width: auto;
+				max-width: none;
+				margin-inline: 0;
+				padding-left: clamp(1.5rem, 6vw, 6rem);
+				padding-right: 1.5rem;
+			}
+
+			/* A foto é um close: em vez de moldura, ela entra sangrada à direita e
+			   se dissolve no verde do hero por uma máscara — sem borda visível. */
+			.hero-bg {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: 78% 55%;
+				z-index: -2;
+				-webkit-mask-image: linear-gradient(
+					100deg,
+					transparent 0%,
+					transparent 30%,
+					rgba(0, 0, 0, 0.55) 52%,
+					#000 78%
+				);
+				mask-image: linear-gradient(
+					100deg,
+					transparent 0%,
+					transparent 30%,
+					rgba(0, 0, 0, 0.55) 52%,
+					#000 78%
+				);
+			}
+
+			.hero::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				z-index: -1;
+				background:
+					linear-gradient(
+						100deg,
+						rgba(20, 20, 20, 0.96) 0%,
+						rgba(20, 20, 20, 0.9) 34%,
+						rgba(20, 20, 20, 0.5) 64%,
+						rgba(20, 20, 20, 0.25) 100%
+					),
+					linear-gradient(to top, rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0) 45%);
+			}
+
+			/* O limite de largura vive aqui, e não no .hero-inner: com border-box,
+			   o padding da margem esquerda seria descontado da coluna e o texto
+			   quebraria mais a cada aumento de margem. */
+			.hero-main {
+				max-width: 36rem;
+			}
+
+			.eyebrow {
+				font-size: 1.1rem;
+				font-weight: 600;
+				letter-spacing: 0.22em;
+				text-transform: uppercase;
+				color: var(--calm);
+				margin-bottom: 1.5rem;
+			}
+			.eyebrow::before {
+				content: '';
+				display: inline-block;
+				width: 2.5rem;
+				height: 1px;
+				background: var(--calm-mid);
+				vertical-align: middle;
+				margin-right: 0.9rem;
+			}
+
+			.hero h1 {
+				color: #fff;
+				font-size: clamp(2.05rem, 4.6vw, 3.4rem);
+				font-weight: 800;
+				max-width: 20ch;
+				text-wrap: balance;
+			}
+			.hero h1 em {
+				font-style: normal;
+				color: var(--calm);
+			}
+
+			.lead {
+				font-size: clamp(1.18rem, 1.8vw, 1.38rem);
+				color: #ffffffc4;
+				max-width: 48ch;
+				text-wrap: pretty;
+				margin-top: 1.6rem;
+			}
+
+			.cta-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.9rem;
+				margin-top: 2rem;
+			}
+
+			.hero-note {
+				font-size: 1.12rem;
+				color: #a8d8c2;
+				margin-top: 1.4rem;
+			}
+
+			/* --- CTA no fim de cada seção ---------------------------------------- */
+			.cta-strip {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1.2rem 2.5rem;
+				margin-top: clamp(2.4rem, 4vw, 3.4rem);
+				padding-top: clamp(1.6rem, 3vw, 2.2rem);
+				border-top: 1px solid var(--line);
+			}
+			.band-dark .cta-strip {
+				border-top-color: #a8d8c2;
+			}
+			.cta-strip-text {
+				margin: 0;
+				max-width: 44ch;
+				font-weight: 600;
+				font-size: 1.1rem;
+			}
+			.cta-strip-actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.8rem;
+			}
+
+			/* --- Seções -------------------------------------------------------- */
+			.band {
+				padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+			}
+			.band-sand {
+				background: var(--sand);
+			}
+			/* Faixas das seções em azul claro: fundo aberto e texto escuro. O hero
+			   continua escuro, para contraste com a foto. */
+			.band-dark {
+				background: var(--calm);
+				color: #0e3628;
+			}
+			.band-slate {
+				background: var(--calm);
+			}
+			/* Faixa branca: usada no contato, para o formulário ficar em destaque
+			   sem competir com o azul das outras seções. */
+			.band-plain {
+				background: var(--paper);
+			}
+			.band-plain .form {
+				background: var(--sand);
+				border-color: var(--line);
+			}
+			.band-plain .contact-list li {
+				border-top-color: var(--line);
+			}
+			.band-plain .contact-list strong {
+				color: var(--calm-deep);
+			}
+			.band-plain .btn-primary {
+				background: var(--ink-deep);
+				color: #fff;
+			}
+			.band-plain .btn-primary:hover {
+				background: var(--ink);
+			}
+			.band-dark h2,
+			.band-dark h3 {
+				color: #0b3226;
+			}
+			.band-dark .sec-num {
+				color: #0f4a37;
+			}
+			/* Sobre o azul claro o botão claro sumiria: inverte para o azul fechado. */
+			.band-dark .btn-primary {
+				background: var(--ink-deep);
+				color: #fff;
+			}
+			.band-dark .btn-primary:hover {
+				background: var(--ink);
+			}
+			.band-dark .sec-intro {
+				opacity: 1;
+				color: #12483a;
+			}
+
+			.sec-head {
+				max-width: 62ch;
+				margin-bottom: clamp(2rem, 4vw, 3rem);
+			}
+
+			.sec-num {
+				display: block;
+				font-size: 0.88rem;
+				font-weight: 700;
+				letter-spacing: 0.24em;
+				color: var(--calm-deep);
+				margin-bottom: 0.9rem;
+			}
+
+			.sec-head h2 {
+				font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+			}
+
+			.sec-intro {
+				margin-top: 1.1rem;
+				color: inherit;
+				opacity: 0.85;
+			}
+
+			/* --- Cards --------------------------------------------------------- */
+			.cards {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+
+			.card {
+				flex: 1 1 280px;
+				background: var(--paper);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				padding: 1.9rem;
+			}
+			.card h3 {
+				font-size: 1.16rem;
+				margin-bottom: 0.6rem;
+			}
+			.card p {
+				margin: 0;
+				font-size: 1.1rem;
+				color: var(--text-soft);
+			}
+
+			/* --- Linhas numeradas ---------------------------------------------- */
+			.rows {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				counter-reset: linha;
+			}
+
+			.row-item {
+				counter-increment: linha;
+				display: grid;
+				grid-template-columns: 4rem minmax(0, 1fr);
+				gap: 1.5rem;
+				padding: 1.7rem 0;
+				border-top: 1px solid var(--line);
+			}
+			.row-item::before {
+				content: counter(linha, decimal-leading-zero);
+				font-size: 1.12rem;
+				font-weight: 700;
+				color: var(--calm-deep);
+				letter-spacing: 0.1em;
+				padding-top: 0.3rem;
+			}
+			.row-item h3 {
+				font-size: 1.22rem;
+				margin-bottom: 0.5rem;
+			}
+			.row-item p {
+				margin: 0;
+				color: var(--text-soft);
+			}
+
+			/* --- Faça / Evite ---------------------------------------------------
+			   Cada orientação vira um card próprio, agrupado em duas listas
+			   (verde para o que fazer, vermelho para o que evitar). */
+			.horas {
+				display: grid;
+				gap: clamp(2.2rem, 4vw, 3.2rem);
+			}
+
+			/* Flex em vez de grid: com 5 itens, a última linha se estica e ocupa a
+			   largura toda, em vez de deixar um card solto ao lado de um vazio. */
+			.horas-cards {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+
+			.hora-card {
+				flex: 1 1 300px;
+				display: grid;
+				grid-template-columns: 2.6rem minmax(0, 1fr);
+				align-items: start;
+				gap: 1rem;
+				padding: 1.5rem;
+				background: var(--paper);
+				border: 1px solid #cfd8dc;
+				border-radius: 14px;
+				box-shadow: 0 10px 26px rgba(var(--ink-deep-rgb), 0.12);
+			}
+			.hora-card p {
+				margin: 0;
+				font-size: 1.12rem;
+			}
+			/* A distinção fica no ícone e num fundo levemente tingido, sem filete
+			   colorido no topo: o contraste com o azul da faixa já é suficiente. */
+			/* Selo redondo cheio: o sinal precisa ser lido de longe, antes do texto. */
+			.hora-mark {
+				display: grid;
+				place-items: center;
+				width: 2.6rem;
+				height: 2.6rem;
+				border-radius: 50%;
+				color: #fff;
+				font-weight: 700;
+				font-size: 1.5rem;
+				line-height: 1;
+			}
+			.hora-do {
+				background: #f4faf6;
+				border-color: #cbe3d5;
+			}
+			.hora-do .hora-mark {
+				background: #1e7a52;
+			}
+			.hora-dont {
+				background: #fdf6f4;
+				border-color: #e8d0c9;
+			}
+			.hora-dont .hora-mark {
+				background: #b23b28;
+				font-size: 1.9rem;
+				/* O glifo × sobe um pouco dentro do círculo; o ajuste centraliza. */
+				padding-bottom: 0.18rem;
+			}
+
+			.split-title {
+				font-size: 1.5rem;
+				font-weight: 800;
+				letter-spacing: 0.02em;
+				margin-bottom: 0.35rem;
+			}
+			/* Uma linha de apoio: só "Faça"/"Evite" não diz o que está em jogo. */
+			.split-sub {
+				margin: 0 0 1.4rem;
+				padding-bottom: 1rem;
+				font-size: 1.05rem;
+				border-bottom: 1px solid #a8d8c2;
+			}
+			.split-do {
+				color: #0c4d35 !important;
+			}
+			.split-dont {
+				color: #7c2a1c !important;
+			}
+
+			/* --- Etapas --------------------------------------------------------- */
+			/* Duas colunas largas em vez de quatro estreitas: o texto de cada etapa
+			   respira e o número vira um selo, não uma legenda perdida. */
+			/* As quatro etapas ficam numa única linha: é uma sequência, e quebrar
+			   em duas linhas desmancha a leitura de ordem. */
+			.steps {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				gap: 1.25rem;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+			}
+
+			.step {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr);
+				/* Sem isso as linhas do grid esticam e o texto desce no card mais alto. */
+				align-content: start;
+				gap: 0.9rem;
+				background: var(--paper);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				padding: 1.8rem;
+				box-shadow: 0 10px 26px rgba(var(--ink-deep-rgb), 0.07);
+			}
+			.step-n {
+				display: grid;
+				place-items: center;
+				width: 3rem;
+				height: 3rem;
+				border-radius: 50%;
+				background: var(--calm);
+				color: var(--ink-deep);
+				font-size: 1.02rem;
+				font-weight: 800;
+				letter-spacing: 0.04em;
+			}
+			.step h3 {
+				font-size: 1.12rem;
+				margin-bottom: 0.5rem;
+			}
+			.step p {
+				margin: 0;
+				font-size: 1.1rem;
+				color: var(--text-soft);
+			}
+
+			/* --- Advogado -------------------------------------------------------- */
+			.lawyer {
+				display: grid;
+				grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+				gap: clamp(1.8rem, 4vw, 3.2rem);
+				align-items: start;
+			}
+
+			.lawyer-photo {
+				margin: 0;
+				border-top: 3px solid var(--calm-mid);
+				background: var(--sand);
+			}
+			.lawyer-photo img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			.lawyer-name {
+				font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+				font-weight: 700;
+				color: var(--ink);
+				margin-bottom: 0.2rem;
+			}
+
+			.lawyer-role {
+				font-size: 0.88rem;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+				color: var(--calm-deep);
+				margin-bottom: 1.4rem;
+			}
+
+			.lawyer-bio {
+				max-width: 62ch;
+			}
+
+			.lawyer-tags {
+				list-style: none;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				margin: 1.4rem 0 0;
+				padding: 0;
+			}
+			.lawyer-tags li {
+				font-size: 1.12rem;
+				color: var(--calm-deep);
+				border: 1px solid var(--line);
+				background: var(--sand);
+				padding: 0.4rem 0.9rem;
+			}
+
+			.lawyer-facts {
+				margin: 2rem 0 0;
+				border-top: 1px solid var(--line);
+			}
+			.lawyer-facts dt {
+				font-weight: 700;
+				color: var(--ink);
+				font-size: 1.12rem;
+				padding-top: 1.1rem;
+			}
+			.lawyer-facts dd {
+				margin: 0.35rem 0 1.1rem;
+				font-size: 1.1rem;
+				color: var(--text-soft);
+				border-bottom: 1px solid var(--line);
+				padding-bottom: 1.1rem;
+			}
+
+			/* --- FAQ ------------------------------------------------------------ */
+			.faq {
+				border-top: 1px solid var(--line);
+				max-width: 80ch;
+			}
+
+			.faq-item {
+				border-bottom: 1px solid var(--line);
+			}
+			.faq-item summary {
+				cursor: pointer;
+				list-style: none;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1.5rem;
+				padding: 1.35rem 0;
+				font-weight: 600;
+				color: var(--ink);
+			}
+			.faq-item summary::-webkit-details-marker {
+				display: none;
+			}
+			.faq-item summary::after {
+				content: '+';
+				color: var(--calm-deep);
+				font-size: 1.4rem;
+				line-height: 1;
+				flex: none;
+			}
+			.faq-item[open] summary::after {
+				content: '–';
+			}
+			.faq-item p {
+				margin: 0 0 1.4rem;
+				max-width: 70ch;
+				color: var(--text-soft);
+			}
+
+			/* --- Contato -------------------------------------------------------- */
+			.contact-grid {
+				display: grid;
+				gap: clamp(2rem, 5vw, 4rem);
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				align-items: start;
+			}
+
+			.contact-list {
+				list-style: none;
+				margin: 2rem 0 0;
+				padding: 0;
+				font-size: 1.1rem;
+			}
+			.contact-list li {
+				padding: 0.75rem 0;
+				border-top: 1px solid #a8d8c2;
+			}
+			.contact-list strong {
+				display: block;
+				font-size: 0.88rem;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+				color: #0f4a37;
+				margin-bottom: 0.2rem;
+			}
+
+			.form {
+				background: var(--paper);
+				border: 1px solid #a8d8c2;
+				border-radius: 14px;
+				padding: clamp(1.5rem, 3vw, 2.2rem);
+			}
+
+			.field {
+				margin-bottom: 1.1rem;
+			}
+			.field label {
+				display: block;
+				font-size: 1.1rem;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				color: var(--text-soft);
+				margin-bottom: 0.5rem;
+			}
+			.field input,
+			.field select,
+			.field textarea {
+				width: 100%;
+				background: var(--paper);
+				border: 1px solid var(--line);
+				color: var(--text);
+				font-family: inherit;
+				font-size: 1.12rem;
+				padding: 0.85rem 1rem;
+			}
+			.field textarea {
+				resize: vertical;
+			}
+			.field [aria-invalid='true'] {
+				border-color: #b4402d;
+			}
+
+			.form-error {
+				color: #8f2f1f;
+				font-size: 1.12rem;
+			}
+
+			.form-note {
+				font-size: 1.12rem;
+				color: var(--text-soft);
+				margin: 0.9rem 0 0;
+			}
+
+			/* --- Rodapé --------------------------------------------------------- */
+			.foot {
+				background: var(--ink-deep);
+				color: #a8d8c2;
+				font-size: 1.1rem;
+				padding: 3rem 0 5.5rem;
+			}
+			.foot-grid {
+				display: grid;
+				gap: 2rem;
+				grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			}
+			.foot-name {
+				color: #fff;
+				font-weight: 600;
+			}
+			.foot a {
+				color: var(--calm);
+			}
+			.foot-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1.2rem;
+				margin-top: 1.2rem;
+			}
+
+			/* --- WhatsApp flutuante ---------------------------------------------- */
+			.wa-float {
+				position: fixed;
+				right: 1.5rem;
+				bottom: 1.5rem;
+				z-index: 45;
+				display: grid;
+				place-items: center;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				background: #25d366;
+				color: #fff;
+				box-shadow: 0 6px 20px rgba(var(--ink-deep-rgb), 0.35);
+				transition: background-color 0.2s ease, transform 0.2s ease;
+			}
+			/* Onda em um ::before atrás do botão: o pulso não deforma o ícone
+			   nem atrapalha o hover. */
+			.wa-float::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				background: #25d366;
+				z-index: -1;
+				animation: wa-pulse 2.2s ease-out infinite;
+			}
+			@keyframes wa-pulse {
+				0% {
+					transform: scale(1);
+					opacity: 0.55;
+				}
+				70%,
+				100% {
+					transform: scale(1.4);
+					opacity: 0;
+				}
+			}
+			.wa-float:hover {
+				background: #1ebe5a;
+				transform: scale(1.06);
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.wa-float::before {
+					animation: none;
+				}
+			}
+
+			/* --- CTA fixo (mobile) ---------------------------------------------- */
+			.sticky-cta {
+				display: none;
+			}
+
+			@media (max-width: 860px) {
+				.lawyer {
+					grid-template-columns: 1fr;
+				}
+				/* Quatro colunas não cabem no celular: viram duas. */
+				.steps {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+				.hero-inner {
+					max-width: none;
+				}
+				/* Sem espaço lateral no celular: a foto se dissolve para cima. */
+				.hero-bg {
+					-webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 65%);
+					mask-image: linear-gradient(to bottom, transparent 0%, #000 65%);
+					object-position: 60% 55%;
+				}
+				.hero::after {
+					background: linear-gradient(
+						180deg,
+						rgba(20, 20, 20, 0.92) 0%,
+						rgba(20, 20, 20, 0.8) 45%,
+						rgba(20, 20, 20, 0.95) 100%
+					);
+				}
+				.wa-float {
+					width: 54px;
+					height: 54px;
+					right: 1rem;
+					bottom: 5.25rem;
+				}
+				.row-item {
+					grid-template-columns: 2.5rem minmax(0, 1fr);
+					gap: 1rem;
+				}
+				.sticky-cta {
+					position: fixed;
+					inset: auto 0 0 0;
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					gap: 1px;
+					background: var(--ink-deep);
+					padding: 0.6rem;
+					z-index: 40;
+					box-shadow: 0 -6px 24px #00000040;
+				}
+				.sticky-cta .btn {
+					padding: 0.9rem 0.5rem;
+					text-align: center;
+					font-size: 1.12rem;
+				}
+				.sticky-cta .btn-ghost {
+					color: #fff;
+				}
+			}
+
+			/* 390px de largura: título, telefone e CTA precisam caber sem rolagem. */
+			@media (max-width: 480px) {
+				.steps {
+					grid-template-columns: minmax(0, 1fr);
+				}
+				.hero {
+					padding: 2.25rem 0 2.75rem;
+				}
+				.eyebrow {
+					margin-bottom: 1rem;
+				}
+				.hero h1 {
+					font-size: clamp(1.75rem, 7.5vw, 2.15rem);
+				}
+				.lead {
+					font-size: 1.12rem;
+					margin-top: 1.1rem;
+				}
+				.cta-row {
+					margin-top: 1.5rem;
+					gap: 0.6rem;
+				}
+				.cta-strip-actions {
+					width: 100%;
+				}
+				.cta-strip-actions .btn {
+					flex: 1 1 100%;
+					text-align: center;
+				}
+				.cta-row .btn {
+					flex: 1 1 auto;
+					text-align: center;
+					padding: 0.95rem 1rem;
+				}
+				.hero-note {
+					margin-top: 1rem;
+					font-size: 0.92rem;
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+				* {
+					transition: none !important;
+				}
+			}
+
+			/* --- Lista de conferência das verbas (01) ----------------------------
+			   Flex, e não grid: com oito itens a última linha estica e não sobra
+			   célula vazia quando a quantidade não fecha com o número de colunas. */
+			.verbas {
+				margin: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+			.verba {
+				flex: 1 1 320px;
+				background: var(--paper);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				padding: 1.5rem 1.7rem;
+			}
+			.verba dt {
+				font-weight: 700;
+				color: var(--ink);
+				margin-bottom: 0.3rem;
+			}
+			.verba dd {
+				margin: 0;
+				font-size: 1.02rem;
+				color: var(--text-soft);
+			}
+
+			/* --- Linha do tempo dos prazos (03) ---------------------------------- */
+			.prazos {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				gap: 1.25rem;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+			}
+			.prazo {
+				display: grid;
+				align-content: start;
+				gap: 0.9rem;
+				background: var(--paper);
+				border: 1px solid var(--line);
+				border-radius: 14px;
+				padding: 1.8rem;
+			}
+			.prazo-marco {
+				justify-self: start;
+				padding: 0.35rem 0.9rem;
+				border-radius: 999px;
+				background: var(--ink-deep);
+				color: #fff;
+				font-size: 1.05rem;
+				font-weight: 800;
+			}
+			.prazo h3 {
+				font-size: 1.12rem;
+				margin-bottom: 0.4rem;
+			}
+			.prazo p {
+				margin: 0;
+				font-size: 1.05rem;
+				color: var(--text-soft);
+			}
+
+			/* --- Checklist de documentos (05) ------------------------------------ */
+			.docs {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				gap: 0.9rem 2rem;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			}
+			.doc {
+				display: grid;
+				grid-template-columns: 1.9rem minmax(0, 1fr);
+				align-items: start;
+				gap: 0.8rem;
+				padding: 0.9rem 0;
+				border-bottom: 1px solid var(--line);
+				font-size: 1.05rem;
+			}
+			.doc-mark {
+				display: grid;
+				place-items: center;
+				width: 1.9rem;
+				height: 1.9rem;
+				border-radius: 50%;
+				background: var(--calm);
+				color: var(--calm-deep);
+				font-weight: 700;
+				font-size: 1rem;
+			}
+
+			@media (max-width: 860px) {
+				.prazos {
+					grid-template-columns: minmax(0, 1fr);
+				}
+			}
+		</style>
+	</body>
+</html>
