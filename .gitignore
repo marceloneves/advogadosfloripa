@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Credenciais do deploy manual por SFTP
+.env.deploy

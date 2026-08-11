@@ -309,7 +309,7 @@ const schema = [
 					<div class="hero-main">
 						<p class="eyebrow">Direito do Trabalho · CLT</p>
 						<h1 id="hero-title">
-							Você trabalhou e não recebeu o que era seu. <em>Mas o prazo para cobrar já está
+							Você trabalhou e não recebeu o que era seu. <em>E o prazo para cobrar já está
 							correndo.</em>
 						</h1>
 						<p class="lead">
@@ -391,7 +391,7 @@ const schema = [
 			</section>
 
 			<!-- Prazos -->
-			<section class="band band-dark band-slate" aria-labelledby="prazos-title">
+			<section class="band band-deep" aria-labelledby="prazos-title">
 				<div class="wrap">
 					<div class="sec-head">
 						<span class="sec-num">03</span>
@@ -1131,6 +1131,22 @@ const schema = [
 			}
 			.band-slate {
 				background: var(--calm);
+			}
+			/* Verde fechado do rodapé: dá peso à seção de prazos e amarra o fim da
+			   página com o começo dela. */
+			.band-deep {
+				background: var(--ink-deep);
+				color: #ffffffc4;
+			}
+			.band-deep h2,
+			.band-deep h3 {
+				color: #fff;
+			}
+			.band-deep .sec-num {
+				color: var(--calm-mid);
+			}
+			.band-deep .cta-strip {
+				border-top-color: var(--line-dark);
 			}
 			/* Faixa branca: usada no contato, para o formulário ficar em destaque
 			   sem competir com o azul das outras seções. */
