@@ -44,16 +44,13 @@ export const team: Lawyer[] = [
     photoCard: '/theme/img/equipe/asterley-kincezski-card-v2-640.webp',
     photoCardWidths: [400, 640],
     areas: [
-      'Direito da Saúde',
       'Direito Público',
-      'Judicialização da Saúde',
       'Direito Administrativo',
       'Administração Pública',
       'Assessoria Jurídica Institucional',
     ],
     roles: [
       'Advocacia privada — escritório Kincezski e Fabre Advocacia',
-      'Gerente de Processos Institucionais da Diretoria do Plano de Saúde do Servidor (SC Saúde)',
       'Membro da Comissão de Direito da Saúde da OAB/SC',
     ],
     highlights: [
@@ -75,11 +72,6 @@ export const team: Lawyer[] = [
       },
     ],
     experience: [
-      {
-        period: '2024 — atual',
-        detail:
-          'Gerente de Processos Institucionais da Diretoria do Plano de Saúde do Servidor do Estado de Santa Catarina (SC Saúde).',
-      },
       {
         period: '2023',
         detail:
@@ -105,9 +97,9 @@ export const team: Lawyer[] = [
         detail: 'Sócio da sociedade Capella-Kincezski Advocacia e Consultoria Jurídica.',
       },
     ],
-    bio: 'Asterley Kincezski da Silva é advogado inscrito na OAB/SC 18.119, com mais de duas décadas de trajetória no Direito Público e no Direito da Saúde. Servidor da Secretaria de Estado da Administração de Santa Catarina, atua como Gerente de Processos Institucionais da Diretoria do Plano de Saúde do Servidor (SC Saúde) e é membro da Comissão de Direito da Saúde da OAB/SC. Reúne ampla experiência em saúde pública, administração pública, judicialização da saúde e assessoria jurídica institucional.',
+    bio: 'Asterley Kincezski da Silva é advogado inscrito na OAB/SC 18.119, com mais de duas décadas de trajetória no Direito Público. É membro da Comissão de Direito da Saúde da OAB/SC e reúne ampla experiência em administração pública e assessoria jurídica institucional.',
     cta: {
-      title: 'Plano de saúde negou seu tratamento?',
+      title: 'Precisa de orientação em Direito Civil ou Público?',
       text: 'Fale com o advogado Asterley Kincezski e entenda quais são os seus direitos.',
     },
   },
