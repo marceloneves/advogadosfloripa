@@ -7,14 +7,19 @@ export const site = {
   positioning: 'Advocacia Estratégica',
   phone: '(48) 93381-8578',
   whatsapp: '5548933818578',
-  email: 'contato@kfsadvogados.com.br',
+  email: 'advogadoskfs@gmail.com',
   address: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC, 88010-000',
   addressShort: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC',
   /** Razão social conforme o CNPJ (o cartão da Receita não inclui "Stein"). */
   cnpj: '66.828.182/0001-00',
   oab: 'OAB/SC 00.000',
   hours: 'Segunda a sexta, 9h às 18h',
+  /** Plantão fora do horário comercial, exibido como linha própria no rodapé. */
+  urgency: 'Urgências: plantão 24 horas pelo WhatsApp',
 };
+
+/** Horário em linha única, para os textos corridos. */
+export const hoursFull = `${site.hours} — e plantão 24 horas para emergências pelo WhatsApp`;
 
 export const waLink = (text?: string) =>
   `https://wa.me/${site.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
@@ -52,8 +57,9 @@ export const services = [
     title: 'Direito Criminal',
     icon: 'fa-solid fa-gavel',
     summary:
-      'Defesa em inquéritos e ações penais, Tribunal do Júri, crimes financeiros e habeas corpus.',
+      'Prisão em flagrante, defesa em inquéritos e ações penais, Tribunal do Júri, crimes financeiros e habeas corpus.',
     bullets: [
+      'Prisão em flagrante e liberdade provisória',
       'Defesa em inquérito policial e ação penal',
       'Tribunal do Júri',
       'Crimes financeiros e patrimoniais',
@@ -165,9 +171,11 @@ export const services = [
     // O all.min.css do tema não traz o nome novo (fa-shield-halved), só o antigo.
     icon: 'fa-solid fa-shield-alt',
     summary:
-      'Processos e sindicâncias militares, vencimentos, pensões e representação junto às Forças Armadas.',
+      'Processos disciplinares e sindicâncias, prisão em flagrante, vencimentos, pensões e representação junto às Forças Armadas.',
     bullets: [
-      'Processo penal militar e sindicâncias',
+      'Prisão em flagrante militar',
+      'Processos disciplinares e sindicâncias',
+      'Processo penal militar',
       'Vencimentos e pensões militares',
       'Reforma e reintegração',
       'Conselhos de Justificação e Disciplina',
@@ -261,7 +269,7 @@ export const services = [
   {
     slug: 'direito-do-trabalho',
     /** Advogado responsável pela área, exibido como autoria das páginas. */
-    lawyer: 'asterley-kincezski',
+    lawyer: 'matheus-stein',
     title: 'Direito do Trabalho',
     icon: 'fa-solid fa-helmet-safety',
     summary:
@@ -367,11 +375,11 @@ export const services = [
   {
     slug: 'direito-administrativo',
     /** Advogado responsável pela área, exibido como autoria das páginas. */
-    lawyer: 'asterley-kincezski',
+    lawyer: 'fernando-fabre',
     title: 'Direito Administrativo',
     icon: 'fa-solid fa-landmark',
     summary:
-      'Defesa de servidores públicos, processos administrativos disciplinares e concursos.',
+      'Defesa de servidores públicos, processos administrativos disciplinares (PAD em Florianópolis e região) e concursos.',
     bullets: [
       'Processo Administrativo Disciplinar (PAD)',
       'Concursos públicos e nomeações',

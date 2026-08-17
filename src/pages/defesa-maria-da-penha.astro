@@ -9,7 +9,7 @@
  * mercantilização. Tom informativo e sóbrio.
  */
 import Schema from '../components/Schema.astro';
-import { site, waLink } from '../data/site';
+import { site, waLink, hoursFull } from '../data/site';
 import { getLawyer } from '../data/team';
 
 const advogado = getLawyer('fernando-fabre');
@@ -282,7 +282,7 @@ const schema = [
 							</a>
 						</div>
 						<p class="hero-note">
-							Atendo no Centro de Florianópolis e por videoconferência. {site.hours}.
+							Atendo no Centro de Florianópolis e por videoconferência. {hoursFull}.
 						</p>
 					</div>
 				</div>
@@ -547,7 +547,7 @@ const schema = [
 							<li><strong>WhatsApp e telefone</strong> {site.phone}</li>
 							<li><strong>E-mail</strong> {site.email}</li>
 							<li><strong>Escritório</strong> {site.addressShort}</li>
-							<li><strong>Horário</strong> {site.hours}</li>
+							<li><strong>Horário</strong> {hoursFull}</li>
 						</ul>
 					</div>
 

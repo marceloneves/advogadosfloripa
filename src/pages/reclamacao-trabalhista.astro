@@ -9,10 +9,10 @@
  * mercantilização. Tom informativo e sóbrio.
  */
 import Schema from '../components/Schema.astro';
-import { site, waLink } from '../data/site';
+import { site, waLink, hoursFull } from '../data/site';
 import { getLawyer } from '../data/team';
 
-const advogado = getLawyer('asterley-kincezski');
+const advogado = getLawyer('matheus-stein');
 
 const origin = (Astro.site ?? new URL('https://kfsadvogados.com.br')).origin;
 const canonical = `${origin}/reclamacao-trabalhista`;
@@ -26,7 +26,7 @@ const description =
  * Esta landing fala na voz do próprio advogado, então tem a sua própria versão.
  */
 const bioPrimeiraPessoa =
-  'Sou advogado inscrito na OAB/SC 18.119, com mais de duas décadas de trajetória no Direito Civil, no Direito Público e no Direito do Trabalho. Sou servidor da Secretaria de Estado da Administração de Santa Catarina, onde atuo como Gerente de Processos Institucionais da Diretoria do Plano de Saúde do Servidor (SC Saúde), e membro da Comissão de Direito da Saúde da OAB/SC. Nesses anos reuni experiência em assessoria jurídica institucional, administração pública e na discussão judicial de direitos de trabalhadores e servidores.';
+  'Sou advogado inscrito na OAB/SC 78.639, com formação em Direito pela Unisul e pós-graduação em Direito Processual Civil. Comecei ainda na graduação, atuando por mais de dois anos na Assessoria Jurídica da Base Aérea, onde desenvolvi prática no acompanhamento de processos e no apoio às demandas do setor. Hoje curso pós-graduação em Direito Previdenciário e integro o escritório KFS, com atuação em Direito do Trabalho, Previdenciário e da Saúde. Meu compromisso é explicar cada etapa em linguagem clara e manter você informado do começo ao fim do processo.';
 
 /** Sem o número em team.ts, a inscrição fica marcada até ser preenchida. */
 const oabAdvogado = 'OAB/SC nº [INSERIR NÚMERO OAB]';
@@ -284,7 +284,7 @@ const schema = [
 				<span class="brand-text">Sociedade de Advogados</span>
 			</a>
 			<a class="topbar-cta" href={waLink(waTexto)} target="_blank" rel="noopener">
-				Falar com Dr. Asterley
+				Falar com Dr. Matheus
 			</a>
 		</header>
 
@@ -319,14 +319,14 @@ const schema = [
 						</p>
 						<div class="cta-row">
 							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-								Falar com Dr. Asterley
+								Falar com Dr. Matheus
 							</a>
 							<a class="btn btn-ghost" href={`tel:+${site.whatsapp}`}>
 								{site.phone}
 							</a>
 						</div>
 						<p class="hero-note">
-							Atendo no Centro de Florianópolis e por videoconferência. {site.hours}.
+							Atendo no Centro de Florianópolis e por videoconferência. {hoursFull}.
 						</p>
 					</div>
 
@@ -382,7 +382,7 @@ const schema = [
 						</p>
 						<div class="cta-strip-actions">
 							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-								Falar com Dr. Asterley
+								Falar com Dr. Matheus
 							</a>
 							<a class="btn btn-line" href="#contato">Enviar o caso</a>
 						</div>
@@ -419,7 +419,7 @@ const schema = [
 						</p>
 						<div class="cta-strip-actions">
 							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-								Falar com Dr. Asterley
+								Falar com Dr. Matheus
 							</a>
 							<a class="btn btn-ghost" href={`tel:+${site.whatsapp}`}>Ligar</a>
 						</div>
@@ -492,7 +492,7 @@ const schema = [
 						</p>
 						<div class="cta-strip-actions">
 							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-								Falar com Dr. Asterley
+								Falar com Dr. Matheus
 							</a>
 							<a class="btn btn-line" href="#contato">Enviar o caso</a>
 						</div>
@@ -525,7 +525,7 @@ const schema = [
 						</p>
 						<div class="cta-strip-actions">
 							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-								Falar com Dr. Asterley
+								Falar com Dr. Matheus
 							</a>
 							<a class="btn btn-line" href="#contato">Enviar o caso</a>
 						</div>
@@ -583,7 +583,7 @@ const schema = [
 
 								<div class="cta-row">
 									<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-										Falar com Dr. Asterley
+										Falar com Dr. Matheus
 									</a>
 									<a class="btn btn-line" href={`/escritorio/${advogado.slug}`}>
 										Ver perfil completo
@@ -619,7 +619,7 @@ const schema = [
 						</p>
 						<div class="cta-strip-actions">
 							<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-								Falar com Dr. Asterley
+								Falar com Dr. Matheus
 							</a>
 							<a class="btn btn-line" href="#contato">Enviar o caso</a>
 						</div>
@@ -646,7 +646,7 @@ const schema = [
 							<li><strong>WhatsApp e telefone</strong> {site.phone}</li>
 							<li><strong>E-mail</strong> {site.email}</li>
 							<li><strong>Escritório</strong> {site.addressShort}</li>
-							<li><strong>Horário</strong> {site.hours}</li>
+							<li><strong>Horário</strong> {hoursFull}</li>
 						</ul>
 					</div>
 
@@ -683,7 +683,7 @@ const schema = [
 							<textarea id="lp-mensagem" name="mensagem" rows="5" required></textarea>
 						</div>
 						<p id="lp-erro" class="form-error" role="alert" aria-live="polite" hidden></p>
-						<button type="submit" class="btn btn-primary btn-block">Falar com Dr. Asterley</button>
+						<button type="submit" class="btn btn-primary btn-block">Falar com Dr. Matheus</button>
 						<p class="form-note">
 							O envio abre o WhatsApp com a mensagem já preenchida. Você revisa antes de enviar.
 						</p>
@@ -733,7 +733,7 @@ const schema = [
 			class="wa-float"
 			target="_blank"
 			rel="noopener"
-			aria-label="Falar com o Dr. Asterley pelo WhatsApp"
+			aria-label="Falar com o Dr. Matheus pelo WhatsApp"
 		>
 			<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false">
 				<path
@@ -746,7 +746,7 @@ const schema = [
 		<!-- Barra fixa de ação no mobile, onde o CTA do topo sai da tela. -->
 		<div class="sticky-cta">
 			<a class="btn btn-primary" href={waLink(waTexto)} target="_blank" rel="noopener">
-				Falar com Dr. Asterley
+				Falar com Dr. Matheus
 			</a>
 			<a class="btn btn-ghost" href="#contato">Enviar o caso</a>
 		</div>

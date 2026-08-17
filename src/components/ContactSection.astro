@@ -1,6 +1,6 @@
 ---
 import ContactForm from './ContactForm.astro';
-import { site } from '../data/site';
+import { site, hoursFull } from '../data/site';
 
 interface Props {
   formId?: string;
@@ -30,7 +30,7 @@ const details = [
     value: site.email,
     href: `mailto:${site.email}`,
   },
-  { icon: 'fa-solid fa-clock', label: 'Horário', value: site.hours },
+  { icon: 'fa-solid fa-clock', label: 'Horário', value: hoursFull },
 ];
 ---
 
