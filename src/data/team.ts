@@ -1,3 +1,10 @@
+/**
+ * As fotos são servidas com Cache-Control de 7 dias. Trocar o conteúdo mantendo
+ * o nome faz o navegador de quem já visitou continuar mostrando a foto antiga
+ * durante esse período, então o nome carrega uma versão (`-v2-`): ao substituir
+ * um retrato, suba o número em vez de reaproveitar o arquivo.
+ */
+
 export interface Lawyer {
   slug: string;
   name: string;
@@ -32,9 +39,9 @@ export const team: Lawyer[] = [
     shortName: 'Asterley Kincezski',
     role: 'Direito Civil e Público',
     oab: 'OAB/SC 18.119',
-    photo: '/theme/img/equipe/asterley-kincezski-640.webp',
+    photo: '/theme/img/equipe/asterley-kincezski-v2-640.webp',
     photoWidths: [420, 640],
-    photoCard: '/theme/img/equipe/asterley-kincezski-card-640.webp',
+    photoCard: '/theme/img/equipe/asterley-kincezski-card-v2-640.webp',
     photoCardWidths: [400, 640],
     areas: [
       'Direito da Saúde',
@@ -110,9 +117,9 @@ export const team: Lawyer[] = [
     shortName: 'Fernando Fabre',
     role: 'Direito Criminal, Militar e Administrativo',
     oab: 'OAB/SC 29.043',
-    photo: '/theme/img/equipe/fernando-fabre-1120.webp',
+    photo: '/theme/img/equipe/fernando-fabre-v2-1120.webp',
     photoWidths: [560, 1120],
-    photoCard: '/theme/img/equipe/fernando-fabre-card-800.webp',
+    photoCard: '/theme/img/equipe/fernando-fabre-card-v2-800.webp',
     photoCardWidths: [400, 800],
     city: 'Florianópolis/SC',
     status: 'Casado',
@@ -168,9 +175,9 @@ export const team: Lawyer[] = [
     shortName: 'Matheus Stein',
     role: 'Direito Previdenciário, Trabalhista, Civil e da Saúde',
     oab: 'OAB/SC 78.639',
-    photo: '/theme/img/equipe/matheus-stein-560.webp',
+    photo: '/theme/img/equipe/matheus-stein-v2-560.webp',
     photoWidths: [420, 560],
-    photoCard: '/theme/img/equipe/matheus-stein-card-540.webp',
+    photoCard: '/theme/img/equipe/matheus-stein-card-v2-540.webp',
     photoCardWidths: [360, 540],
     birth: '28 de novembro de 1995',
     city: 'Santo Amaro da Imperatriz/SC',
