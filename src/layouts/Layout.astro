@@ -9,6 +9,10 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import Schema from '../components/Schema.astro';
 import { site } from '../data/site';
 
+/** Versão dos CSS próprios. Suba ao alterar site.css ou wp-fix.css: sem isso o
+    cache da hospedagem continua servindo a folha antiga por horas. */
+const cssVer = '20260817';
+
 interface Props {
   title?: string;
   description?: string;
@@ -116,8 +120,8 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<link rel="stylesheet" href="/theme/css/nice-select.css" />
 		{swiper && <link rel="stylesheet" href="/theme/css/swiper-bundle.min.css" />}
 		<link rel="stylesheet" href="/theme/css/main.css" />
-		<link rel="stylesheet" href="/theme/css/wp-fix.css" />
-		<link rel="stylesheet" href="/theme/css/site.css" />
+		<link rel="stylesheet" href={`/theme/css/wp-fix.css?v=${cssVer}`} />
+		<link rel="stylesheet" href={`/theme/css/site.css?v=${cssVer}`} />
 
 		<title>{title}</title>
 
