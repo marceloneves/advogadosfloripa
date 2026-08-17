@@ -1,8 +1,8 @@
 export const stats = [
+  { value: 3, sign: '', label: 'Advogados' },
+  { value: 7, sign: '', label: 'Áreas de atuação' },
   { value: 20, sign: '+', label: 'Anos de experiência' },
   { value: 1500, sign: '+', label: 'Casos atendidos' },
-  { value: 7, sign: '', label: 'Áreas de atuação' },
-  { value: 3, sign: '', label: 'Advogados' },
 ];
 
 /**

@@ -965,6 +965,15 @@ main:focus {
   }
 }
 
+/* Acima de 1900px o tema pinta um bloco de 16% da largura em Dourado KFS
+   atrás do logo (.header-section-1::before). O logotipo é azul-marinho com
+   detalhes dourados: sobre esse fundo os detalhes somem e o texto perde
+   contraste. Sem o bloco, o cabeçalho fica igual em qualquer largura. */
+.header-section-1::before,
+.header-top-section::after {
+  display: none;
+}
+
 /* O tema esconde .main-logo quando o header vira sticky e mostra .logo. */
 .header-1.sticky .main-logo .kfs-logo img {
   height: 50px;
