@@ -19,3 +19,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://kfsadvogados.com.br/sitemap-index.xml
+Sitemap: https://kfsadvogados.com.br/sitemap-geo.xml

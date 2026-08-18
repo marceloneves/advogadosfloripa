@@ -10,6 +10,16 @@ export const site = {
   email: 'advogadoskfs@gmail.com',
   address: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC, 88010-000',
   addressShort: 'Rua Felipe Schmidt, 51 — Sala 501, Centro, Florianópolis/SC',
+  /** Endereço em partes, para o PostalAddress do schema e o KML. */
+  addressParts: {
+    street: 'Rua Felipe Schmidt, 51 — Sala 501',
+    locality: 'Florianópolis',
+    region: 'SC',
+    postalCode: '88010-000',
+    country: 'BR',
+  },
+  /** Coordenadas do escritório: alimentam o GeoCoordinates e o KML de localização. */
+  geo: { lat: -27.5969, lng: -48.5495 },
   /** Razão social conforme o CNPJ (o cartão da Receita não inclui "Stein"). */
   cnpj: '66.828.182/0001-00',
   oab: 'OAB/SC 00.000',

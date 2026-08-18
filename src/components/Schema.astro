@@ -31,16 +31,16 @@ const escritorio = {
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Rua Felipe Schmidt, 51 — Sala 501',
-    addressLocality: 'Florianópolis',
-    addressRegion: 'SC',
-    postalCode: '88010-000',
-    addressCountry: 'BR',
+    streetAddress: site.addressParts.street,
+    addressLocality: site.addressParts.locality,
+    addressRegion: site.addressParts.region,
+    postalCode: site.addressParts.postalCode,
+    addressCountry: site.addressParts.country,
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: -27.5969,
-    longitude: -48.5495,
+    latitude: site.geo.lat,
+    longitude: site.geo.lng,
   },
   areaServed: [
     { '@type': 'City', name: 'Florianópolis' },
