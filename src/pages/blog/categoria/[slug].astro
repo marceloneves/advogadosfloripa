@@ -1,0 +1,65 @@
+---
+/**
+ * Listagem dos artigos de uma categoria.
+ *
+ * A página é gerada mesmo sem posts, para que o link da categoria nunca quebre,
+ * mas nesse caso sai com `noindex` — mesma regra que /blog/ já aplica quando o
+ * blog está vazio. O sitemap segue a mesma lógica (ver sitemap-artigos.xml.ts).
+ */
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import BlogGrid from '../../../components/BlogGrid.astro';
+import CategoryNav from '../../../components/CategoryNav.astro';
+import ConsultationCta from '../../../components/ConsultationCta.astro';
+import { blogCategories, type BlogCategory } from '../../../data/blog';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return blogCategories.map((category) => ({
+    params: { slug: category.slug },
+    props: {
+      category,
+      posts: posts
+        .filter((p) => p.data.category === category.label)
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+interface Props {
+  category: BlogCategory;
+  posts: Awaited<ReturnType<typeof getCollection<'blog'>>>;
+}
+
+const { category, posts } = Astro.props;
+---
+
+<Layout
+	title={`${category.label} — Blog | KFS Sociedade de Advogados`}
+	description={category.description}
+	heading={category.label}
+	crumbs={[{ label: 'Blog', href: '/blog' }, { label: category.label }]}
+	animate={false}
+	noindex={posts.length === 0}
+>
+	<section class="news-section section-padding fix" aria-label={`Artigos sobre ${category.label}`}>
+		<div class="container">
+			<div class="section-title text-center mb-5">
+				<span class="sub-title">Categoria</span>
+				<h2>{category.label}</h2>
+				<p class="mx-auto mt-3 category-intro">{category.description}</p>
+			</div>
+
+			<CategoryNav active={category.slug} />
+
+			{posts.length > 0 ? (
+				<BlogGrid posts={posts} />
+			) : (
+				<p class="text-center">Nenhum artigo publicado nesta categoria ainda.</p>
+			)}
+		</div>
+	</section>
+
+	<ConsultationCta />
+</Layout>

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import BlogGrid from '../../components/BlogGrid.astro';
+import CategoryNav from '../../components/CategoryNav.astro';
 import ConsultationCta from '../../components/ConsultationCta.astro';
 
 const posts = (await getCollection('blog')).sort(
@@ -23,6 +24,8 @@ const posts = (await getCollection('blog')).sort(
 				<span class="sub-title wow fadeInUp">Artigos</span>
 				<h2 class="wow fadeInUp" data-wow-delay=".3s">Orientação jurídica em linguagem clara</h2>
 			</div>
+
+			<CategoryNav />
 
 			{posts.length > 0 ? (
 				<BlogGrid posts={posts} />

@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import BlogGrid from '../../components/BlogGrid.astro';
 import ConsultationCta from '../../components/ConsultationCta.astro';
+import { getCategoryByLabel } from '../../data/blog';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -21,7 +22,14 @@ interface Props {
 const { post, posts } = Astro.props;
 const { Content } = await render(post);
 
-const related = posts.filter((p) => p.id !== post.id).slice(0, 3);
+const categoria = getCategoryByLabel(post.data.category);
+
+// Relacionados: primeiro os da mesma categoria, completando com os demais.
+const outros = posts.filter((p) => p.id !== post.id);
+const related = [
+  ...outros.filter((p) => p.data.category === post.data.category),
+  ...outros.filter((p) => p.data.category !== post.data.category),
+].slice(0, 3);
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -55,7 +63,13 @@ const articleSchema = {
 
 						<ul class="post-meta mb-4">
 							<li>{fmt(post.data.date)}</li>
-							<li>{post.data.category}</li>
+							<li>
+								{categoria ? (
+									<a href={`/blog/categoria/${categoria.slug}`}>{post.data.category}</a>
+								) : (
+									post.data.category
+								)}
+							</li>
 							<li>{post.data.author}</li>
 						</ul>
 

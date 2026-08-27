@@ -1,0 +1,46 @@
+---
+/**
+ * Navegação entre as categorias do blog.
+ *
+ * Categoria sem nenhum artigo não aparece: o link levaria a uma página vazia e
+ * marcada com noindex. Some sozinha e volta sozinha quando o primeiro post da
+ * categoria for publicado.
+ */
+import { getCollection } from 'astro:content';
+import { blogCategories } from '../data/blog';
+
+interface Props {
+  /** Slug da categoria atual, para marcá-la como ativa. Omitir em /blog. */
+  active?: string;
+}
+
+const { active } = Astro.props;
+
+const posts = await getCollection('blog');
+const comPosts = blogCategories.filter((c) =>
+  posts.some((p) => p.data.category === c.label)
+);
+---
+
+{comPosts.length > 0 && (
+	<nav class="category-nav" aria-label="Categorias do blog">
+		<ul>
+			<li>
+				<a href="/blog" class={active ? '' : 'is-active'} aria-current={active ? undefined : 'page'}>
+					Todos
+				</a>
+			</li>
+			{comPosts.map((c) => (
+				<li>
+					<a
+						href={`/blog/categoria/${c.slug}`}
+						class={active === c.slug ? 'is-active' : ''}
+						aria-current={active === c.slug ? 'page' : undefined}
+					>
+						{c.label}
+					</a>
+				</li>
+			))}
+		</ul>
+	</nav>
+)}

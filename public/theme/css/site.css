@@ -1201,6 +1201,57 @@ h1, h2, h3, h4, h5, h6,
   color: var(--header);
 }
 
+.post-body ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.post-body ol li {
+  margin-bottom: 0.5rem;
+}
+
+/* O tema só estiliza tabela com a classe .table do Bootstrap, e o Markdown dos
+   artigos gera <table> pura. `table-layout: fixed` é o que segura as tabelas de
+   quatro ou cinco colunas dentro da largura do celular: sem ele o navegador
+   dimensiona pela maior palavra e a página ganha rolagem horizontal. */
+.post-body table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.post-body th,
+.post-body td {
+  border: 1px solid var(--border-2);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.post-body thead th {
+  background-color: var(--bg);
+  color: var(--header);
+  font-weight: 600;
+}
+
+.post-body tbody tr:nth-child(even) {
+  background-color: rgba(46, 55, 84, 0.03);
+}
+
+@media (max-width: 575px) {
+  .post-body table {
+    font-size: 13px;
+  }
+
+  .post-body th,
+  .post-body td {
+    padding: 8px;
+  }
+}
+
 /* The theme only styles .counter-items inside .about-wrapper; this layout uses
    .about-wrapper-2, so the same rules are extended to it. */
 .about-wrapper-2 + .col-lg-6 .about-content .counter-items,
@@ -1296,4 +1347,106 @@ h1, h2, h3, h4, h5, h6,
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+/* Navegação de categorias do blog (/blog e /blog/categoria/…). O tema não traz
+   um widget de categoria, então o estilo segue o dos botões do próprio tema:
+   borda fina, dourado da marca no item ativo. */
+.category-nav {
+  margin-bottom: 40px;
+}
+
+.category-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-nav a {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid var(--border-2);
+  border-radius: 30px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--header);
+  transition: all 0.3s ease-in-out;
+}
+
+.category-nav a:hover,
+.category-nav a:focus-visible {
+  border-color: var(--theme);
+  color: var(--theme);
+}
+
+.category-nav a.is-active {
+  background-color: var(--theme);
+  border-color: var(--theme);
+  color: var(--white);
+}
+
+/* Descrição da categoria sob o título da página. */
+.category-intro {
+  max-width: 640px;
+}
+
+/* --- Cards de artigo (/blog e relacionados) --------------------------------
+   O tema dá width/height 100% na imagem sem fixar altura no contêiner, então
+   cada foto impunha a própria proporção e os cards da grade saíam com alturas
+   diferentes. Com `aspect-ratio` + `object-fit: cover` toda capa ocupa a mesma
+   caixa, e o card vira coluna flex para o "Ler artigo" encostar na base
+   independentemente do tamanho do título. */
+.news-card-items-2 {
+  display: flex;
+  flex-direction: column;
+  /* O tema empilha 30px de margin-top no card. Junto com o `h-100` da grade
+     (height: 100%) o card passava a medir 100% + 30px e vazava para fora da
+     coluna. O respiro vertical já vem do `g-4` da row. */
+  margin-top: 0;
+}
+
+.news-card-items-2 .news-image {
+  aspect-ratio: 16 / 10;
+}
+
+.news-card-items-2 .news-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-card-items-2 .news-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Empurra o link para a base do card; vence o margin-top fixo do tema. */
+.news-card-items-2 .news-content .link-btns {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+/* Caixa de destaque dentro de artigo — orientação central e aviso legal.
+   Precisa se distinguir do blockquote à primeira vista (o blockquote já é
+   usado para a resposta direta no topo dos posts), daí o fundo em Areia com
+   barra em Entardecer Dourado em vez de barra simples. */
+.post-body .post-note {
+  background-color: var(--kfs-sand);
+  border: 1px solid var(--border-2);
+  border-left: 4px solid var(--kfs-gold);
+  border-radius: 6px;
+  padding: 18px 22px;
+}
+
+.post-body .post-note p:last-child {
+  margin-bottom: 0;
+}
+
+.post-body .post-note strong {
+  color: var(--kfs-navy);
 }
