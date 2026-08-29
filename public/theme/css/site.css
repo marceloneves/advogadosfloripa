@@ -80,6 +80,25 @@ h1 { font-weight: 800; }
   background-color: var(--kfs-gold);
 }
 
+/* Mesmo caso dos botões, nos blocos que o tema pinta de dourado inteiro: o
+   painel do formulário de contato, a tarja "Ligue agora" sobre a foto e as
+   bolinhas 01/02/03 do "Como trabalhamos". Todos vinham com texto branco a
+   2,05:1. Em Azul Oceano sobem para 5,73:1. */
+.appointment-wrapper .contact-content > span,
+.appointment-wrapper .contact-content > h3,
+.contact-content .nice-select .current,
+.about-wrapper-2 .about-image .about-box span,
+.about-wrapper-2 .about-image .about-box h2,
+.about-wrapper-2 .about-image .about-box h2 a,
+.feature-main-area .feature-card-item2 .feature-image .number {
+  color: var(--kfs-navy);
+}
+
+/* A seta do select acompanha o texto — no dourado ela também sumia. */
+.contact-content .nice-select::after {
+  border-color: var(--kfs-navy);
+}
+
 /* Foco visível em toda a navegação por teclado. */
 a:focus-visible,
 button:focus-visible,
