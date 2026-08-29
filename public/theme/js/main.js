@@ -340,13 +340,10 @@
             e.stopPropagation();
         });
 
-        $(window).ready(function() {
-            // Loader JS Start
-            $(".loader-box").fadeOut();
-            // Loader JS End
-            $("body").removeClass("fixed");
-           
-        });
+        // O preloader do tema saiu: o véu branco cobria a página até o jQuery
+        // terminar de carregar e só então sumia com fade, o que empurrava o
+        // Speed Index para 4,3s com a LCP em 2,4s. Nada adicionava a classe
+        // `fixed` no body, então não sobrou nada para desfazer aqui.
 
         
     }); // End Document Ready Function

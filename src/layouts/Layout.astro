@@ -1,7 +1,6 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Preloader from '../components/Preloader.astro';
 import SearchPopup from '../components/SearchPopup.astro';
 import OffcanvasSidebar from '../components/OffcanvasSidebar.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
@@ -153,7 +152,6 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		{/* Primeiro elemento focável: quem navega por teclado pula o menu. */}
 		<a href="#conteudo" class="kfs-skip-link">Pular para o conteúdo</a>
 
-		<Preloader />
 		<SearchPopup />
 		<OffcanvasSidebar />
 		<div class="offcanvas__overlay"></div>
