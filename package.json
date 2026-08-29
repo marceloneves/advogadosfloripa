@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/build-css.mjs && astro build",
+    "build": "astro build && node scripts/build-css.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "build:css": "node scripts/build-css.mjs"
@@ -16,6 +16,7 @@
     "astro": "^7.0.6"
   },
   "devDependencies": {
-    "esbuild": "^0.28.2"
+    "esbuild": "^0.28.2",
+    "purgecss": "^8.0.0"
   }
 }
