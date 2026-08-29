@@ -9,9 +9,9 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import Schema from '../components/Schema.astro';
 import { site } from '../data/site';
 
-/** Versão dos CSS próprios. Suba ao alterar site.css ou wp-fix.css: sem isso o
-    cache da hospedagem continua servindo a folha antiga por horas. */
-const cssVer = '20260827e';
+/** Versão do bundle de CSS. Suba a cada alteração de estilo: sem isso o cache
+    da hospedagem continua servindo a folha antiga por horas. */
+const cssVer = '20260829a';
 
 interface Props {
   title?: string;
@@ -101,27 +101,51 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="theme-color" content="#2e3754" />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<!-- Manrope é a tipografia institucional da marca (Manual da Marca KFS).
-		     O tema Kanun declarava as fontes via PHP, então o link vai explícito. -->
+		<!-- A foto de topo (hero na home, breadcrumb nas internas) é background-image
+		     no CSS: o navegador só descobre a URL depois de baixar e aplicar as
+		     folhas, o que o PageSpeed media como ~1,6s de atraso na LCP. O preload
+		     por media query antecipa a busca e baixa uma variante só. As larguras
+		     acompanham os breakpoints de .kfs-hero/.breadcrumb-wrapper em site.css. -->
 		<link
-			rel="stylesheet"
-			href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+			rel="preload"
+			as="image"
+			href="/theme/img/hero-escritorio-1280.webp"
+			media="(max-width: 767px)"
+			fetchpriority="high"
+		/>
+		<link
+			rel="preload"
+			as="image"
+			href="/theme/img/hero-escritorio-1920.webp"
+			media="(min-width: 768px) and (max-width: 1920px)"
+			fetchpriority="high"
+		/>
+		<link
+			rel="preload"
+			as="image"
+			href="/theme/img/hero-escritorio-2560.webp"
+			media="(min-width: 1921px)"
+			fetchpriority="high"
 		/>
 
-		<link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
-		<!-- Subset do Font Awesome: só os ícones usados (all.min.css tem 512 KB).
-		     Regenerar com scripts/fa-subset.py ao adicionar ícone novo. -->
-		<link rel="stylesheet" href="/theme/css/fa-subset.css" />
-		<link rel="stylesheet" href="/theme/css/flacticon.css" />
-		<link rel="stylesheet" href="/theme/css/animate.css" />
-		<link rel="stylesheet" href="/theme/css/meanmenu.css" />
-		<link rel="stylesheet" href="/theme/css/nice-select.css" />
+		<!-- Manrope é a tipografia institucional da marca (Manual da Marca KFS),
+		     hospedada aqui mesmo (theme/css/manrope.css) em vez de vir do Google
+		     Fonts: o <link> de terceiros era render-blocking e cobrava DNS + TLS
+		     antes de o download da fonte começar. -->
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="/theme/webfonts/manrope-latin.woff2"
+			crossorigin
+		/>
+
+		<!-- Folha única gerada por scripts/build-css.mjs a partir das folhas do
+		     tema mais manrope.css, fa-subset.css e site.css. Cada <link> extra é
+		     um round-trip antes do primeiro paint; edite a folha de origem e rode
+		     `npm run build`. O Swiper fica de fora porque só uma página o usa. -->
+		<link rel="stylesheet" href={`/theme/css/kfs.css?v=${cssVer}`} />
 		{swiper && <link rel="stylesheet" href="/theme/css/swiper-bundle.min.css" />}
-		<link rel="stylesheet" href="/theme/css/main.css" />
-		<link rel="stylesheet" href={`/theme/css/wp-fix.css?v=${cssVer}`} />
-		<link rel="stylesheet" href={`/theme/css/site.css?v=${cssVer}`} />
 
 		<title>{title}</title>
 

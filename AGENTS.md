@@ -8,6 +8,29 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Assets do tema
+
+O `<head>` carrega **uma** folha de estilo: `public/theme/css/kfs.css`, gerada por
+`scripts/build-css.mjs` a partir das folhas do tema mais `manrope.css`,
+`fa-subset.css` e `site.css`. O script roda sozinho no `npm run build` — edite a
+folha de origem, nunca o `kfs.css`. Ao mexer em estilo, suba também o `cssVer` em
+`src/layouts/Layout.astro`: sem isso o cache da hospedagem serve a folha antiga.
+
+O Font Awesome é subsetado: `scripts/fa-subset.py` lê o build em `dist/`,
+descobre quais classes `fa-*` o HTML usa e regenera tanto o `fa-subset.css`
+quanto os `.woff2` (originais em `vendor/fontawesome/`, fora de `public/`).
+Ao adicionar um ícone novo:
+
+```
+npm run build && python3 scripts/fa-subset.py && npm run build
+```
+
+Precisa de `pip install fonttools brotlicffi` — o pacote `brotli` do PyPI não
+decodifica estes `.woff2`.
+
+A Manrope é hospedada localmente (`public/theme/webfonts/manrope-*.woff2`,
+arquivo variável 200–800, licença SIL OFL).
+
 ## Documentation
 
 Full documentation: https://docs.astro.build

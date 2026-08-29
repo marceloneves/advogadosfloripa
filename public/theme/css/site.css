@@ -923,6 +923,18 @@ main:focus {
   flex: 0 0 auto;
 }
 
+/* O menu principal fica no HTML como lista aberta e só vira menu mobile quando
+   o meanmenu (jQuery, no fim do body) o move para o off-canvas. Até lá o
+   cabeçalho no celular nascia com ~250px de menu à mostra e encolhia quando o
+   JS rodava — era esse salto que valia 0,26 de CLS no PageSpeed. Escondendo a
+   lista já no CSS, o cabeçalho nasce com a altura final. O breakpoint segue o
+   meanScreenWidth declarado em theme/js/main.js. */
+@media (max-width: 1199px) {
+  .mean__menu-wrapper .main-menu {
+    display: none;
+  }
+}
+
 /* --- Logotipo --------------------------------------------------------------
    O manual fixa 75px como altura mínima da marca em tela; o cabeçalho usa
    58px porque aplica a versão reduzida (monograma + descritor em 2 linhas). */
