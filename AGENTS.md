@@ -12,9 +12,17 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
 
 O `<head>` carrega **uma** folha de estilo: `public/theme/css/kfs.css`, gerada por
 `scripts/build-css.mjs` a partir das folhas do tema mais `manrope.css`,
-`fa-subset.css` e `site.css`. O script roda sozinho no `npm run build` — edite a
-folha de origem, nunca o `kfs.css`. Ao mexer em estilo, suba também o `cssVer` em
-`src/layouts/Layout.astro`: sem isso o cache da hospedagem serve a folha antiga.
+`fa-subset.css` e `site.css`, e purgada com o PurgeCSS contra o HTML de `dist/`
+e os `.js` do tema. O script roda sozinho no `npm run build`, depois do `astro
+build` (o purge precisa do HTML) — edite a folha de origem, nunca o `kfs.css`.
+
+Se uma classe só aparecer em JS de terceiros que o purge não escaneia, ou for
+montada em tempo de execução, acrescente-a à lista `MANTER` do script.
+
+Ao mexer em estilo, script ou ícone, suba o `assetVer` em `src/data/assets.ts`:
+é a query `?v=` de todo CSS, JS e webfont, e sem ela o cache da hospedagem
+continua servindo a versão antiga. É esse versionamento que permite subir o
+cache do Cloudflare para além dos 7 dias atuais.
 
 O Font Awesome é subsetado: `scripts/fa-subset.py` lê o build em `dist/`,
 descobre quais classes `fa-*` o HTML usa e regenera tanto o `fa-subset.css`

@@ -8,10 +8,7 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import Schema from '../components/Schema.astro';
 import { site } from '../data/site';
-
-/** Versão do bundle de CSS. Suba a cada alteração de estilo: sem isso o cache
-    da hospedagem continua servindo a folha antiga por horas. */
-const cssVer = '20260829c';
+import { assetVer } from '../data/assets';
 
 interface Props {
   title?: string;
@@ -136,7 +133,7 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 			rel="preload"
 			as="font"
 			type="font/woff2"
-			href="/theme/webfonts/manrope-latin.woff2"
+			href={`/theme/webfonts/manrope-latin.woff2?v=${assetVer}`}
 			crossorigin
 		/>
 
@@ -144,8 +141,8 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		     tema mais manrope.css, fa-subset.css e site.css. Cada <link> extra é
 		     um round-trip antes do primeiro paint; edite a folha de origem e rode
 		     `npm run build`. O Swiper fica de fora porque só uma página o usa. -->
-		<link rel="stylesheet" href={`/theme/css/kfs.css?v=${cssVer}`} />
-		{swiper && <link rel="stylesheet" href="/theme/css/swiper-bundle.min.css" />}
+		<link rel="stylesheet" href={`/theme/css/kfs.css?v=${assetVer}`} />
+		{swiper && <link rel="stylesheet" href={`/theme/css/swiper-bundle.min.css?v=${assetVer}`} />}
 
 		<title>{title}</title>
 
@@ -174,15 +171,15 @@ const slotHtml = animate ? null : stripAnimations(await Astro.slots.render('defa
 		<Footer animate={animate} />
 		<WhatsAppFloat />
 
-		<script is:inline src="/theme/js/jquery-3.7.1.min.js"></script>
-		<script is:inline src="/theme/js/bootstrap.bundle.min.js"></script>
-		<script is:inline src="/theme/js/jquery.nice-select.min.js"></script>
-		<script is:inline src="/theme/js/viewport.jquery.js"></script>
-		<script is:inline src="/theme/js/jquery.waypoints.js"></script>
-		<script is:inline src="/theme/js/jquery.counterup.min.js"></script>
-		{swiper && <script is:inline src="/theme/js/swiper-bundle.min.js"></script>}
-		<script is:inline src="/theme/js/jquery.meanmenu.min.js"></script>
-		<script is:inline src="/theme/js/wow.min.js"></script>
-		<script is:inline src="/theme/js/main.js"></script>
+		<script is:inline src={`/theme/js/jquery-3.7.1.min.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/bootstrap.bundle.min.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/jquery.nice-select.min.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/viewport.jquery.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/jquery.waypoints.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/jquery.counterup.min.js?v=${assetVer}`}></script>
+		{swiper && <script is:inline src={`/theme/js/swiper-bundle.min.js?v=${assetVer}`}></script>}
+		<script is:inline src={`/theme/js/jquery.meanmenu.min.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/wow.min.js?v=${assetVer}`}></script>
+		<script is:inline src={`/theme/js/main.js?v=${assetVer}`}></script>
 	</body>
 </html>

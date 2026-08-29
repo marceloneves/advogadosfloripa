@@ -69,10 +69,21 @@ if (!existsSync(dist)) throw new Error('dist/ não existe: rode o astro build an
 const html = arquivos(dist, '.html');
 if (!html.length) throw new Error('nenhum HTML em dist/ — o purge apagaria o CSS inteiro.');
 
+// A versão vem de src/data/assets.ts, a mesma que o Layout usa nos <link> e
+// <script>. As webfonts precisam dela porque têm nome fixo e mudam de
+// conteúdo: o fa-subset.py regera os fa-*.woff2 a cada ícone novo. E o
+// preload da Manrope no Layout só reaproveita o download se a URL bater com
+// a do @font-face daqui.
+const assetVer = readFileSync(join(RAIZ, 'src/data/assets.ts'), 'utf8').match(
+  /assetVer\s*=\s*'([^']+)'/,
+)?.[1];
+if (!assetVer) throw new Error('não achei o assetVer em src/data/assets.ts');
+
 const bruto = FOLHAS.map((f) => `/* ${f} */\n${readFileSync(join(DIR, f), 'utf8')}`).join('\n')
   // O @charset do bootstrap.min.css só vale como primeira regra do arquivo;
   // no meio do bundle o navegador o ignora. Ele é reemitido no topo da saída.
-  .replace(/@charset\s+"[^"]*";/gi, '');
+  .replace(/@charset\s+"[^"]*";/gi, '')
+  .replace(/url\((["']?)(\.\.\/webfonts\/[^)"']+)\1\)/g, `url($1$2?v=${assetVer}$1)`);
 
 // Os .js do tema entram como conteúdo junto com o HTML: o meanmenu, o
 // nice-select e o bootstrap injetam classes que só existem como string dentro
