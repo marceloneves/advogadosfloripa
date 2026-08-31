@@ -11,7 +11,7 @@ Dar entrada no divórcio exige uma decisão anterior a qualquer papel: identific
 
 ## Resposta direta
 
-> Para dar entrada no divórcio no Brasil, o casal deve escolher entre duas vias. Havendo **consenso** sobre o fim do casamento e sobre partilha, pensão e uso do nome, o caminho é a escritura pública de divórcio lavrada em qualquer Cartório de Notas do país, com assistência de advogado, e o ato pode ser concluído em poucos dias. Não havendo acordo, ou existindo questões de filhos ainda não resolvidas, a entrada é feita por petição inicial protocolada na Vara de Família competente, por meio de advogado ou da Defensoria Pública.
+> Para dar entrada no divórcio no Brasil, o casal deve escolher entre duas vias. Havendo **consenso** sobre o fim do casamento e sobre partilha, pensão e uso do nome, o caminho é a escritura pública de divórcio lavrada em qualquer Cartório de Notas do país, com assistência de advogado, e o ato pode ser concluído em poucos dias. Não havendo acordo, ou existindo questões de filhos ainda não resolvidas, a entrada é feita por petição inicial protocolada na Vara de Família competente, por meio de advogado.
 
 Não existe prazo mínimo de casamento, não é necessário comprovar culpa e não é preciso separação prévia. A **Emenda Constitucional 66/2010** eliminou a exigência de separação anterior e de prazo mínimo, tornando o divórcio direto, imediato e incondicionado.
 
@@ -43,7 +43,7 @@ Vale um alerta que evita retrabalho: quem apenas se separou de fato há anos con
 | --- | --- | --- | --- |
 | **Requisito central** | Consenso total | Consenso com homologação | Ausência de acordo |
 | **Filhos menores** | Permitido apenas se guarda, convivência e alimentos já estiverem decididos judicialmente | Permitido, com atuação do Ministério Público | Permitido |
-| **Advogado** | Obrigatório, podendo ser o mesmo para os dois | Obrigatório ou Defensoria | Obrigatório para cada parte |
+| **Advogado** | Obrigatório, podendo ser o mesmo para os dois | Obrigatório | Obrigatório para cada parte |
 | **Prazo típico** | 2 a 15 dias | 30 a 90 dias | 12 a 36 meses |
 | **Onde dar entrada** | Qualquer Cartório de Notas do Brasil | Vara de Família competente | Vara de Família competente |
 | **Documento final** | Escritura pública | Sentença homologatória | Sentença |
@@ -177,7 +177,7 @@ O ponto que muda tudo é a partilha. Os emolumentos são calculados sobre o valo
 
 O cenário B surpreende porque o emolumento sobe junto com o valor do imóvel, mesmo em um divórcio pacífico. Por isso muitos casais optam por divorciar primeiro e partilhar depois, distribuindo o custo no tempo.
 
-Quando o divórcio sai de graça: a **gratuidade de justiça** cobre custas processuais e honorários periciais para quem comprova insuficiência de recursos, e a Defensoria Pública oferece assistência integral gratuita dentro dos critérios de renda de cada estado. No extrajudicial, a gratuidade dos emolumentos também pode ser requerida por declaração de hipossuficiência.
+Quando o custo cai: a **gratuidade de justiça** cobre custas processuais e honorários periciais para quem comprova insuficiência de recursos. No extrajudicial, a gratuidade dos emolumentos também pode ser requerida por declaração de hipossuficiência.
 
 ## Regime de bens: a variável que define a partilha
 
@@ -302,7 +302,7 @@ A entrada em si leva um dia. Na via extrajudicial, o divórcio se resolve entre 
 
 ### É possível se divorciar sem advogado?
 
-Não no divórcio extrajudicial. A participação do advogado é obrigatória por lei mesmo no divórcio consensual em cartório. Na via judicial, quem não tem condições de contratar pode ser assistido pela Defensoria Pública.
+Não. A participação do advogado é obrigatória por lei mesmo no divórcio consensual em cartório, e na via judicial a petição inicial precisa ser subscrita por advogado.
 
 ### Posso dar entrada no divórcio sozinho, sem o outro?
 
