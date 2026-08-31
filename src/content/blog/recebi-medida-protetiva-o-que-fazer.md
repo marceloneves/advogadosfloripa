@@ -10,12 +10,12 @@ image: '/theme/img/demo/11-1.webp'
 Ser intimado de uma medida protetiva não é condenação, mas gera obrigações imediatas. Descumprir é crime com pena de reclusão de 2 a 5 anos. Este guia explica o que fazer nas primeiras horas, o que jamais fazer e como discutir a medida pelos meios legais.
 
 <div class="post-note" role="note">
-<p><strong>Regra central deste guia:</strong> cumpra a medida integralmente desde a intimação e discuta o mérito nos autos, por meio de advogado ou da Defensoria Pública. Toda tentativa de resolver a situação por conta própria agrava o caso.</p>
+<p><strong>Regra central deste guia:</strong> cumpra a medida integralmente desde a intimação e discuta o mérito nos autos, por meio de advogado. Toda tentativa de resolver a situação por conta própria agrava o caso.</p>
 </div>
 
 ## Resposta direta
 
-> Ao ser intimado de uma medida protetiva de urgência, a pessoa deve **cumprir imediatamente todas as restrições**, sair do imóvel se houver ordem de afastamento, cessar qualquer forma de contato direto ou indireto, entregar armas se houver suspensão do porte e **constituir advogado ou procurar a Defensoria Pública** para apresentar defesa nos autos. O descumprimento configura crime autônomo, com pena de reclusão de 2 a 5 anos e multa, e apenas o juiz pode conceder fiança nessa hipótese.
+> Ao ser intimado de uma medida protetiva de urgência, a pessoa deve **cumprir imediatamente todas as restrições**, sair do imóvel se houver ordem de afastamento, cessar qualquer forma de contato direto ou indireto, entregar armas se houver suspensão do porte e **constituir advogado** para apresentar defesa nos autos. O descumprimento configura crime autônomo, com pena de reclusão de 2 a 5 anos e multa, e apenas o juiz pode conceder fiança nessa hipótese.
 
 A medida é **cautelar**, não é pena e não gera antecedentes criminais por si só. Ela é deferida com base em análise de risco feita sem oitiva prévia do intimado, justamente por sua natureza de urgência, e pode ser revista, reduzida ou revogada mediante requerimento fundamentado.
 
@@ -28,7 +28,7 @@ A medida é **cautelar**, não é pena e não gera antecedentes criminais por si
 | **Cessar todo contato** | Imediato | Inclui telefone, aplicativos, redes sociais e terceiros |
 | **Entregar armas e documento de porte** | Conforme prazo da decisão | Descumprir gera crime autônomo e agrava o caso |
 | **Definir endereço fixo e comunicá-lo** | Primeiros dias | Evita alegação de dificuldade de localização |
-| **Constituir advogado ou procurar a Defensoria** | Primeiros dias | Abre a via legítima de discussão da medida |
+| **Constituir advogado** | Primeiros dias | Abre a via legítima de discussão da medida |
 | **Preservar seus próprios registros** | Imediato | Conversas e documentos podem ser necessários à defesa |
 
 ### O erro que mais agrava a situação
@@ -64,7 +64,7 @@ A conduta correta:
 
 1. **Não responder**, em nenhuma hipótese e por nenhum meio
 2. **Preservar a mensagem** sem apagar, com data e horário visíveis
-3. **Comunicar imediatamente o advogado** ou a Defensoria
+3. **Comunicar imediatamente o advogado**
 4. **Levar o fato ao juízo** por petição, e não por iniciativa própria
 5. **Requerer a revisão da medida** se a situação de fato mudou
 
@@ -193,7 +193,7 @@ Não. Ela é medida cautelar de urgência, deferida com base em análise de risc
 
 ### Posso conversar com a outra parte para resolver?
 
-Não. Qualquer contato direto ou indireto configura descumprimento, mesmo que a conversa seja pacífica e mesmo que ela tenha iniciado o contato. A discussão deve ocorrer nos autos, por meio de advogado ou da Defensoria.
+Não. Qualquer contato direto ou indireto configura descumprimento, mesmo que a conversa seja pacífica e mesmo que ela tenha iniciado o contato. A discussão deve ocorrer nos autos, por meio de advogado.
 
 ### E se ela me procurar e eu apenas responder?
 
@@ -221,7 +221,7 @@ Reclusão de 2 a 5 anos e multa, conforme o artigo 24-A da Lei Maria da Penha e 
 
 ### Preciso de advogado?
 
-Sim, tecnicamente. A defesa envolve escolha de via processual, formulação de pedidos e produção de prova. Quem não pode contratar tem direito ao atendimento da Defensoria Pública.
+Sim. A defesa envolve escolha de via processual, formulação de pedidos e produção de prova, e cada uma dessas escolhas repercute no resultado. Atuar sem defesa técnica costuma comprometer a discussão da medida logo no início.
 
 ### Posso recorrer da decisão?
 
@@ -244,5 +244,5 @@ Quem inverte essa lógica e tenta resolver a situação por conta própria costu
 As páginas sobre [medida protetiva](/servicos/medida-protetiva) e [defesa na Lei Maria da Penha](/defesa-maria-da-penha) detalham como funciona o atendimento nesse tipo de caso.
 
 <div class="post-note" role="note">
-<p><strong>Orientação final:</strong> este conteúdo é informativo e não substitui análise individualizada. Procure um advogado ou a Defensoria Pública da sua comarca antes de tomar qualquer providência.</p>
+<p><strong>Orientação final:</strong> este conteúdo é informativo e não substitui análise individualizada. Procure um advogado antes de tomar qualquer providência.</p>
 </div>
