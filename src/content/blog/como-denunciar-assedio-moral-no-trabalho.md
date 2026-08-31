@@ -345,4 +345,4 @@ Denunciar assédio moral no trabalho deixou de ser um ato isolado de coragem ind
 
 O ponto de virada é sempre o mesmo: assédio moral prospera no não registrado, no não datado e no não testemunhado. Cada print salvo, cada protocolo emitido e cada consulta médica documentada reduzem o espaço em que a prática sobrevive.
 
-Se você está passando por isso, a página sobre [reclamação trabalhista](/reclamacao-trabalhista) reúne as demandas mais comuns do lado do trabalhador e explica como funciona o atendimento.
+A KFS Sociedade de Advogados atua em Florianópolis na defesa de quem sofre assédio moral no trabalho, da organização das provas ao pedido de indenização na Justiça do Trabalho. Confira como funciona nosso atendimento em **[assédio e justa causa](/servicos/assedio-e-justa-causa)** e agende uma conversa para avaliar o seu caso.

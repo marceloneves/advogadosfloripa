@@ -237,8 +237,8 @@ Receber uma medida protetiva coloca a pessoa diante de duas decisões que define
 
 Quem inverte essa lógica e tenta resolver a situação por conta própria costuma converter um procedimento cautelar reversível em processo criminal com pena de reclusão de 2 a 5 anos. Quem cumpre e se defende pelas vias adequadas preserva a possibilidade de flexibilização, de retomada do convívio com os filhos e de revogação futura, porque o histórico de cumprimento é o argumento mais convincente que existe nesse tipo de caso.
 
-A KFS Sociedade de Advogados atua em Florianópolis na defesa de quem responde a esse tipo de procedimento, do cumprimento da ordem inicial aos pedidos de flexibilização e revogação. Confira como funciona nosso atendimento para **[medida protetiva](/servicos/medida-protetiva)** e como podemos ajudá-lo. O primeiro passo é uma conversa reservada, em que analisamos a decisão recebida e definimos com você a estratégia adequada ao caso.
-
 <div class="post-note" role="note">
 <p><strong>Orientação final:</strong> este conteúdo é informativo e não substitui análise individualizada. Procure um advogado antes de tomar qualquer providência.</p>
 </div>
+
+A KFS Sociedade de Advogados atua em Florianópolis na defesa de quem responde a esse tipo de procedimento, do cumprimento da ordem inicial aos pedidos de flexibilização e revogação. Confira como funciona nosso atendimento para **[medida protetiva](/servicos/medida-protetiva)** e como podemos ajudá-lo. O primeiro passo é uma conversa reservada, em que analisamos a decisão recebida e definimos com você a estratégia adequada ao caso.
