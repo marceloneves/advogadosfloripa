@@ -5,6 +5,8 @@ import Layout from '../../layouts/Layout.astro';
 import BlogGrid from '../../components/BlogGrid.astro';
 import ConsultationCta from '../../components/ConsultationCta.astro';
 import { getCategoryByLabel } from '../../data/blog';
+import { getLawyerByName } from '../../data/team';
+import { formatarData } from '../../lib/format';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -23,6 +25,7 @@ const { post, posts } = Astro.props;
 const { Content } = await render(post);
 
 const categoria = getCategoryByLabel(post.data.category);
+const autor = getLawyerByName(post.data.author);
 
 // Relacionados: primeiro os da mesma categoria, completando com os demais.
 const outros = posts.filter((p) => p.id !== post.id);
@@ -31,16 +34,23 @@ const related = [
   ...outros.filter((p) => p.data.category !== post.data.category),
 ].slice(0, 3);
 
-const fmt = (d: Date) =>
-  d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+// Só vira "Atualizado em" quando a revisão é posterior à publicação: `updated`
+// igual (ou anterior) à data do post não acrescenta nada ao leitor.
+const { date, updated } = post.data;
+const atualizado = updated && updated.valueOf() > date.valueOf() ? updated : null;
 
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: post.data.title,
   description: post.data.description,
-  datePublished: post.data.date.toISOString(),
-  author: { '@type': 'Person', name: post.data.author },
+  datePublished: date.toISOString(),
+  dateModified: (atualizado ?? date).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: post.data.author,
+    ...(autor && { url: new URL(`/escritorio/${autor.slug}/`, Astro.site).href }),
+  },
   publisher: { '@type': 'Organization', name: "KFS Sociedade de Advogados" },
 };
 ---
@@ -62,7 +72,8 @@ const articleSchema = {
 						</div>
 
 						<ul class="post-meta mb-4">
-							<li>{fmt(post.data.date)}</li>
+							<li>{formatarData(date)}</li>
+							{atualizado && <li>Atualizado em {formatarData(atualizado)}</li>}
 							<li>
 								{categoria ? (
 									<a href={`/blog/categoria/${categoria.slug}`}>{post.data.category}</a>
@@ -70,8 +81,16 @@ const articleSchema = {
 									post.data.category
 								)}
 							</li>
-							<li>{post.data.author}</li>
+							<li>
+								{autor ? (
+									<a href={`/escritorio/${autor.slug}`}>{post.data.author}</a>
+								) : (
+									post.data.author
+								)}
+							</li>
 						</ul>
+
+						<p class="post-lead">{post.data.lead}</p>
 
 						<div class="post-body">
 							<Content />

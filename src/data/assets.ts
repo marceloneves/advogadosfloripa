@@ -11,4 +11,4 @@
  * dentro do bundle — o preload da Manrope precisa bater com a URL do
  * @font-face, senão o navegador baixa a fonte duas vezes.
  */
-export const assetVer = '20260829e';
+export const assetVer = '20260831c';

@@ -15,6 +15,10 @@ export const GET: APIRoute = async ({ site }) => {
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
 
+  // O lastmod é a última revisão do texto, não a publicação.
+  const lastmod = (post: (typeof posts)[number]) =>
+    (post.data.updated ?? post.data.date).toISOString();
+
   const categorias = blogCategories.flatMap((categoria) => {
     const daCategoria = posts.filter((p) => p.data.category === categoria.label);
     if (daCategoria.length === 0) return [];
@@ -22,7 +26,7 @@ export const GET: APIRoute = async ({ site }) => {
     return [
       {
         path: `/blog/categoria/${categoria.slug}/`,
-        lastmod: daCategoria[0].data.date.toISOString(),
+        lastmod: daCategoria.map(lastmod).sort().at(-1),
       },
     ];
   });
@@ -35,7 +39,7 @@ export const GET: APIRoute = async ({ site }) => {
           ...categorias,
           ...posts.map((post) => ({
             path: `/blog/${post.id}/`,
-            lastmod: post.data.date.toISOString(),
+            lastmod: lastmod(post),
           })),
         ];
 

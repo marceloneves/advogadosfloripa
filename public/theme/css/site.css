@@ -1201,6 +1201,14 @@ h1, h2, h3, h4, h5, h6,
   color: var(--kfs-navy);
 }
 
+/* Linha fina do artigo: a resposta curta ao tema, impressa entre a linha de meta
+   e o corpo. Mesma fonte, corpo e cor do texto do artigo — o que a distingue é o
+   itálico. */
+.post-lead {
+  margin-bottom: 1.75rem;
+  font-style: italic;
+}
+
 /* Blog article body spacing (content collection output). */
 .post-body > * + * {
   margin-top: 1.25rem;

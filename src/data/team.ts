@@ -231,3 +231,10 @@ export const team: Lawyer[] = [
 ];
 
 export const getLawyer = (slug: string) => team.find((l) => l.slug === slug);
+
+/**
+ * Advogado pelo nome como ele aparece no campo `author` dos posts. Devolve
+ * undefined para o autor institucional ("KFS Sociedade de Advogados"), que não
+ * tem página de perfil.
+ */
+export const getLawyerByName = (name: string) => team.find((l) => l.name === name);

@@ -2,14 +2,14 @@
 title: 'Como dar entrada no divórcio: documentos, custos e passo a passo'
 description: 'Cartório ou Justiça, documentos exigidos, custos reais, prazos por etapa, regime de bens, partilha, tributos e pensão. O caminho completo do divórcio em 2026.'
 date: 2026-08-27
+updated: 2026-08-31
+lead: 'Havendo acordo sobre partilha, pensão e nome, a entrada é por escritura em qualquer Cartório de Notas e sai em poucos dias; sem acordo, é petição na Vara de Família. Advogado é obrigatório nos dois caminhos.'
 category: 'Direito de Família'
 author: 'Asterley Kincezski da Silva'
 image: '/theme/img/demo/01-4.webp'
 ---
 
-Dar entrada no divórcio exige uma decisão anterior a qualquer papel: identificar se o caso vai para o cartório ou para a Justiça. Essa escolha define custo, prazo e nível de desgaste. Este guia mostra os dois caminhos do início ao fim.
-
-## Resposta direta
+## Como dar entrada no divórcio?
 
 > Para dar entrada no divórcio no Brasil, o casal deve escolher entre duas vias. Havendo **consenso** sobre o fim do casamento e sobre partilha, pensão e uso do nome, o caminho é a escritura pública de divórcio lavrada em qualquer Cartório de Notas do país, com assistência de advogado, e o ato pode ser concluído em poucos dias. Não havendo acordo, ou existindo questões de filhos ainda não resolvidas, a entrada é feita por petição inicial protocolada na Vara de Família competente, por meio de advogado.
 

@@ -2,14 +2,13 @@
 title: 'Como denunciar assédio moral no trabalho: provas, canais e prazos'
 description: 'Como reunir provas, qual canal escolher entre CIPA, MPT, fiscalização e Justiça do Trabalho, prazos, custos e valores de indenização por assédio moral.'
 date: 2026-08-27
+lead: 'Reúna as provas da conduta repetitiva, registre a denúncia no canal interno ou na CIPA e, sem apuração adequada, leve o caso ao MPT, à fiscalização do trabalho, ao sindicato ou à Justiça do Trabalho, dentro de dois anos após o fim do contrato.'
 category: 'Direito Trabalhista'
 author: 'Matheus Stein'
 image: '/theme/img/demo/01-3.webp'
 ---
 
-Denunciar assédio moral no trabalho exige três movimentos simultâneos: documentar a conduta antes de reagir, escolher o canal certo entre os seis disponíveis e proteger-se contra retaliação. Este guia mostra o caminho completo, do primeiro print até a sentença.
-
-## Resposta direta
+## Como denunciar assédio moral no trabalho?
 
 > Para denunciar assédio moral no trabalho, o trabalhador deve reunir provas da conduta repetitiva (mensagens, e-mails, testemunhas, atestados médicos), registrar a denúncia no canal interno da empresa ou na CIPA e, se não houver apuração adequada, acionar externamente o Ministério Público do Trabalho (MPT), a Auditoria-Fiscal do Trabalho pelo gov.br, o sindicato da categoria ou a Justiça do Trabalho — com prazo prescricional de dois anos após o fim do contrato para reclamar fatos dos últimos cinco anos.
 
